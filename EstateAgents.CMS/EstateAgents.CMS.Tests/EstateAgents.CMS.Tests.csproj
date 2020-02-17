@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EACCA49E-533E-49CA-BD8B-D3DFC9E48D1A}</ProjectGuid>
+    <ProjectGuid>{C25B1BB4-B069-4A99-9F21-51B1861AA17B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EstateAgents.CMS.Tests</RootNamespace>
@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EstateAgents.CMS\EstateAgents.CMS.csproj">
-      <Project>{A6F5F9C3-5240-42D5-8858-A4EED59A269B}</Project>
+      <Project>{40A8E641-CFA7-495C-AEC6-EC337B9F5318}</Project>
       <Name>EstateAgents.CMS</Name>
     </ProjectReference>
   </ItemGroup>
