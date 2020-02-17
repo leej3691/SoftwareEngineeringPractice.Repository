@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateAgents.WebPortal", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateAgents.WebPortal.Tests", "EstateAgents.WebPortal.Tests\EstateAgents.WebPortal.Tests.csproj", "{66F2347E-3C97-4F6C-B5E5-33CD64E7263D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{47D8BAED-B532-456A-9B73-753A2502FF65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateAgents.Library", "..\EstateAgents.Library\EstateAgents.Library\EstateAgents.Library.csproj", "{7BC0F342-22D4-41FA-BA64-9F55E734706B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{66F2347E-3C97-4F6C-B5E5-33CD64E7263D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66F2347E-3C97-4F6C-B5E5-33CD64E7263D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66F2347E-3C97-4F6C-B5E5-33CD64E7263D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC0F342-22D4-41FA-BA64-9F55E734706B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC0F342-22D4-41FA-BA64-9F55E734706B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC0F342-22D4-41FA-BA64-9F55E734706B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC0F342-22D4-41FA-BA64-9F55E734706B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7BC0F342-22D4-41FA-BA64-9F55E734706B} = {47D8BAED-B532-456A-9B73-753A2502FF65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A79123D-D1A6-4A2C-9E4E-9E613C00D6AF}
