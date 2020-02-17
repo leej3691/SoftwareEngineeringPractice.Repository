@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C4938C21-5B74-44C7-B446-0F66121B9435}</ProjectGuid>
+    <ProjectGuid>{66F2347E-3C97-4F6C-B5E5-33CD64E7263D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EstateAgents.WebPortal.Tests</RootNamespace>
@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EstateAgents.WebPortal\EstateAgents.WebPortal.csproj">
-      <Project>{77C0A387-D6B2-4CAB-AB9B-E7AFE488729B}</Project>
+      <Project>{662567F0-AD73-4671-962F-9053B42E40B7}</Project>
       <Name>EstateAgents.WebPortal</Name>
     </ProjectReference>
   </ItemGroup>
