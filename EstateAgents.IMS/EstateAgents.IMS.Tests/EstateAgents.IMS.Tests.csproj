@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{25B531E3-C7E5-46FE-975C-CFE3CD1AD95D}</ProjectGuid>
+    <ProjectGuid>{DDB7F558-5597-4B52-B2DA-311ACB331C11}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EstateAgents.IMS.Tests</RootNamespace>
@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EstateAgents.IMS\EstateAgents.IMS.csproj">
-      <Project>{8DFB127E-AA2C-4148-AEEE-A8C2986C97F4}</Project>
+      <Project>{74BFCFD0-0047-4EC2-8FE2-07D505A2F180}</Project>
       <Name>EstateAgents.IMS</Name>
     </ProjectReference>
   </ItemGroup>
