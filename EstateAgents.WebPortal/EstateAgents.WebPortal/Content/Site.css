@@ -22,3 +22,43 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.footer {
+    background-color: #666666;
+    color: white;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.footer-logo-container {
+    width: 220px;
+    padding: 20px 20px 20px 40px;
+}
+
+.footer-link {
+    color: white;
+}
+
+.footer-li-header {
+    padding-bottom: 10px;
+}
+
+.footer-ul {
+    list-style-type: none;
+}
+
+.footer-col {
+    width: 200px;
+}
+
+.footer-col-bg {
+    width: 250px;
+}
+
+.footer-content-bottom-row {
+    padding-right: 20px;
+}
+
+.footer-content-bottom-col {
+    padding: 10px 10px 20px 40px;
+

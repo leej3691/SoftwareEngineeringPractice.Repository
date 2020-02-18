@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using BundleTransformer.Core.Bundles;
+using System.Web;
 using System.Web.Optimization;
 
 namespace EstateAgents.WebPortal
@@ -8,6 +9,8 @@ namespace EstateAgents.WebPortal
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new CustomStyleBundle("~/style/bootstrap").Include("~/content/bootswatch/build.less"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -25,6 +28,8 @@ namespace EstateAgents.WebPortal
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/style/font-awesome", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css").Include("~/content/font-awesome.css"));
         }
     }
 }

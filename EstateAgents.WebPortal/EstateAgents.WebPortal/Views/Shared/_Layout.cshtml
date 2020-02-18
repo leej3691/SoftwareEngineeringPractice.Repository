@@ -16,34 +16,31 @@
     @Scripts.Render("~/scripts/bootstrap")
 
 </head>
-<body>
+<body style="background:#eeeeee;">
 
     @*HEADER MOBILE*@
-    <div class="container hidden-xs">
+    <div class="container hidden-xs" style="background: white;">
 
         <div class="row">
 
             <!-- Logo -->
             <div class="col-sm-4">
-                <div>
+                <div style="padding:13px;">
                     <a href="/">
-                        <img class="logo" src="">
+                        <img class="logo" src="~/Content/logo1.png">
                     </a>
                 </div>
             </div>
 
             <!-- Quick Actions -->
-            <div Class="col-sm-8">
-
-                <div class="quick-actions pull-right">
-                    <a href="https://www.linkedin.com/company/goldsmith-williams-solicitors" target="_blank" data-container="body" data-placement="left" data-toggle="tooltip" title="Click to view our LinkedIn"><i Class="fa fa-lg fa-linkedin-square fa-3x" title="LinkedIn"></i></a>
-                    <a href="https://twitter.com/gwlegal" target="_blank" data-container="body" data-placement="left" data-toggle="tooltip" title="Click to view our Twitter"><i Class="fa fa-lg fa-twitter-square fa-3x" title="Twitter"></i></a>
-                    <a href="https://www.fb.me/gwlegaluk" target="_blank" data-container="body" data-placement="left" data-toggle="tooltip" title="Click to view our Facebook"><i Class="fa fa-lg fa-facebook-square fa-3x" title="Facebook"></i></a>
-                </div>
+            <div class="col-sm-8">
+                <a href="https://www.fb.me/gwlegaluk" target="_blank" class="facebook" data-container="body" data-placement="left" data-toggle="tooltip" title="" data-original-title="Click to view our Facebook"><i class="fa fa-lg fa-facebook-square fa-3x" title="Facebook"></i></a>
+                <a href="https://www.instagram.com/gwlegal" target="_blank" class="instagram" data-container="body" data-placement="left" data-toggle="tooltip" title="" data-original-title="Click to view our Instagram"><i class="fa fa-lg fa-instagram fa-3x" title="Instagram"></i></a>
+                <a href="https://www.pinterest.co.uk/gwlegaluk" target="_blank" class="linkedin" data-container="body" data-placement="left" data-toggle="tooltip" title="" data-original-title="Click to view our LinkedIn"><i class="fa fa-lg fa-linkedin-square fa-3x" title="LinkedIn"></i></a>
 
                 <div itemscope="" itemtype="http://schema.org/Organization" id="telephone">
-                    <p itemprop="telephone" Class="text-right" style="font-size: 44px; margin-top: 54px; margin-bottom: 0px;">
-                        <i Class="fa fa-phone"></i>&nbsp;0345 373 3737
+                    <p itemprop="telephone" class="text-right" style="font-size: 44px; margin-top: 54px; margin-bottom: 0px;">
+                        <i class="fa fa-phone"></i>&nbsp;07811971637
                     </p>
                 </div>
             </div>
@@ -51,28 +48,28 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="background: white">
 
         <div class="navbar navbar-inverse" role="navigation">
 
             @*HEADER DESKTOP*@
-            <div class="navbar-header">
+            <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand visible-xs" href="/">
+                <a class="navbar-brand" href="/">
                     <img src="">
                 </a>
                 <div class="quick-actions pull-right visible-xs" style="margin-right: 15px">
-                    <a href="https://www.facebook.com/Goldsmith.Williams" title="Facebook" target="_blank"><i Class="fa fa-facebook-square fa-2x fa-inverse"></i></a>
-                    <a href="https://twitter.com/gwlegal" title="Twitter" target="_blank"><i Class="fa fa-twitter-square fa-2x fa-inverse"></i></a>
-                    <a href="tel:0345 373 3737" title="Call us now"><i Class="fa fa-phone-square fa-2x fa-inverse"></i></a>
+                    <a href="https://www.facebook.com/Goldsmith.Williams" title="Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x fa-inverse"></i></a>
+                    <a href="https://twitter.com/gwlegal" title="Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x fa-inverse"></i></a>
+                    <a href="tel:0345 373 3737" title="Call us now"><i class="fa fa-phone-square fa-2x fa-inverse"></i></a>
                 </div>
             </div>
 
             <!-- Navbar -->
-            <div Class="navbar-collapse collapse navbar-inverse-collapse">
-                <ul Class="nav navbar-nav">
+            <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <ul class="nav navbar-nav">
                     @foreach (var NavHeader in SiteMap.Nodes)
                     {
                         if (NavHeader.Descendants().Count() > 0)
@@ -81,8 +78,8 @@
                             if (NavHeader.Descendants().Where(x => x.Attribute("url") != null).Where(x => x.Attribute("url").Value == Request.Url.AbsolutePath).Count() > 0) { active = "class=active"; };
 
                             <li active>
-                                <a href="#" Class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@NavHeader.Attribute("title").Value <span Class="caret"></span></a>
-                                <ul Class="dropdown-menu" role="menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@NavHeader.Attribute("title").Value <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
 
                                     @foreach (var NavItem in NavHeader.Elements())
                                     {
@@ -90,10 +87,10 @@
                                         {
                                             if (NavItem.ElementsBeforeSelf().Count() > 0)
                                             {
-                                                <li role="separator" Class="divider"></li>
+                                                <li role="separator" class="divider"></li>
                                             }
 
-                                            <li role="presentation" Class="dropdown-header">@NavItem.Attribute("title").Value</li>
+                                            <li role="presentation" class="dropdown-header">@NavItem.Attribute("title").Value</li>
 
                                             foreach (var SubNode in NavItem.Descendants())
                                             {
@@ -120,11 +117,11 @@
                         }
                     }
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="background-color:#717271;">
                     <li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a href="/account/logout">
+                            <a href="/account/logoff">
                                 <i class="glyphicon glyphicon-log-out hidden-sm"></i> LOGOUT
                             </a>
                         }
@@ -142,9 +139,59 @@
         </div>
     </div>
 
-    <div Class="container">
+    <div class="container" style="background: white">
         @RenderBody()
+
+        <footer class="footer" style="margin-bottom:10px;">
+            <br />
+            <div class="row">
+                <div class="col-md-2 footer-logo-container"><img class="footer-logo hidden-xs hidden-sm" src="" /></div>
+                <div class="col-xs-6 col-sm-6 col-md-2 footer-col-bg">
+                    <ul class="footer-ul">
+                        <li class="footer-li-header"><b>Important Links</b></li>
+                        <li><a href="/legal/privacy-policy" class="footer-link">Privacy &amp; Security Policy</a></li>
+                        <li><a href="/legal/marketing-policy" class="footer-link">Marketing Policy</a></li>
+                        <li><a href="/legal/terms-and-conditions" class="footer-link">Terms and Conditions</a></li>
+                        <li><a href="/legal/cookies-and-privacy" class="footer-link">Cookie Policy</a></li>
+                        <li><a href="/legal" class="footer-link">Other Legal Stuff</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-2 footer-col">
+                    <ul class="footer-ul">
+                        <li class="footer-li-header"><b>Additional Links</b></li>
+                        <li><a href="/vacancies" class="footer-link">Recruitment</a></li>
+                        <li><a href="/legal/your-right-to-complain" class="footer-link">Your Right to Complain</a></li>
+                        <li><a href="/payment" class="footer-link">Online Payment</a></li>
+                        <li><a href="/legal/charity" class="footer-link">Charity Work</a></li>
+                        <li><a href="/sitemap" class="footer-link">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-2 footer-col">
+                    <ul class="footer-ul">
+                        <li class="footer-li-header"><b>Contact Us</b></li>
+                        <li><b>Call: </b>0345 373 3737</li>
+                        <li><b>Email: </b>hello@gw.legal</li>
+                        <li><b>Write: </b>GWlegal, 20 Chapel Street, Liverpool, L3 9GW</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row footer-content-bottom-row">
+                <div class="col-md-12 footer-content-bottom-col">
+                    GWlegal is the trading name of GWLAWYER LIMITED who are registered in England &amp; Wales under company no. 11173746.
+                    <br />
+                    Registered office: 20 Chapel Street, Liverpool, L3 9GW where a list of members is open for inspection.
+                    <br />
+                    Authorised and regulated by the Solicitors Regulation Authority under number 662544.
+                    <br />
+                    © GWlegal 2020 | Contact Number: 0345 373 3737
+                </div>
+            </div>
+
+        </footer>
     </div>
+
+
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
