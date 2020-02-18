@@ -22,6 +22,6 @@
   <siteMapNode url="/our-people" title="Our People" />
 
   <!-- Contact Us Tab -->
-  <siteMapNode url="/enquiry" title="Contact Us" />
+  <siteMapNode url="/Home/Contact" title="Contact" />
   
 </siteMap>
