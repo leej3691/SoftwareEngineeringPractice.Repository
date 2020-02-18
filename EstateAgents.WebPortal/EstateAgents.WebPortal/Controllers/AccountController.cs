@@ -140,7 +140,8 @@ namespace EstateAgents.WebPortal.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            return View(model);
         }
 
         //
@@ -157,7 +158,24 @@ namespace EstateAgents.WebPortal.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    //Create Client
+                    Client c = new Client();
+                    c.AddressLine1 = model.AddressLine1;
+                    c.AddressLine2 = model.AddressLine2;
+                    c.AddressLine3 = model.AddressLine3;
+                    c.AddressLine4 = model.AddressLine4;
+                    c.AddressLine5 = model.AddressLine5;
+                    c.DateOfBirth = model.DateOfBirth;
+                    c.Email = model.Email;
+                    c.Forename = model.Forename;
+                    c.Mobile = model.Mobile;
+                    c.Postcode = model.Postcode;
+                    c.Surname = model.Surname;
+                    c.Title = model.Title.ToString();
+                    c.UserId = Guid.Parse(user.Id);
+                    EstateAgentsRepository.CreateClient(c);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

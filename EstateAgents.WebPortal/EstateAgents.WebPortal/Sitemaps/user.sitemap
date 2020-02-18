@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  
+  <siteMapNode url="/Home/Index" title="Dashboard" />
+
+  <!-- Client Logged In Home Tab -->
+  <siteMapNode url="" title="Properties" roles="Client">
+      <siteMapNode url="/postroom/tracker/all" title="Property Search" />
+      <siteMapNode url="/postroom/tracker/all" title="Property Showroom" />
+      <siteMapNode url="/postroom/tracker/all" title="Saved Properties" />
+  </siteMapNode>
+  <siteMapNode url="/" title="Message" />
+  <siteMapNode url="/" title="Contact" />
+  <siteMapNode url="/" title="FAQ" />
+  <siteMapNode url="" title="Account" roles="Client">
+      <siteMapNode url="/postroom/tracker/all" title="Terms of Use" />
+      <siteMapNode url="/postroom" title="Service Agreement" />
+      <siteMapNode url="/postroom" title="Privacy Policy" />
+  </siteMapNode>
+
+</siteMap>

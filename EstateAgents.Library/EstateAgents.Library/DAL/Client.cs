@@ -33,5 +33,6 @@ namespace EstateAgents.Library.DAL
         public string Email { get; set; }
         [StringLength(11)]
         public string Mobile { get; set; }
+        public Guid UserId { get; set; }
     }
 }

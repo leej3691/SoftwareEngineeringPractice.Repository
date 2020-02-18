@@ -1,44 +1,201 @@
-﻿<!DOCTYPE html>
+﻿
+@{ 
+    var SiteMap = new EstateAgents.WebPortal.Models.SiteMap();
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/style/bootstrap")
+    @Styles.Render("~/style/font-awesome")
+
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/scripts/bootstrap")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    @*HEADER MOBILE*@
+    <div class="container hidden-xs">
+
+        <div class="row">
+
+            <!-- Logo -->
+            <div class="col-sm-4">
+                <div>
+                    <a href="/">
+                        <img class="logo" src="">
+                    </a>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+            <!-- Quick Actions -->
+            <div Class="col-sm-8">
+
+                <div class="quick-actions pull-right">
+                    <a href="https://www.linkedin.com/company/goldsmith-williams-solicitors" target="_blank" data-container="body" data-placement="left" data-toggle="tooltip" title="Click to view our LinkedIn"><i Class="fa fa-lg fa-linkedin-square fa-3x" title="LinkedIn"></i></a>
+                    <a href="https://twitter.com/gwlegal" target="_blank" data-container="body" data-placement="left" data-toggle="tooltip" title="Click to view our Twitter"><i Class="fa fa-lg fa-twitter-square fa-3x" title="Twitter"></i></a>
+                    <a href="https://www.fb.me/gwlegaluk" target="_blank" data-container="body" data-placement="left" data-toggle="tooltip" title="Click to view our Facebook"><i Class="fa fa-lg fa-facebook-square fa-3x" title="Facebook"></i></a>
+                </div>
+
+                <div itemscope="" itemtype="http://schema.org/Organization" id="telephone">
+                    <p itemprop="telephone" Class="text-right" style="font-size: 44px; margin-top: 54px; margin-bottom: 0px;">
+                        <i Class="fa fa-phone"></i>&nbsp;0345 373 3737
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="navbar navbar-inverse" role="navigation">
+
+            @*HEADER DESKTOP*@
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand visible-xs" href="/">
+                    <img src="">
+                </a>
+                <div class="quick-actions pull-right visible-xs" style="margin-right: 15px">
+                    <a href="https://www.facebook.com/Goldsmith.Williams" title="Facebook" target="_blank"><i Class="fa fa-facebook-square fa-2x fa-inverse"></i></a>
+                    <a href="https://twitter.com/gwlegal" title="Twitter" target="_blank"><i Class="fa fa-twitter-square fa-2x fa-inverse"></i></a>
+                    <a href="tel:0345 373 3737" title="Call us now"><i Class="fa fa-phone-square fa-2x fa-inverse"></i></a>
+                </div>
+            </div>
+
+            <!-- Navbar -->
+            <div Class="navbar-collapse collapse navbar-inverse-collapse">
+                <ul Class="nav navbar-nav">
+                    @foreach (var NavHeader in SiteMap.Nodes)
+                    {
+                        if (NavHeader.Descendants().Count() > 0)
+                        {
+                            string active = "";
+                            if (NavHeader.Descendants().Where(x => x.Attribute("url") != null).Where(x => x.Attribute("url").Value == Request.Url.AbsolutePath).Count() > 0) { active = "class=active"; };
+
+                            <li active>
+                                <a href="#" Class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@NavHeader.Attribute("title").Value <span Class="caret"></span></a>
+                                <ul Class="dropdown-menu" role="menu">
+
+                                    @foreach (var NavItem in NavHeader.Elements())
+                                    {
+                                        if (NavItem.Name.LocalName == "siteMapGroup" && NavItem.Elements().Count() > 0)
+                                        {
+                                            if (NavItem.ElementsBeforeSelf().Count() > 0)
+                                            {
+                                                <li role="separator" Class="divider"></li>
+                                            }
+
+                                            <li role="presentation" Class="dropdown-header">@NavItem.Attribute("title").Value</li>
+
+                                            foreach (var SubNode in NavItem.Descendants())
+                                            {
+                                                string active2 = null;
+                                                if (SubNode.Attribute("url").Value == Request.Url.AbsolutePath) { active2 = "class=active"; };
+                                                <li active2><a href="@SubNode.Attribute("url").Value">@SubNode.Attribute("title").Value</a></li>
+                                            }
+                                        }
+                                        else if (NavItem.Elements().Count() == 0 && NavItem.Name.LocalName != "siteMapGroup")
+                                        {
+                                            string active3 = null;
+                                            if (NavItem.Attribute("url").Value == Request.Url.AbsolutePath) { active3 = "class=active"; };
+                                            <li active3><a href="@NavItem.Attribute("url").Value">@NavItem.Attribute("title").Value</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            string active4 = null;
+                            if (NavHeader.Attribute("url").Value == Request.Url.AbsolutePath) { active4 = "class=active"; };
+                            <li active4><a href="@NavHeader.Attribute("url").Value">@NavHeader.Attribute("title").Value</a></li>
+                        }
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/account/logout">
+                                <i class="glyphicon glyphicon-log-out hidden-sm"></i> LOGOUT
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/account/login">
+                                <i class="fa fa-lock"></i> LOGIN
+                            </a>
+                        }
+
+
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+
+    <div Class="container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+    </body>
+    </html>*@
