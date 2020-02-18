@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EstateAgents.WebPortal.Models;
+using EstateAgents.Library.DAL;
 
 namespace EstateAgents.WebPortal.Controllers
 {
@@ -151,7 +152,7 @@ namespace EstateAgents.WebPortal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using EstateAgents.WebPortal.Models;
+using EstateAgents.Library.DAL;
 
 namespace EstateAgents.WebPortal
 {
