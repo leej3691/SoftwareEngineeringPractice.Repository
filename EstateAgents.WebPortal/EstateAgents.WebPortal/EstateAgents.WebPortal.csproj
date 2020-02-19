@@ -217,12 +217,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SiteMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\EstateAgents.mdf" />
+    <Content Include="App_Data\EstateAgents_log.ldf">
+      <DependentUpon>EstateAgents.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -386,10 +391,10 @@
     <Content Include="Views\Property\PropertyMakeOffer.cshtml" />
     <Content Include="Views\Messages\Messages.cshtml" />
     <Content Include="Views\Property\PropertySearch.cshtml" />
+    <Content Include="Views\Account\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\_RegisterPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

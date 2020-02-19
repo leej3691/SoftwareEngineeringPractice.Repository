@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstateAgents.WebPortal.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,14 @@ namespace EstateAgents.WebPortal.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ContactViewModel model = new ContactViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ContactEnquiry(ContactViewModel model)
+        {
 
             return View();
         }

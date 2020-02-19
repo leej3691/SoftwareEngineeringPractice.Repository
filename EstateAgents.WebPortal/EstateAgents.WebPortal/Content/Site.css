@@ -61,4 +61,10 @@ textarea {
 
 .footer-content-bottom-col {
     padding: 10px 10px 20px 40px;
+}
 
+hr{
+    height:3px;
+    border:0;
+    border-bottom:3px dashed #eee;
+}

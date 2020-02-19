@@ -1,17 +1,88 @@
-﻿@{
+﻿@using EstateAgents.WebPortal.Models
+@model RegisterViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron hidden-xs">
-    <h1><i class="fa fa-lock text-success"></i> Register or Login</h1>
-    <p class="lead">Book viewings, save properties, make offers and message experts 24/7</p>
+
+<div class="jumbotron" href="/articles">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1><i Class="fa fa-smile-o text-success hidden-xs"></i></h1>
+        <p> Welcome to your GW <b class="text-success">Dashboard</b> </p>
+    }
+    else
+    {
+        <div id="register-content">
+
+            <ng-controller ng-controller="GenericFormController">
+
+                <h1>
+                    <i class="fa fa-sign-in text-success hidden-xs"></i>
+                    Register today
+                </h1>
+
+                <form name="ModelForm" class="form-horizontal">
+
+                    <div class="row">
+
+                        <div class="col-sm-9 col-lg-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address" })
+                        </div>
+
+                        <div class="col-sm-3 col-lg-2" ng-style="{cursor: !ModelForm.$valid ? 'not-allowed' : 'pointer'}">
+                            <a class="btn btn-success btn-block" href="/account/register?Email={{Model.Email}}" ng-class="{'disable-anchor':!ModelForm.$valid}" ng-disabled="!ModelForm.$valid">Register</a>
+                        </div>
+
+                        @if (User.Identity.IsAuthenticated == false)
+                        {
+                            <p class="col-sm-12 hidden-xs">
+                                Already a member? <a href="/account/login">Click here</a>
+                            </p>
+                        }
+
+                    </div>
+                </form>
+            </ng-controller>
+
+
+        </div>
+
+    }
+
 </div>
 
-<div class="row">
-    <div class="col-md-6">
-
+<p>
+    View properties for sale in our Property Showroom below
+</p>
+<h3>Properties for sale...</h3>
+<hr />
+</br>
+<div Class="row row-eq-height">
+    <div Class="col-sm-4">
+        <a Class="list-group-item" href="/articles/" style="height: 100%">
+            <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
+            <h4 Class="text-primary">Test Headline</h4>
+            <p>This is a test</p>
+        </a>
     </div>
-    <div class="col-md-6">
-        
+    <div Class="col-sm-4">
+        <a Class="list-group-item" href="/articles/" style="height: 100%">
+            <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
+            <h4 Class="text-primary">Test Headline 2</h4>
+            <p>This is a test 2</p>
+        </a>
+    </div>
+    <div Class="col-sm-4">
+        <a Class="list-group-item" href="/articles/" style="height: 100%">
+            <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
+            <h4 Class="text-primary">Test Headline 3</h4>
+            <p>This is a test 3</p>
+        </a>
     </div>
 </div>
+
+<br />
+
+<a href="/articles" Class="btn btn-success">Property Showroom</a>
+

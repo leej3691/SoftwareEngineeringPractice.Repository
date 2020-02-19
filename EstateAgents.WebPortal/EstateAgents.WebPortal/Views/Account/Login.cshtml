@@ -1,6 +1,130 @@
 ﻿@using EstateAgents.WebPortal.Models
 @model LoginViewModel
 @{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron hidden-xs">
+    <h1><i class="fa fa-lock text-success"></i> Register or Login</h1>
+    <p class="lead">Book viewings, save properties, make offers and message experts 24/7</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="well">
+
+            <form name="ModelForm" class="form-horizontal">
+
+                <h3>
+                    <i class="fa fa-sign-in"></i>
+                    Sign In
+                </h3>
+
+                <br />
+
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-1">
+                            <div class="input-group-addon">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "width:100%;" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2">
+                        <button class="btn btn-success btn-block" type="submit" name="submit" value="Submit">Sign In</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <small class="col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2">
+                        Click @Html.ActionLink("here", "reset-password") if you can't sign in.
+                    </small>
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="well">
+
+            <form name="ModelForm" class="form-horizontal">
+
+                <h3>
+                    <i class="fa fa-user"></i>
+                    Register
+                </h3>
+
+                <br />
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                    <div class="col-md-1">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "width:100%;" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2">
+                        <button class="btn btn-success btn-block" type="submit" name="submit" value="Submit">Register</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <small class="col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2">
+                        Click here to read our terms of use.
+                    </small>
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+
+@*@using EstateAgents.WebPortal.Models
+@model LoginViewModel
+@{
     ViewBag.Title = "Log in";
 }
 
@@ -36,7 +160,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="
+                     ">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
@@ -44,10 +169,10 @@
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
                 </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
+
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                    </p>
             }
         </section>
     </div>
@@ -60,4 +185,4 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@
