@@ -144,6 +144,14 @@ namespace EstateAgents.WebPortal.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult RegisterStart(string email)
+        {
+            RegisterViewModel model = new RegisterViewModel();
+            //model.Email = Email;
+            return View("Register", model);
+        }
+
         //
         // POST: /Account/Register
         [HttpPost]

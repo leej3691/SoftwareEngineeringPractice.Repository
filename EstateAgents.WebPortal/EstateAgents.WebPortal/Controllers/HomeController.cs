@@ -1,8 +1,5 @@
 ﻿using EstateAgents.WebPortal.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using EstateAgents.WebPortal.Models.Home;
 using System.Web.Mvc;
 
 namespace EstateAgents.WebPortal.Controllers
@@ -11,7 +8,8 @@ namespace EstateAgents.WebPortal.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+            return View(model);
         }
 
         public ActionResult Contact()

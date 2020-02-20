@@ -46,6 +46,44 @@ namespace EstateAgents.Library.DAL
             return FullName;
         }
 
+        /// <summary>
+        /// Client - Get client by user id
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public static Client GetClientByUserId(Guid UserId)
+        {
+            Client client = new Client();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                client = db.Client.Where(c => c.UserId == UserId).FirstOrDefault();
+            }
+
+            return client;
+        }
+
+        #endregion
+
+        #region Property
+
+        /// <summary>
+        /// Client - Get client by user id
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public static List<Property> GetTop3Properties()
+        {
+            List<Property> properties = new List<Property>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                properties = db.Property.Take(3).ToList();
+            }
+
+            return properties;
+        }
+
         #endregion
 
         #region Examples

@@ -1,5 +1,4 @@
-﻿@using EstateAgents.WebPortal.Models
-@model RegisterViewModel
+﻿@model EstateAgents.WebPortal.Models.Home.HomeViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -8,122 +7,132 @@
 <div class="jumbotron" href="/articles">
     @if (User.Identity.IsAuthenticated)
     {
-        <h1><i Class="fa fa-smile-o text-success hidden-xs"></i> Hi</h1>
+        <h1><i Class="fa fa-smile-o text-success hidden-xs"></i> Hi @Model.ClientDetails.Forename</h1>
         <p> Welcome to your LJ Properties <b class="text-success">Dashboard</b> </p>
     }
     else
     {
         <div id="register-content">
 
-            <ng-controller ng-controller="GenericFormController">
+            <h1>
+                <i class="fa fa-sign-in text-success hidden-xs"></i>
+                Register today
+            </h1>
 
-                <h1>
-                    <i class="fa fa-sign-in text-success hidden-xs"></i>
-                    Register today
-                </h1>
+            <div class="row">
 
-                <form name="ModelForm" class="form-horizontal">
+                <div class="col-sm-9 col-lg-10">
+                    @Html.TextBoxFor(m => m.RegisterEmail, new { @class = "form-control", placeholder = "Enter your email address" })
+                </div>
 
-                    <div class="row">
+                <div class="col-sm-3 col-lg-2">
+                    <a class="btn btn-success btn-block" href="/account/register">Register</a>
+                </div>
 
-                        <div class="col-sm-9 col-lg-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address" })
-                        </div>
+                @if (User.Identity.IsAuthenticated == false)
+                {
+                    <p class="col-sm-12 hidden-xs">
+                        Already a member? <a href="/account/login">Click here</a>
+                    </p>
+                }
 
-                        <div class="col-sm-3 col-lg-2" ng-style="{cursor: !ModelForm.$valid ? 'not-allowed' : 'pointer'}">
-                            <a class="btn btn-success btn-block" href="/account/register?Email={{Model.Email}}" ng-class="{'disable-anchor':!ModelForm.$valid}" ng-disabled="!ModelForm.$valid">Register</a>
-                        </div>
-
-                        @if (User.Identity.IsAuthenticated == false)
-                        {
-                            <p class="col-sm-12 hidden-xs">
-                                Already a member? <a href="/account/login">Click here</a>
-                            </p>
-                        }
-
-                    </div>
-                </form>
-            </ng-controller>
-
-
+            </div>
         </div>
+
 
     }
 
 </div>
+
 
 <div class="row">
     <div class="col-md-12">
         <h3 class="text-success"><b>Find your dream home</b></h3>
     </div>
     <hr />
-    
+
 </div>
 
-<div class="row" style="margin-bottom:20px;">
-    <div class="col-sm-4 text-center">
-        <a href="/Property/PropertyShowroom" class="service-icon">
-            <i class="fa fa-home" title="Showroom"></i>
-            <h3>Showroom</h3>
-        </a>
-    </div>
-    <div class="col-sm-4 text-center">
-        <a href="/Property/PropertySearch" class="service-icon">
-            <i class="fa fa-search" title="Search"></i>
-            <h3>Property Search</h3>
-        </a>
-    </div>
-    <div class="col-sm-4 text-center">
-        <a href="/Property/PropertySaved" class="service-icon">
-            <i class="fa fa-heart" title="Saved"></i>
-            <h3>Saved Properties</h3>
-        </a>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-4 text-center">
-        <a href="/Messages/Messages" class="service-icon">
-            <i class="fa fa-envelope" title="Messages"></i>
-            <h3>Messages</h3>
-        </a>
-    </div>
-    <div class="col-sm-4 text-center">
-        <a href="/Home/Contact" class="service-icon">
-            <i class="fa fa-phone" title="Contact"></i>
-            <h3>Contact</h3>
-        </a>
-    </div>
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <hr />
 
-<br/>
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-sm-4 text-center">
+            <a href="/Property/PropertyShowroom" class="service-icon">
+                <i class="fa fa-home" title="Showroom"></i>
+                <h3>Showroom</h3>
+            </a>
+        </div>
+        <div class="col-sm-4 text-center">
+            <a href="/Property/PropertySearch" class="service-icon">
+                <i class="fa fa-search" title="Search"></i>
+                <h3>Property Search</h3>
+            </a>
+        </div>
+        <div class="col-sm-4 text-center">
+            <a href="/Property/PropertySaved" class="service-icon">
+                <i class="fa fa-heart" title="Saved"></i>
+                <h3>Saved Properties</h3>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 text-center">
+            <a href="/Messages/Messages" class="service-icon">
+                <i class="fa fa-envelope" title="Messages"></i>
+                <h3>Messages</h3>
+            </a>
+        </div>
+        <div class="col-sm-4 text-center">
+            <a href="/Home/Contact" class="service-icon">
+                <i class="fa fa-phone" title="Contact"></i>
+                <h3>Contact</h3>
+            </a>
+        </div>
+    </div>
+
+    <br />
+}
+
 
 <hr />
 <br />
-<div Class="row row-eq-height">
-    <div Class="col-sm-4">
-        <a Class="list-group-item" href="/articles/" style="height: 100%">
-            <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
-            <h4 Class="text-primary">Test Headline</h4>
-            <p>This is a test</p>
-        </a>
-    </div>
-    <div Class="col-sm-4">
-        <a Class="list-group-item" href="/articles/" style="height: 100%">
-            <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
-            <h4 Class="text-primary">Test Headline 2</h4>
-            <p>This is a test 2</p>
-        </a>
-    </div>
-    <div Class="col-sm-4">
-        <a Class="list-group-item" href="/articles/" style="height: 100%">
-            <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
-            <h4 Class="text-primary">Test Headline 3</h4>
-            <p>This is a test 3</p>
-        </a>
-    </div>
+<div class="row row-eq-height">
+
+    @foreach (var item in Model.Properties)
+    {
+        <div class="col-sm-4">
+            <a class="list-group-item" href="/Property/PropertyShowroom" style="height: 100%">
+                <img class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
+                <h4 class="text-success" style="text-align:right;"><b>@String.Format("{0:c}", Math.Round(item.PropertyPrice))</b></h4>
+                <p>@item.AddressLine1</p>
+                <p>@item.AddressLine2</p> 
+                <p>@item.AddressLine3</p> 
+                <p>@item.AddressLine4</p> 
+                <p>@item.AddressLine5</p> 
+                <p>@item.Postcode</p>
+            </a>
+        </div>
+    }
+
+    @*<div Class="col-sm-4">
+            <a Class="list-group-item" href="/Property/PropertyShowroom" style="height: 100%">
+                <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
+                <h4 Class="text-primary">Test Headline 2</h4>
+                <p>This is a test 2</p>
+            </a>
+        </div>
+        <div Class="col-sm-4">
+            <a Class="list-group-item" href="/Property/PropertyShowroom" style="height: 100%">
+                <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
+                <h4 Class="text-primary">Test Headline 3</h4>
+                <p>This is a test 3</p>
+            </a>
+        </div>*@
 </div>
 
 <br />
 
-<a href="/articles" Class="btn btn-success">Property Showroom</a>
+<a href="/Property/PropertyShowroom" Class="btn btn-success">Property Showroom</a>
 
