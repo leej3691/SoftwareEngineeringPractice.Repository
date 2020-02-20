@@ -68,3 +68,7 @@ hr{
     border:0;
     border-bottom:3px dashed #eee;
 }
+
+.service-icon i {
+    font-size: 40px !important;
+}

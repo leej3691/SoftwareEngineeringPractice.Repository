@@ -213,6 +213,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Extensions\HtmlHelperExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -393,8 +395,15 @@
     <Content Include="Views\Property\PropertySearch.cshtml" />
     <Content Include="Views\Account\_LoginPartial.cshtml" />
     <Content Include="Views\Account\_RegisterPartial.cshtml" />
+    <Content Include="Views\Settings\YourDetails.cshtml" />
+    <Content Include="Views\Settings\TermsOfUse.cshtml" />
+    <Content Include="Views\Settings\ServiceAgreement.cshtml" />
+    <Content Include="Views\Settings\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Settings\FAQ.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Shared\EditorTemplates\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

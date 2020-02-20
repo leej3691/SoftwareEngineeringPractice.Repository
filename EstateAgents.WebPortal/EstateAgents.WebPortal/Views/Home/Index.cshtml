@@ -8,8 +8,8 @@
 <div class="jumbotron" href="/articles">
     @if (User.Identity.IsAuthenticated)
     {
-        <h1><i Class="fa fa-smile-o text-success hidden-xs"></i></h1>
-        <p> Welcome to your GW <b class="text-success">Dashboard</b> </p>
+        <h1><i Class="fa fa-smile-o text-success hidden-xs"></i> Hi</h1>
+        <p> Welcome to your LJ Properties <b class="text-success">Dashboard</b> </p>
     }
     else
     {
@@ -52,12 +52,53 @@
 
 </div>
 
-<p>
-    View properties for sale in our Property Showroom below
-</p>
-<h3>Properties for sale...</h3>
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Find your dream home</b></h3>
+    </div>
+    <hr />
+    
+</div>
+
+<div class="row" style="margin-bottom:20px;">
+    <div class="col-sm-4 text-center">
+        <a href="/Property/PropertyShowroom" class="service-icon">
+            <i class="fa fa-home" title="Showroom"></i>
+            <h3>Showroom</h3>
+        </a>
+    </div>
+    <div class="col-sm-4 text-center">
+        <a href="/Property/PropertySearch" class="service-icon">
+            <i class="fa fa-search" title="Search"></i>
+            <h3>Property Search</h3>
+        </a>
+    </div>
+    <div class="col-sm-4 text-center">
+        <a href="/Property/PropertySaved" class="service-icon">
+            <i class="fa fa-heart" title="Saved"></i>
+            <h3>Saved Properties</h3>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4 text-center">
+        <a href="/Messages/Messages" class="service-icon">
+            <i class="fa fa-envelope" title="Messages"></i>
+            <h3>Messages</h3>
+        </a>
+    </div>
+    <div class="col-sm-4 text-center">
+        <a href="/Home/Contact" class="service-icon">
+            <i class="fa fa-phone" title="Contact"></i>
+            <h3>Contact</h3>
+        </a>
+    </div>
+</div>
+
+<br/>
+
 <hr />
-</br>
+<br />
 <div Class="row row-eq-height">
     <div Class="col-sm-4">
         <a Class="list-group-item" href="/articles/" style="height: 100%">

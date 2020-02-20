@@ -5,23 +5,13 @@
   <!-- Home Tab -->
   <siteMapNode url="/" title="Home" />
 
-  <!-- Our Service Tab -->
-  <siteMapNode url="/services" title="Our Services">
-    <siteMapNode url="/services/property" title="Property" />
-    <siteMapNode url="/services/personal-injury" title="Personal Injury" />
-    <siteMapNode url="/services/wills-and-probate" title="Wills &amp; Probate" />
-  </siteMapNode>
+  <!-- Showroom Tab -->
+  <siteMapNode url="/Property/PropertyShowroom" title="Showroom" />
 
   <!-- Articles Tab -->
   <siteMapNode url="/articles" title="News" />
 
-  <!-- About Tab -->
-  <siteMapNode url="/about" title="About" />
-
-  <!-- Our People Tab -->
-  <siteMapNode url="/our-people" title="Our People" />
-
-  <!-- Contact Us Tab -->
+  <!-- Contact Tab -->
   <siteMapNode url="/Home/Contact" title="Contact" />
   
 </siteMap>

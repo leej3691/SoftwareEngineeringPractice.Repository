@@ -57,9 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\MutedTextAttribute.cs" />
+    <Compile Include="Attributes\RequiredIfAttribute.cs" />
     <Compile Include="Attributes\ValidEmailAttribute.cs" />
     <Compile Include="Attributes\ValidMobileAttribute.cs" />
     <Compile Include="Attributes\ValidPostcodeAttribute.cs" />
+    <Compile Include="Attributes\ValidValueAttribute.cs" />
     <Compile Include="DAL\Employee.cs" />
     <Compile Include="DAL\Client.cs" />
     <Compile Include="DAL\EmployeeJobTitle.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="DAL\PropertyStatus.cs" />
     <Compile Include="DAL\PropertyType.cs" />
     <Compile Include="Enums\PersonTitle.cs" />
+    <Compile Include="Extensions\PropertyInfoExtension.cs" />
     <Compile Include="Helpers\RegularExpressionHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Migrations\202002171706230_initial.cs" />

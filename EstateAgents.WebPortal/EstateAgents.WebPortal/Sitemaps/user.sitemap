@@ -2,20 +2,19 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   
   <siteMapNode url="/Home/Index" title="Dashboard" />
-
-  <!-- Client Logged In Home Tab -->
   <siteMapNode url="" title="Properties">
-      <siteMapNode url="/postroom/tracker/all" title="Property Search" />
-      <siteMapNode url="/postroom/tracker/all" title="Property Showroom" />
-      <siteMapNode url="/postroom/tracker/all" title="Saved Properties" />
+      <siteMapNode url="/Property/PropertySearch" title="Property Search" />
+      <siteMapNode url="/Property/PropertyShowroom/" title="Property Showroom" />
+      <siteMapNode url="/Property/PropertySaved" title="Saved Properties" />
   </siteMapNode>
-  <siteMapNode url="/" title="Message" />
+  <siteMapNode url="/Messages/Messages" title="Message" />
   <siteMapNode url="/Home/Contact" title="Contact" />
-  <siteMapNode url="/" title="FAQ" />
   <siteMapNode url="" title="Account">
-      <siteMapNode url="/postroom/tracker/all" title="Terms of Use" />
-      <siteMapNode url="/postroom" title="Service Agreement" />
-      <siteMapNode url="/postroom" title="Privacy Policy" />
+    <siteMapNode url="/Settings/YourDetails" title="Your Details" />
+    <siteMapNode url="/Settings/TermsOfUse" title="Terms of Use" />
+    <siteMapNode url="/Settings/ServiceAgreement" title="Service Agreement" />
+    <siteMapNode url="/Settings/PrivacyPolicy" title="Privacy Policy" />
+    <siteMapNode url="/Settings/FAQ" title="FAQ" />
   </siteMapNode>
 
 </siteMap>

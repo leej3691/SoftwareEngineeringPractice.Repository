@@ -14,6 +14,11 @@ namespace EstateAgents.WebPortal.Controllers
             return View();
         }
 
+        public ActionResult PropertySearch()
+        {
+            return View();
+        }
+
         public ActionResult PropertySaved()
         {
             return View();
