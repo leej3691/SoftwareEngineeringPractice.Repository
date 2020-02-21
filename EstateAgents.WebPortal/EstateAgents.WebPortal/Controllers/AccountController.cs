@@ -145,9 +145,9 @@ namespace EstateAgents.WebPortal.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterStart(string email)
+        public ActionResult RegisterStart(RegisterViewModel model)
         {
-            RegisterViewModel model = new RegisterViewModel();
+            RegisterViewModel model2 = new RegisterViewModel();
             //model.Email = Email;
             return View("Register", model);
         }
@@ -159,6 +159,10 @@ namespace EstateAgents.WebPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if(model.Forename == null && model.Surname == null)
+            {
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email };

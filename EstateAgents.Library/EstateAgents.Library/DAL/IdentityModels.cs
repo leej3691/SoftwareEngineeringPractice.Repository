@@ -43,5 +43,6 @@ namespace EstateAgents.Library.DAL
         public virtual DbSet<PropertySaved> PropertySaved { get; set; }
         public virtual DbSet<PropertyStatus> PropertyStatus { get; set; }
         public virtual DbSet<PropertyType> PropertyType { get; set; }
+        //public virtual DbSet<Enquiry> Enquiry { get; set; }
     }
 }

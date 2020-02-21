@@ -13,6 +13,7 @@ namespace EstateAgents.WebPortal.Models.Home
         public Client ClientDetails { get; set; }
         public List<Property> Properties { get; set; }
 
+
         public HomeViewModel()
         {
             this.Properties = EstateAgentsRepository.GetTop3Properties();

@@ -15,94 +15,137 @@
     <div class="col-md-6">
         @using (Html.BeginForm("ContactEnquiry", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
-           
-        <div class="well">
-            <h3>
-                <i class="fa fa-paper-plane-o"></i>
-                Enquiry
-            </h3>
-            <br />
 
-            <div class="form-group has-feedback">
-                @Html.LabelFor(m => m.Forename, new { @class = "col-sm-3 col-lg-2 control-label" })
-                <div class="col-md-10" style="padding:0;">
-                    @Html.TextBoxFor(m => m.Forename, new { @class = "form-control" })
-                </div>
-            </div>
+            <h4 class="sample-header">Enquiry</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
 
-            <div class="form-group has-feedback">
-                @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Forename, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Forename, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Forename, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Mobile, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EnquiryBody, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.EnquiryBody, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EnquiryBody, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-            <div class="form-group has-feedback">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Submit" />
+                    </div>
                 </div>
+
             </div>
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Send Enquiry" />
-            </div>
-        </div>
         }
     </div>
     <div class="col-md-6">
-        <div class="well">
-            <h3>
-                <i class="fa fa-comments-o"></i>
-                Chat
-            </h3>
+        <h4 class="sample-header">Chat</h4>
+        <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+            <p style="margin: 0 0 11px;color: #717271;font-size: 22px;">Live Chat</p>
 
-            <br />
+            <p>Chat to a real expert with market knowledge. Available 8am - 8pm on weekdays, and 8am - 6pm on weekends.</p>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-block btn-success" value="Start Chat" />
+                </div>
+            </div>
+
+        </div>
+
+        <h4 class="sample-header">Call Us</h4>
+        <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+            <p style="margin: 0 0 11px;color: #717271;font-size: 22px;">Speak to an Expert</p>
+
+            <p>Whatever you need, we're available 7 days a week. Reach us between 8am - 8pm on weekdays and 8am - 6pm on weekends.</p>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-block btn-success" value="Call: 07811971637" />
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
 
-<div class="row">
-    <div class="form-group">
-        <div class="col-sm-9 col-md-12 col-lg-12 ">
-            <div id="map"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-success"><b>Find us on the map</b></h3>
+        </div>
+        <hr />
+
+    </div>
+
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-9 col-md-12 col-lg-12 ">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
+    <script>
 
-    function initMap() {
+        function initMap() {
 
-        var uluru = { lat: 53.400002, lng: -2.983333 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: uluru
-        });
+            var uluru = { lat: 53.400002, lng: -2.983333 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: uluru
+            });
 
-        var contentString = '<div style="margin:0; padding:0">' +
-            '<div style="width:100%; max-width: 300px; height:auto; margin:0; padding:0">' +
-            '<h3 style="margin:0; padding:0">LJ Properties</h3>' +
-            '<p>Head Office<br/ >' +
-            'Liverpool<br />Merseyside<br />United Kingdom<br />' +
-            '07811971637<br />' +
-            '</div>' +
-            '</div>';
+            var contentString = '<div style="margin:0; padding:0">' +
+                '<div style="width:100%; max-width: 300px; height:auto; margin:0; padding:0">' +
+                '<h3 style="margin:0; padding:0">LJ Properties</h3>' +
+                '<p>Head Office<br/ >' +
+                'Liverpool<br />Merseyside<br />United Kingdom<br />' +
+                '07811971637<br />' +
+                '</div>' +
+                '</div>';
 
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
 
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-            title: 'LJ Properties'
-        });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: 'LJ Properties'
+            });
 
-        infowindow.open(map, marker);
+            infowindow.open(map, marker);
 
-    }
+        }
 
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAt_08hJ_QmWieRRhexmD-Pd56VrVi1aA&callback=initMap">
-</script>
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAt_08hJ_QmWieRRhexmD-Pd56VrVi1aA&callback=initMap">
+    </script>

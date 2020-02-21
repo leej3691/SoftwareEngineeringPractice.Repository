@@ -98,7 +98,7 @@ namespace EstateAgents.WebPortal.Models
         /// The email address for the client
         /// </summary>
         [UIHint("EmailInput")]
-        [DisplayName("Email Address")]
+        [DisplayName("Email")]
         [Required(ErrorMessage = "Please provide an email.")]
         [ValidEmail(ErrorMessage = "Please provide a valid email address.")]
         public string Email { get; set; }

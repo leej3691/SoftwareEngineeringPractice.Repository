@@ -28,7 +28,7 @@ namespace EstateAgents.WebPortal.Models
         /// The email address for the client
         /// </summary>
         [UIHint("EmailInput")]
-        [DisplayName("Email Address")]
+        [DisplayName("Email")]
         [Required(ErrorMessage = "Please provide an Email:")]
         [ValidEmail(ErrorMessage = "Please provide a valid email address.")]
         public string Email { get; set; }
@@ -37,9 +37,17 @@ namespace EstateAgents.WebPortal.Models
         /// The mobile telephone number for the client
         /// </summary>
         [UIHint("MobileInput")]
-        [DisplayName("Mobile Telephone")]
+        [DisplayName("Mobile")]
         [ValidMobile(ErrorMessage = "Please enter a valid mobile number.")]
         public string Mobile { get; set; }
-       
+
+        /// <summary>
+        /// The enquiry body
+        /// </summary>
+        [UIHint("TextArea")]
+        [DisplayName("Enqiury")]
+        [Required(ErrorMessage = "Please provide an enquiry body:")]
+        public string EnquiryBody { get; set; }
+
     }
 }

@@ -126,6 +126,40 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
+        #region Property Images
+
+        /// <summary>
+        /// Property Images - Create a property image
+        /// </summary>
+        /// <param name="client"></param>
+        public static void CreatePropertyImage(PropertyImages image)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyImages.Add(image);
+                db.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Property Images - Get property images list by property id
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public static List<PropertyImages> GetPropertyImagesByPropertyId(int PropertyId)
+        {
+            List<PropertyImages> iList = new List<PropertyImages>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                iList = db.PropertyImages.Where(p => p.PropertyId == PropertyId).ToList();
+            }
+
+            return iList;
+        }
+
+        #endregion
+
         #region Examples
         //CREATE
 

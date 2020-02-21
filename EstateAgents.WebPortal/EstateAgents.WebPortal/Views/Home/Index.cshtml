@@ -22,19 +22,17 @@
             <div class="row">
 
                 <div class="col-sm-9 col-lg-10">
-                    @Html.TextBoxFor(m => m.RegisterEmail, new { @class = "form-control", placeholder = "Enter your email address" })
+                    @if (User.Identity.IsAuthenticated == false)
+                    {
+                        <p class="col-sm-12 hidden-xs">
+                            Already a member? <a href="/account/login">Click here</a>
+                        </p>
+                    }
                 </div>
 
                 <div class="col-sm-3 col-lg-2">
                     <a class="btn btn-success btn-block" href="/account/register">Register</a>
                 </div>
-
-                @if (User.Identity.IsAuthenticated == false)
-                {
-                    <p class="col-sm-12 hidden-xs">
-                        Already a member? <a href="/account/login">Click here</a>
-                    </p>
-                }
 
             </div>
         </div>
@@ -104,8 +102,12 @@
     {
         <div class="col-sm-4 ">
             <a class="list-group-item" href="/Property/PropertyDetails/@item.Id" style="height: 100%">
-                <img class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
-                <h4 class="text-success" style="text-align:right;"><b>@String.Format("{0:c}", Math.Round(item.PropertyPrice))</b></h4>
+                <img class="img-responsive" src="https://pbprodimages.azureedge.net/images/large/c292d1fb-2b4b-4004-9a88-fa6ff0c3d0c0.JPG">
+                @{
+                    int price = (int)Math.Round(item.PropertyPrice);
+                    string PriceFinal = String.Format("{0:C0}", price);
+                }
+                <h4 class="text-success" style="text-align:right;"><b>@PriceFinal</b></h4>
                 <p>@item.AddressLine1</p>
                 <p>@item.AddressLine2</p>
                 <p>@item.AddressLine3</p>

@@ -396,8 +396,6 @@
     <Content Include="Views\Property\PropertyMakeOffer.cshtml" />
     <Content Include="Views\Messages\Messages.cshtml" />
     <Content Include="Views\Property\PropertySearch.cshtml" />
-    <Content Include="Views\Account\_LoginPartial.cshtml" />
-    <Content Include="Views\Account\_RegisterPartial.cshtml" />
     <Content Include="Views\Settings\YourDetails.cshtml" />
     <Content Include="Views\Settings\TermsOfUse.cshtml" />
     <Content Include="Views\Settings\ServiceAgreement.cshtml" />
