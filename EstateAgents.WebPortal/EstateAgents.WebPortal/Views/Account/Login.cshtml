@@ -44,7 +44,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-unlock" aria-hidden="true"></i>
                             </div>
-                            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder = "Enter password " })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter password " })
 
                         </div>
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })

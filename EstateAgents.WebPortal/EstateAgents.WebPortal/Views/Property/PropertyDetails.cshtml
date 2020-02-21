@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EstateAgents.WebPortal.Models.Properties.PropertyDetailsViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -13,3 +14,88 @@
         Property Details
     </li>
 </ul>
+
+<div class="PropertyDetailsMainAddress">
+    <div class="PropertyDetailsPrimary">
+        @{ 
+            string PropertyType = Model.PropertyDetails.NumberOfBedrooms + " bedroom " + Model.PropertyTypeDescription;
+        }
+        <h1 class="PropertyDetailsAddressType">@PropertyType</h1>
+        <p>
+            <span class="PropertyDetailsAddress">@Model.PropertyDetails.AddressLine1, @Model.PropertyDetails.AddressLine2, @Model.PropertyDetails.AddressLine3, @Model.PropertyDetails.AddressLine4, @Model.PropertyDetails.AddressLine5, @Model.PropertyDetails.Postcode</span>
+        </p>
+    </div>
+    <div class="PropertyDetailsSecondary">
+        <p class="PropertyDetailsPrice">
+            @{
+                int price = (int)Math.Round(Model.PropertyDetails.PropertyPrice);
+                string PriceFinal = String.Format("{0:C0}", price);
+            }
+            <span>@PriceFinal</span>
+        </p>
+        <p class="PropertyDetailsQualifier">
+            <span>Offers in excess of</span>
+        </p>
+        @if (Model.PropertyDetails.PropertyStatusId == 3)
+        {
+            <span class="PropertyDetailsSold">Sold STC</span>
+        }
+
+    </div>
+</div>
+
+<div class="col-md-12 text-center">
+    <div class="photoCont" style="margin-left: 0;margin-right: 0;">
+        <div class="detailsMain" style="margin-left: 0; margin-right: 0;border-bottom: 1px solid #ccc; margin-bottom: 11px;padding-bottom: 11px;">
+            <div class="mainLeft" style="float: left;width: 660px;position: relative;">
+                <div class="theLoader" style="display:none;">
+                    <div class-="rotating">
+
+                    </div>
+                </div>
+                <div class="listing-options" style="text-align: left;padding-top: 0;margin: 0;overflow: hidden;">
+                    <ul>
+                        <li class="op1" style="margin-left: 0;    width: auto;display: inline-block;">
+                            <a href="#" class="photos active" style="color: #4d949b;font-size: 16px;padding-left: 30px;text-decoration: none;background-color: transparent;">Photos</a>
+                        </li>
+                        <li class="op1" style="margin-left: 0;    width: auto;display: inline-block;">
+                            <a href="#" class="map" style="font-size: 16px;padding-left: 30px;position: relative;color: #aaabab;text-decoration: none;background-color: transparent;">Map</a>
+                        </li>
+                        <li class="op2">
+                            <a href="#" class="street" style="font-size: 16px;padding-left: 30px;position: relative;color: #aaabab; text-decoration: none;background-color: transparent;">Street View</a>
+                        </li>
+                        <li class="op2">
+                            <a href="#" class="floorplan" style="margin: 22px 0;position: relative;font-size: 16px;padding-left: 30px;   background-color: transparent;   text-decoration: none;  color: #aaabab;">Floor Plan</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="floorplan" style="display:none;">
+                     <img alt="Floorplan" style="width:100%;" src="https://pbproduction.blob.core.windows.net/floorplan/4ee9b288-b9cb-4b48-b182-293e1e5f2218.jpg">
+                </div>
+                <div class="gallery" style="display:none;">
+
+                </div>
+            </div>
+            <div class="mainRight text-left" style="float: right;width: 235px;height: 546px;position: relative;">
+                <div class="links">
+                    <a class="btn btn-info" style="       white-space: nowrap;padding: 6px 12px; font-size: 16px;line-height: 1.42857; margin-top: 0;margin-bottom: 10px; width: 100%;background-color: #1fabde; text-align: center; vertical-align: middle;touch-action: manipulation;cursor: pointer;background-image: none; display: inline-block;color: #fff;  border: 0; border-radius: 0;font-weight: 400; text-transform: none;text-decoration: none;" href="#">
+                        Book Viewing <icon class="fa-arrow-circle-o-right"></icon>
+                    </a>
+                    <a class="btn btn-important" style="       white-space: nowrap;padding: 6px 12px;font-size: 16px;line-height: 1.42857;    text-align: center; vertical-align: middle; touch-action: manipulation; cursor: pointer;background-image: none;    display: inline-block;    border: 0;border-radius: 0; font-weight: 400; text-transform: none;text-decoration: none;   color: #fff;background-color: #fc5465;border-color: #fc5465;  margin-top: 0;margin-bottom: 10px;width: 100%;" href="#">
+                        Make an Offer <icon class="fa-arrow-circle-o-right"></icon>
+                    </a>
+                </div>
+                <p class="h3" style="text-transform: uppercase;margin: 0 0 11px;color: #4d949b;font-size: 22px;">Key Features</p>
+                <ul>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

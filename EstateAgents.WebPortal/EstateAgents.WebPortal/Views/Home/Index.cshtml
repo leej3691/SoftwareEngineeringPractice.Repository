@@ -4,7 +4,7 @@
 }
 
 
-<div class="jumbotron" href="/articles">
+<div class="jumbotron" href="/articles" style="margin-bottom:10px;">
     @if (User.Identity.IsAuthenticated)
     {
         <h1><i Class="fa fa-smile-o text-success hidden-xs"></i> Hi @Model.ClientDetails.Forename</h1>
@@ -102,34 +102,20 @@
 
     @foreach (var item in Model.Properties)
     {
-        <div class="col-sm-4">
-            <a class="list-group-item" href="/Property/PropertyShowroom" style="height: 100%">
+        <div class="col-sm-4 ">
+            <a class="list-group-item" href="/Property/PropertyDetails/@item.Id" style="height: 100%">
                 <img class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
                 <h4 class="text-success" style="text-align:right;"><b>@String.Format("{0:c}", Math.Round(item.PropertyPrice))</b></h4>
                 <p>@item.AddressLine1</p>
-                <p>@item.AddressLine2</p> 
-                <p>@item.AddressLine3</p> 
-                <p>@item.AddressLine4</p> 
-                <p>@item.AddressLine5</p> 
+                <p>@item.AddressLine2</p>
+                <p>@item.AddressLine3</p>
+                <p>@item.AddressLine4</p>
+                <p>@item.AddressLine5</p>
                 <p>@item.Postcode</p>
             </a>
         </div>
     }
 
-    @*<div Class="col-sm-4">
-            <a Class="list-group-item" href="/Property/PropertyShowroom" style="height: 100%">
-                <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
-                <h4 Class="text-primary">Test Headline 2</h4>
-                <p>This is a test 2</p>
-            </a>
-        </div>
-        <div Class="col-sm-4">
-            <a Class="list-group-item" href="/Property/PropertyShowroom" style="height: 100%">
-                <img Class="img-responsive" src="https://api.gw.legal/image/best-remortgage-deal">
-                <h4 Class="text-primary">Test Headline 3</h4>
-                <p>This is a test 3</p>
-            </a>
-        </div>*@
 </div>
 
 <br />

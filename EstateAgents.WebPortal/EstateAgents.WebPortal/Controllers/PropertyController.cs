@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EstateAgents.Library.DAL;
+using EstateAgents.WebPortal.Models.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +8,7 @@ using System.Web.Mvc;
 
 namespace EstateAgents.WebPortal.Controllers
 {
+    [RoutePrefix("Property")]
     public class PropertyController : Controller
     {
         // GET: Property
@@ -32,6 +35,14 @@ namespace EstateAgents.WebPortal.Controllers
         public ActionResult PropertyDetails()
         {
             return View();
+        }
+
+        [Route("PropertyDetails/{id}")]
+        public ActionResult PropertyDetails(int Id)
+        {
+            PropertyDetailsViewModel model = new PropertyDetailsViewModel(Id);
+
+            return View(model);
         }
 
         public ActionResult PropertyBookViewing()

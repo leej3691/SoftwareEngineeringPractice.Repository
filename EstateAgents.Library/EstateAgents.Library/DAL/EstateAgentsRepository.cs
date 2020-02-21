@@ -68,7 +68,7 @@ namespace EstateAgents.Library.DAL
         #region Property
 
         /// <summary>
-        /// Client - Get client by user id
+        /// Property - Get 3 properties
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
@@ -82,6 +82,46 @@ namespace EstateAgents.Library.DAL
             }
 
             return properties;
+        }
+
+        /// <summary>
+        /// Property - Get property by property id
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public static Property GetPropertyByPropertyId(int Id)
+        {
+            Property property = new Property();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                property = db.Property.Where(p => p.Id == Id).FirstOrDefault();
+            }
+
+            return property;
+        }
+
+        #endregion
+
+        #region PropertyType
+
+        
+
+        /// <summary>
+        /// Property Type - 
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public static string GetPropertyTypeDescriptionByPropertyTypeId(int Id)
+        {
+            string returnValue = "";
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                returnValue = db.PropertyType.Where(p => p.Id == Id).FirstOrDefault().Description;
+            }
+
+            return returnValue;
         }
 
         #endregion

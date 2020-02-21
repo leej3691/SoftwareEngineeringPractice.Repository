@@ -66,3 +66,128 @@ hr{
 .service-icon i {
     font-size: 40px !important;
 }
+
+.sample-header {
+    color: #FFFFFF;
+    padding: 8px 15px;
+    display: inline-block;
+    margin: 10px 0px 0px 0px;
+    background-color: #4797A8;
+}
+
+.sample-content {
+    display: block;
+    border-width: 0;
+    padding: 15px 20px;
+    background: #FFFFFF;
+    border: 1px solid #4797A8;
+    margin: 0px 0px 10px 0px;
+}
+
+
+.block-arrow {
+    margin-right: 15px;
+    font-size: 0.7em;
+    background-color: #4797A8;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    color: white;
+    padding-left: 30px;
+    padding-right: 15px;
+    border-right: 10px solid white;
+}
+
+.block-arrow:before {
+    color: white;
+    border-left: 15px solid;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    display: inline-block;
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0;
+}
+
+.block-arrow:after {
+    color: #4797A8;
+    border-left: 15px solid;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    display: inline-block;
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 0;
+}
+
+.PropertyDetailsMainAddress {
+    margin: 22px 15px 11px;
+    overflow: hidden;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #ccc;
+}
+
+.PropertyDetailsPrimary {
+    float: left;
+}
+
+.PropertyDetailsSecondary {
+    float: right;
+    width: 160px;
+    text-align: right;
+}
+
+.PropertyDetailsAddressType {
+    font-weight: 300;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    text-transform: none;
+    line-height: 1.42857;
+    color: #4797A8;
+    font-size: 28px;
+}
+
+.PropertyDetailsAddress {
+    font-weight: 400;
+    font-size: 19px;
+    color: #4797A8;
+}
+
+.PropertyDetailsPrice {
+    font-weight: 600;
+    font-size: 28px;
+    margin: 0;
+    color: #4797A8;
+}
+
+.PropertyDetailsQualifier {
+    font-weight: 300;
+    margin: 0;
+    color: #4797A8;
+    margin-bottom:10px;
+}
+
+.PropertyDetailsSold {
+    background: #e11b22;
+    color: #fff;
+    cursor: default;
+    border: 0;
+    border-radius: 0;
+    font-weight: 400;
+    text-transform: none;
+    text-decoration: none;
+    margin-top:10px;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.42857;
+}

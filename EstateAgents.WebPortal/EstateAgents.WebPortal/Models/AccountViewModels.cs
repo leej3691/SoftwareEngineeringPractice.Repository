@@ -73,7 +73,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("DropDown")]
         [DisplayName("Title")]
-        [Required(ErrorMessage = "Please provide a Tite:")]
+        [Required(ErrorMessage = "Please provide a Title.")]
         public PersonTitle? Title { get; set; }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("TextBox")]
         [DisplayName("Forename")]
-        [Required(ErrorMessage = "Please provide a Forename:")]
+        [Required(ErrorMessage = "Please provide a forename.")]
         [MaxLength(50, ErrorMessage = "The forename must be less than 50 characters")]
         public string Forename { get; set; }
 
@@ -90,7 +90,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("TextBox")]
         [DisplayName("Surname")]
-        [Required(ErrorMessage = "Please provide a Surname:")]
+        [Required(ErrorMessage = "Please provide a surname.")]
         [MaxLength(50, ErrorMessage = "The surname must be less than 50 characters")]
         public string Surname { get; set; }
 
@@ -99,7 +99,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("EmailInput")]
         [DisplayName("Email Address")]
-        [Required(ErrorMessage = "Please provide an Email:")]
+        [Required(ErrorMessage = "Please provide an email.")]
         [ValidEmail(ErrorMessage = "Please provide a valid email address.")]
         public string Email { get; set; }
 
@@ -108,7 +108,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("MobileInput")]
         [DisplayName("Mobile Telephone")]
-        [Required(ErrorMessage = "Please provide a Mobile Number:")]
+        [Required(ErrorMessage = "Please provide a mobile number.")]
         [ValidMobile(ErrorMessage = "Please enter a valid mobile number.")]
         public string Mobile { get; set; }
 
@@ -117,6 +117,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("DateInput")]
         [DisplayName("Date Of Birth")]
+        [Required(ErrorMessage = "Please provide your date of birth.")]
         public DateTime DateOfBirth { get; set; }
 
         /// <summary>
@@ -124,6 +125,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("TextBox")]
         [DisplayName("Address Line 1")]
+        [Required(ErrorMessage = "Please provide address line 1.")]
         [MaxLength(50, ErrorMessage = "The address line 1 must be less than 50 characters")]
         public string AddressLine1 { get; set; }
 
@@ -132,6 +134,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [DisplayName("Address Line 2")]
         [UIHint("TextBox")]
+        [Required(ErrorMessage = "Please provide address line 2.")]
         [MaxLength(50, ErrorMessage = "The address line 2 must be less than 50 characters")]
         public string AddressLine2 { get; set; }
 
@@ -140,6 +143,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [DisplayName("Address Line 3")]
         [UIHint("TextBox")]
+        [Required(ErrorMessage = "Please provide address line 3.")]
         [MaxLength(50, ErrorMessage = "The address line 3 must be less than 50 characters")]
         public string AddressLine3 { get; set; }
 
@@ -148,6 +152,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("TextBox")]
         [DisplayName("Address Line 4")]
+        [Required(ErrorMessage = "Please provide address line 4.")]
         [MaxLength(50, ErrorMessage = "The address line 4 must be less than 50 characters")]
         public string AddressLine4 { get; set; }
 
@@ -155,8 +160,8 @@ namespace EstateAgents.WebPortal.Models
         /// Fifth line of the address for the client
         /// </summary>
         [UIHint("TextBox")]
-
         [DisplayName("Address Line 5")]
+        [Required(ErrorMessage = "Please provide address line 5.")]
         [MaxLength(50, ErrorMessage = "The address line 5 must be less than 50 characters")]
         public string AddressLine5 { get; set; }
 
@@ -166,6 +171,7 @@ namespace EstateAgents.WebPortal.Models
         [UIHint("PostcodeInput")]
         [DisplayName("Postcode")]
         [ValidPostcode(ErrorMessage = "Please provide a valid postcode")]
+        [Required(ErrorMessage = "Please provide your postcode.")]
         [MaxLength(8, ErrorMessage = "The postcode must be less than 8 characters")]
         public string Postcode { get; set; }
 
