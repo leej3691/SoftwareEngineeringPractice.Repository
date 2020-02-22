@@ -1,12 +1,18 @@
 ﻿@model EstateAgents.WebPortal.Models.ContactViewModel
-@{
-    ViewBag.Title = "Contact";
-}
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Contact
+    </li>
+</ul>
 
 <div class="jumbotron">
     <h1>
         <i class="fa fa-envelope text-success hidden-xs"></i>
-        @ViewBag.Title
+        Contact
     </h1>
     <p>Need to talk to us? You can call us on <strong>07811971637</strong> and a team member will be happy to help. Alternatively complete the form below and one of our trained members of staff will be in touch.</p>
 </div>
@@ -22,35 +28,35 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.Forename, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Forename, new { @class = "form-control", placeholder = "Enter your forename"})
+                        @Html.TextBoxFor(m => m.Forename, new { @class = "form-control", placeholder = "Enter your forename" })
                         @Html.ValidationMessageFor(m => m.Forename, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Enter your surname"})
+                        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Enter your surname" })
                         @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Mobile, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Enter your mobile number"})
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Enter your mobile number" })
                         @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address"})
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.EnquiryBody, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(m => m.EnquiryBody, new { @class = "form-control", placeholder = "Enter your enquiry details"})
+                        @Html.TextAreaFor(m => m.EnquiryBody, new { @class = "form-control", placeholder = "Enter your enquiry details" })
                         @Html.ValidationMessageFor(m => m.EnquiryBody, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -94,53 +100,53 @@
         </div>
     </div>
 </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="text-success"><b>Find us on the map</b></h3>
-        </div>
-        <hr />
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Find us on the map</b></h3>
     </div>
-    <div class="row">
-        <div class="form-group">
-            <div class="col-sm-9 col-md-12 col-lg-12 ">
-                <div id="map"></div>
-            </div>
+    <hr />
+</div>
+<div class="row">
+    <div class="form-group">
+        <div class="col-sm-9 col-md-12 col-lg-12 ">
+            <div id="map"></div>
         </div>
     </div>
+</div>
 
-    <script>
+<script>
 
-        function initMap() {
+    function initMap() {
 
-            var uluru = { lat: 53.400002, lng: -2.983333 };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: uluru
-            });
+        var uluru = { lat: 53.400002, lng: -2.983333 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+        });
 
-            var contentString = '<div style="margin:0; padding:0">' +
-                '<div style="width:100%; max-width: 300px; height:auto; margin:0; padding:0">' +
-                '<h3 style="margin:0; padding:0">LJ Properties</h3>' +
-                '<p>Head Office<br/ >' +
-                'Liverpool<br />Merseyside<br />United Kingdom<br />' +
-                '07811971637<br />' +
-                '</div>' +
-                '</div>';
+        var contentString = '<div style="margin:0; padding:0">' +
+            '<div style="width:100%; max-width: 300px; height:auto; margin:0; padding:0">' +
+            '<h3 style="margin:0; padding:0">LJ Properties</h3>' +
+            '<p>Head Office<br/ >' +
+            'Liverpool<br />Merseyside<br />United Kingdom<br />' +
+            '07811971637<br />' +
+            '</div>' +
+            '</div>';
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
 
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-                title: 'LJ Properties'
-            });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            title: 'LJ Properties'
+        });
 
-            infowindow.open(map, marker);
+        infowindow.open(map, marker);
 
-        }
+    }
 
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAt_08hJ_QmWieRRhexmD-Pd56VrVi1aA&callback=initMap">
-    </script>
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAt_08hJ_QmWieRRhexmD-Pd56VrVi1aA&callback=initMap">
+</script>

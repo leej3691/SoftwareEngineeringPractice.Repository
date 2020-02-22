@@ -27,6 +27,16 @@ namespace EstateAgents.Library.DAL
             }
         }
 
+        public static void UpdateClient(Client client)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Client.Attach(client);
+                db.Entry(client).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
         /// <summary>
         /// Client - Get client fullname by user id
         /// </summary>
@@ -59,6 +69,24 @@ namespace EstateAgents.Library.DAL
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
                 client = db.Client.Where(c => c.UserId == UserId).FirstOrDefault();
+            }
+
+            return client;
+        }
+
+
+        /// <summary>
+        /// Client - Get client by client id
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public static Client GetClientByClientId(int ClientId)
+        {
+            Client client = new Client();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                client = db.Client.Where(c => c.Id == ClientId).FirstOrDefault();
             }
 
             return client;

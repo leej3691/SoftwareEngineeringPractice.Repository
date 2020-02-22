@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model EstateAgents.WebPortal.Models.Properties.PropertySearchViewModel
 
 <ul class="breadcrumb hidden-xs">
     <li>
@@ -10,3 +8,87 @@
         Property Search
     </li>
 </ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-search text-success hidden-xs"></i>
+        Property Search
+    </h1>
+    <p>Please use the form below to search for properties.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("PropertySearchRequest", "Property", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="sample-header">Property Search</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+                <h3 class="col-sm-offset-3 col-lg-offset-2"><span class="block-arrow">Step 1</span>Search Types</h3>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PropertySaleType, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(x => x.PropertySaleType, "Select Title", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PropertySaleType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PropertyType, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(x => x.PropertyType, "Select Title", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PropertyType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <h3 class="col-sm-offset-3 col-lg-offset-2"><span class="block-arrow">Step 2</span>Property Details</h3>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Location, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Location, new { @class = "form-control", placeholder = "Enter the location" })
+                        @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NumberOfBedrooms, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.NumberOfBedrooms, new { @class = "form-control", placeholder = "Enter the number of bedrooms" })
+                        @Html.ValidationMessageFor(m => m.NumberOfBedrooms, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IncludeSoldProperties, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(x => x.IncludeSoldProperties, "Select Title", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.IncludeSoldProperties, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <h3 class="col-sm-offset-3 col-lg-offset-2"><span class="block-arrow">Step 3</span>Price Range</h3>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PriceFrom, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.PriceFrom, new { @class = "form-control", placeholder = "Enter the price range from" })
+                        @Html.ValidationMessageFor(m => m.PriceFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PriceTo, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.PriceTo, new { @class = "form-control", placeholder = "Enter the price range too" })
+                        @Html.ValidationMessageFor(m => m.PriceTo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Submit" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

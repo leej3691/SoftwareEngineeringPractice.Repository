@@ -24,6 +24,25 @@ namespace EstateAgents.WebPortal.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult PropertySearchRequest(PropertySearchViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO: Search criteria and return property list
+
+
+                PropertyShowRoomViewModel vm = new PropertyShowRoomViewModel();
+
+                return View("PropertyShowroom", vm);
+            }
+            else
+            {
+                return View("PropertySearch", model);
+            }
+
+        }
+
         public ActionResult PropertySaved()
         {
             return View();

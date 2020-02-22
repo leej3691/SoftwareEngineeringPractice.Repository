@@ -160,22 +160,32 @@
             <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:0;padding-bottom:0;">
                 <div class="row" style="margin-bottom:20px;">
                     <div class="col-sm-6 text-center" style="padding-top:10px;">
-
-                        @if (Model.PropertySaved)
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            <a href="/Property/TogglePropertySaved/@Model.PropertyDetails.Id/@Model.ClientId/false" class="service-icon-small">
-                                <i class="fa fa-heart" title="Remove Saved Property"></i>
-                                <h5>Property Saved</h5>
-                            </a>
+                            if (Model.PropertySaved)
+                            {
+                                <a href="/Property/TogglePropertySaved/@Model.PropertyDetails.Id/@Model.ClientId/false" class="service-icon-small">
+                                    <i class="fa fa-heart" title="Remove Saved Property"></i>
+                                    <h5>Property Saved</h5>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Property/TogglePropertySaved/@Model.PropertyDetails.Id/@Model.ClientId/true" class="service-icon-small">
+                                    <i class="fa fa-heart-o" title="Save Property"></i>
+                                    <h5>Save Property</h5>
+                                </a>
+
+                            }
                         }
                         else
                         {
-                            <a href="/Property/TogglePropertySaved/@Model.PropertyDetails.Id/@Model.ClientId/true" class="service-icon-small">
+                            <a href="/Account/Login" class="service-icon-small">
                                 <i class="fa fa-heart-o" title="Save Property"></i>
                                 <h5>Save Property</h5>
                             </a>
-                            
                         }
+
 
                     </div>
                     <div class="col-sm-6 text-center" style="padding-top:10px;">
