@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>LJ Properties</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/style/bootstrap")
     @Styles.Render("~/style/jquery-datatables-bootstrap")
@@ -55,7 +55,7 @@
         <div class="navbar navbar-inverse" role="navigation">
 
             @*HEADER DESKTOP*@
-            <div class="navbar-header" >
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -123,7 +123,7 @@
                     <li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a href="/account/logoff">
+                            <a href="/Account/LogOff">
                                 <i class="glyphicon glyphicon-log-out hidden-sm"></i> LOGOUT
                             </a>
                         }
@@ -184,59 +184,55 @@
         </footer>
     </div>
 
+    <div class="l_c_h">
+        <div class="c_h">
+            <div class="left_c">
+                <div class="left right_c left_icons">
+                    <a href="#" class="mini" style="font-size:23px;">+</a>
+                </div>
+                <div class="left center_icons">
+                    Live Chat
+                </div>
+            </div>
+            <div class="right right_c" style="width:35px;">
+                <a href="#" class="logout" title="End chat" name="" style="display:none;"><img src="chat/logout.png"></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="chat_container" style="display: none;">
+            <p class="no_provider">
+                Chat to a real expert with market knowledge.
+            </p>
+            <p class="no_provider">
+                Available 8am - 8pm weekdays
+            </p>
+            <div class="chat_entry">
 
-    
+                <div class="form-group">
+                    <div >
+                        <a class="btn btn-success btn-block" href="/home/chatbot">Start Chat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(function(){
+           $(".c_h").click(function(e) {
+                    if ($(".chat_container").is(":visible")) {
+                        $(".c_h .right_c .mini").text("+")
+                    } else {
+                        $(".c_h .right_c .mini").text("-")
+                    }
+                    $(".chat_container").slideToggle("slow");
+                    return false
+                });
+        });
+    </script>
 
 </body>
 </html>
-
-
-@*<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - My ASP.NET Application</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-
-    </body>
-    </html>*@

@@ -11,7 +11,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("TextBox")]
         [DisplayName("Forename")]
-        [Required(ErrorMessage = "Please provide a Forename:")]
+        [Required(ErrorMessage = "Please provide your forename.")]
         [MaxLength(50, ErrorMessage = "The forename must be less than 50 characters")]
         public string Forename { get; set; }
 
@@ -20,7 +20,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("TextBox")]
         [DisplayName("Surname")]
-        [Required(ErrorMessage = "Please provide a Surname:")]
+        [Required(ErrorMessage = "Please provide your surname.")]
         [MaxLength(50, ErrorMessage = "The surname must be less than 50 characters")]
         public string Surname { get; set; }
 
@@ -29,7 +29,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("EmailInput")]
         [DisplayName("Email")]
-        [Required(ErrorMessage = "Please provide an Email:")]
+        [Required(ErrorMessage = "Please provide an email address.")]
         [ValidEmail(ErrorMessage = "Please provide a valid email address.")]
         public string Email { get; set; }
 
@@ -38,6 +38,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("MobileInput")]
         [DisplayName("Mobile")]
+        [Required(ErrorMessage = "Please provide a mobile number.")]
         [ValidMobile(ErrorMessage = "Please enter a valid mobile number.")]
         public string Mobile { get; set; }
 
@@ -46,7 +47,7 @@ namespace EstateAgents.WebPortal.Models
         /// </summary>
         [UIHint("TextArea")]
         [DisplayName("Enqiury")]
-        [Required(ErrorMessage = "Please provide an enquiry body:")]
+        [Required(ErrorMessage = "Please provide an enquiry body.")]
         public string EnquiryBody { get; set; }
 
     }

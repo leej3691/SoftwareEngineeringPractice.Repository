@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model EstateAgents.WebPortal.Models.Properties.PropertyMakeOfferViewModel
 
 <ul class="breadcrumb hidden-xs">
     <li>
@@ -10,7 +8,7 @@
         <a href="/Property/PropertyShowroom">Property Showroom</a>
     </li>
     <li>
-        <a href="/Property/PropertyDetails">Property Details</a>
+        <a href="/Property/PropertyDetails/@Model.PropertyDetails.Id">Property Details</a>
     </li>
     <li>
         Make an Offer

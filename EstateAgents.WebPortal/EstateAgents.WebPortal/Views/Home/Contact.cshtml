@@ -22,35 +22,35 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.Forename, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Forename, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Forename, new { @class = "form-control", placeholder = "Enter your forename"})
                         @Html.ValidationMessageFor(m => m.Forename, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Enter your surname"})
                         @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Mobile, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Enter your mobile number"})
                         @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email address"})
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.EnquiryBody, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(m => m.EnquiryBody, new { @class = "form-control" })
+                        @Html.TextAreaFor(m => m.EnquiryBody, new { @class = "form-control", placeholder = "Enter your enquiry details"})
                         @Html.ValidationMessageFor(m => m.EnquiryBody, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -73,7 +73,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-block btn-success" value="Start Chat" />
+                    <a class="btn btn-success btn-block" href="/home/chatbot">Start Chat</a>
                 </div>
             </div>
 
@@ -87,24 +87,19 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-block btn-success" value="Call: 07811971637" />
+                    <a class="btn btn-success btn-block" href="tel:+7811971637">Call: 07811971637</a>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-
-
     <div class="row">
         <div class="col-md-12">
             <h3 class="text-success"><b>Find us on the map</b></h3>
         </div>
         <hr />
-
     </div>
-
-
     <div class="row">
         <div class="form-group">
             <div class="col-sm-9 col-md-12 col-lg-12 ">

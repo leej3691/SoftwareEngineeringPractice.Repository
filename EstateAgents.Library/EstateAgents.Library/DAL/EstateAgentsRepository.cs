@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -156,6 +157,60 @@ namespace EstateAgents.Library.DAL
             }
 
             return iList;
+        }
+
+        #endregion
+
+        #region Property Saved
+
+        public static void CreatePropertySaved(PropertySaved propertySaved)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertySaved.Add(propertySaved);
+                db.SaveChanges();
+            }
+        }
+
+        public static void UpdatePropertySaved(PropertySaved propertySaved)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertySaved.Attach(propertySaved);
+                db.Entry(propertySaved).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static PropertySaved GetPropertySavedByClientIdAndPropertyId(int ClientId, int PropertyId)
+        {
+            PropertySaved ps = new PropertySaved();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                ps = db.PropertySaved.Where(p => p.ClientId == ClientId && p.PropertyId == PropertyId).FirstOrDefault();
+            }
+
+            return ps;
+        }
+
+        public static bool CheckIfPropertyIsSavedForClient(int ClientId, int PropertyId)
+        {
+            bool returnValue = false;
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                PropertySaved PropertySaved = db.PropertySaved.Where(p => p.ClientId == ClientId && p.PropertyId == PropertyId).FirstOrDefault();
+                if(PropertySaved == null)
+                {
+                    return returnValue;
+                }
+                else
+                {
+                    returnValue = PropertySaved.Saved;
+                }
+            }
+
+            return returnValue;
         }
 
         #endregion

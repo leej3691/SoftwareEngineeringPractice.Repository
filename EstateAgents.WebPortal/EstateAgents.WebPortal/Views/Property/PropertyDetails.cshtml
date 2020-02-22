@@ -1,7 +1,4 @@
 ﻿@model EstateAgents.WebPortal.Models.Properties.PropertyDetailsViewModel
-@{
-    ViewBag.Title = "Home Page";
-}
 
 <ul class="breadcrumb hidden-xs">
     <li>
@@ -43,30 +40,31 @@
 
     </div>
 </div>
+<hr />
 
 <div class="row">
     <div col-md-12>
         <div style="text-align: left;">
             <ul>
                 <li class="op1" style="margin-left: 0;width: auto;display: inline-block;">
-                    <a href="#" class="photos active" style="color: #4d949b;font-size: 16px;text-decoration: none;background-color: transparent;"><i class="fa fa-camera"></i> photos</a>
+                    <a id="PhotosTab" onClick="PhotosTabOnClick()" class="PhotosTab TabActive"><i class="fa fa-camera"></i> photos</a>
                 </li>
-                <li class="op1" style="margin-left: 0;    width: auto;display: inline-block;">
-                    <a href="#" class="map" style="font-size: 16px;padding-left: 30px;position: relative;color: #aaabab;text-decoration: none;background-color: transparent;"><i class="fa fa-map-marker"></i> map</a>
+                <li class="op1" style="margin-left: 0;width: auto;display: inline-block;">
+                    <a id="MapsTab" onClick="MapsTabOnClick()" class="MapsTab"><i class="fa fa-map-marker"></i> map</a>
                 </li>
                 <li class="op2" style="width: auto;margin-left: 15px;display: inline-block;box-sizing: border-box;    list-style-type: none;">
-                    <a href="#" class="floorplan" style="margin: 22px 0;position: relative;font-size: 16px;padding-left: 15px;   background-color: transparent;   text-decoration: none;  color: #aaabab;"><i class="fa fa-key"></i> floor plan</a>
+                    <a id="FloorPlanTab" onClick="FloorPlanTabOnClick()" class="FloorPlanTab"><i class="fa fa-key"></i> floor plan</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-md-9">
-        <div class="PropertyDetailsImageView" style="position: relative;margin-left:15px;width: 760px;">
+        
+        <div class="PropertyDetailsImageView" style="margin-left:15px;width: 760px;position:absolute;">
 
-            <div class="PropertyDetailsPhotos" style="display:none;">
+            <div id="PhotosBody" class="PropertyDetailsPhotos">
                 @{
                     int ImageCount = 0;
                 }
@@ -88,7 +86,7 @@
 
             </div>
 
-            <div class="PropertyDetailsMap">
+            <div id="MapsBody" class="PropertyDetailsMap">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-sm-9 col-md-12 col-lg-12 ">
@@ -97,10 +95,20 @@
                     </div>
                 </div>
             </div>
+
+            <div id="FloorPlanBody" class="PropertyDetailsMap">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-9 col-md-12 col-lg-12 ">
+                            <img alt="Floorplan" style="width:100%;" src="https://pbproduction.blob.core.windows.net/floorplan/e9ac8b7d-f130-403b-9af1-61e94449133a.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="mainRight text-left" style="float: right;width: 300px;height: 546px;position: relative;margin-right:15px;">
+        <div class="mainRight text-left" style="float: right;width: 300px;height: 546px;margin-right:15px;">
             <div class="links">
                 @if (Model.PropertyDetails.PropertyStatusId == 3)
                 {
@@ -111,24 +119,142 @@
                         Make an Offer <i class="fa fa-arrow-circle-o-right"></i>
                     </a>
                 }
+                else
+                {
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-BookViewing" style="margin-bottom:10px;" href="/Property/PropertyBookViewing/@Model.PropertyDetails.Id">
+                            Book Viewing <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                        <a class="btn btn-MakeAnOffer" style="margin-bottom:10px;" href="/Property/PropertyMakeOffer/@Model.PropertyDetails.Id">
+                            Make an Offer <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-BookViewing" style="margin-bottom:10px;" href="/Account/Login">
+                            Book Viewing <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                        <a class="btn btn-MakeAnOffer" style="margin-bottom:10px;" href="/Account/Login">
+                            Make an Offer <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                    }
+
+                }
 
             </div>
-            <p class="h3" style="text-transform: uppercase;margin: 0 0 11px;color: #4d949b;font-size: 22px;">Key Features</p>
-            <ul>
-                <li>No Chain</li>
-                <li>No Chain</li>
-                <li>No Chain</li>
-                <li>No Chain</li>
-                <li>No Chain</li>
-                <li>No Chain</li>
-                <li>No Chain</li>
-            </ul>
+
+            <h4 class="sample-header">Key Features</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+                <ul>
+                    <li>Bedrooms - @Model.PropertyDetails.NumberOfBedrooms.ToString()</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                    <li>No Chain</li>
+                </ul>
+            </div>
+
+            <h4 class="sample-header">Interested...</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:0;padding-bottom:0;">
+                <div class="row" style="margin-bottom:20px;">
+                    <div class="col-sm-6 text-center" style="padding-top:10px;">
+
+                        @if (Model.PropertySaved)
+                        {
+                            <a href="/Property/TogglePropertySaved/@Model.PropertyDetails.Id/@Model.ClientId/false" class="service-icon-small">
+                                <i class="fa fa-heart" title="Remove Saved Property"></i>
+                                <h5>Property Saved</h5>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Property/TogglePropertySaved/@Model.PropertyDetails.Id/@Model.ClientId/true" class="service-icon-small">
+                                <i class="fa fa-heart-o" title="Save Property"></i>
+                                <h5>Save Property</h5>
+                            </a>
+                            
+                        }
+
+                    </div>
+                    <div class="col-sm-6 text-center" style="padding-top:10px;">
+                        <a href="/Messages/Messages" class="service-icon-small">
+                            <i class="fa fa-envelope" title="Message"></i>
+                            <h5>Message Us</h5>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+
     </div>
+</div>
+
+<hr />
+
+<h4 class="sample-header">Property Information</h4>
+<div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+    <p>This is test information. </p>
 </div>
 
 
 <script type="text/javascript">
+
+    PhotosTabOnClick();
+
+    function PhotosTabOnClick() {
+        var PhotosTab = document.getElementById("PhotosTab");
+        var PhotosBody = document.getElementById("PhotosBody");
+        var MapsTab = document.getElementById("MapsTab");
+        var MapsBody = document.getElementById("MapsBody");
+        var FloorPlanTab = document.getElementById("FloorPlanTab");
+        var FloorPlanBody = document.getElementById("FloorPlanBody");
+
+        PhotosBody.style.display = "block";
+        MapsBody.style.display = "none";
+        FloorPlanBody.style.display = "none";
+
+        PhotosTab.classList.add("TabActive");
+        MapsTab.classList.remove("TabActive");
+        FloorPlanTab.classList.remove("TabActive");
+    }
+
+    function MapsTabOnClick() {
+        var PhotosTab = document.getElementById("PhotosTab");
+        var PhotosBody = document.getElementById("PhotosBody");
+        var MapsTab = document.getElementById("MapsTab");
+        var MapsBody = document.getElementById("MapsBody");
+        var FloorPlanTab = document.getElementById("FloorPlanTab");
+        var FloorPlanBody = document.getElementById("FloorPlanBody");
+
+        PhotosBody.style.display = "none";
+        MapsBody.style.display = "block";
+        FloorPlanBody.style.display = "none";
+
+        PhotosTab.classList.remove("TabActive");
+        MapsTab.classList.add("TabActive");
+        FloorPlanTab.classList.remove("TabActive");
+    }
+
+    function FloorPlanTabOnClick() {
+        var PhotosTab = document.getElementById("PhotosTab");
+        var PhotosBody = document.getElementById("PhotosBody");
+        var MapsTab = document.getElementById("MapsTab");
+        var MapsBody = document.getElementById("MapsBody");
+        var FloorPlanTab = document.getElementById("FloorPlanTab");
+        var FloorPlanBody = document.getElementById("FloorPlanBody");
+
+        PhotosBody.style.display = "none";
+        MapsBody.style.display = "none";
+        FloorPlanBody.style.display = "block";
+
+        PhotosTab.classList.remove("TabActive");
+        MapsTab.classList.remove("TabActive");
+        FloorPlanTab.classList.add("TabActive");
+    }
 
     var slideIndex = 1;
     showSlides(slideIndex);
@@ -152,6 +278,7 @@
 
         var uluru = { lat: 53.400002, lng: -2.983333 };
         var map = new google.maps.Map(document.getElementById('map'), {
+
             zoom: 15,
             center: uluru
         });

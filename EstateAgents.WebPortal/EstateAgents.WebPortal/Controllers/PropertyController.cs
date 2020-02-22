@@ -1,5 +1,6 @@
 ﻿using EstateAgents.Library.DAL;
 using EstateAgents.WebPortal.Models.Properties;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,6 @@ namespace EstateAgents.WebPortal.Controllers
         }
 
         public ActionResult PropertySaved()
-        {
-            return View();
-        }
-
-        public ActionResult PropertyMakeOffer()
         {
             return View();
         }
@@ -85,17 +81,66 @@ namespace EstateAgents.WebPortal.Controllers
             //i6.ImageData = imageBytes6;
             //EstateAgentsRepository.CreatePropertyImage(i6);
 
-
-
             PropertyDetailsViewModel model = new PropertyDetailsViewModel(Id);
 
             return View(model);
         }
 
-        public ActionResult PropertyBookViewing()
+        [Route("TogglePropertySaved/{id}/{ClientId}/{PropertySaved}")]
+        public ActionResult TogglePropertySaved(int Id, int ClientId, bool PropertySaved)
         {
-            return View();
+            PropertySaved p = EstateAgentsRepository.GetPropertySavedByClientIdAndPropertyId(ClientId, Id);
+            if(p == null)
+            {
+                PropertySaved PropertySavedNew = new PropertySaved();
+                PropertySavedNew.PropertyId = Id;
+                PropertySavedNew.ClientId = ClientId;
+                PropertySavedNew.Saved = PropertySaved;
+                EstateAgentsRepository.CreatePropertySaved(PropertySavedNew);
+            }
+            else
+            {
+                p.Saved = PropertySaved;
+                EstateAgentsRepository.UpdatePropertySaved(p);
+            }
+
+            PropertyDetailsViewModel model = new PropertyDetailsViewModel(Id);
+
+            return View("PropertyDetails", model);
         }
 
+        [Route("PropertyBookViewing/{PropertyId}")]
+        public ActionResult PropertyBookViewing(int PropertyId)
+        {
+            PropertyBookViewingViewModel model = new PropertyBookViewingViewModel(PropertyId);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult PropertyBookViewingRequest(PropertyBookViewingViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                PropertyViewings p = new PropertyViewings();
+                p.ViewingDate = model.ViewingDate;
+                p.ViewingTime = model.ViewingTime;
+                p.ClientId = model.ClientId;
+
+                //TODO: Create row for PropertyViewings
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("PropertyBookViewing", model);
+            }
+              
+        }
+
+        [Route("PropertyMakeOffer/{PropertyId}")]
+        public ActionResult PropertyMakeOffer(int PropertyId)
+        {
+            PropertyMakeOfferViewModel model = new PropertyMakeOfferViewModel(PropertyId);
+            return View(model);
+        }
     }
 }

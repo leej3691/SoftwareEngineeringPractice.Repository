@@ -76,6 +76,7 @@
     <Compile Include="DAL\PropertySaved.cs" />
     <Compile Include="DAL\PropertyStatus.cs" />
     <Compile Include="DAL\PropertyType.cs" />
+    <Compile Include="DAL\PropertyViewings.cs" />
     <Compile Include="Enums\PersonTitle.cs" />
     <Compile Include="Extensions\PropertyInfoExtension.cs" />
     <Compile Include="Helpers\RegularExpressionHelper.cs" />
