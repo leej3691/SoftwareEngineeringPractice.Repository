@@ -243,6 +243,35 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
+        #region Enquiry
+
+        public static void CreateEnquiry(Enquiry enquiry)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Enquiry.Add(enquiry);
+                db.SaveChanges();
+            }
+        }
+
+        #endregion
+
+        #region PropertyFeatures
+
+        public static List<PropertyFeatures> GetPropertyFeaturesByPropertyId(int PropertyId)
+        {
+            List<PropertyFeatures> iList = new List<PropertyFeatures>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                iList = db.PropertyFeatures.Where(p => p.PropertyId == PropertyId).ToList();
+            }
+
+            return iList;
+        }
+
+        #endregion
+
         #region Examples
         //CREATE
 

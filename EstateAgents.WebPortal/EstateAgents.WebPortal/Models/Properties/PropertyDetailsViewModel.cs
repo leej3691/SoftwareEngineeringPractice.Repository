@@ -11,6 +11,9 @@ namespace EstateAgents.WebPortal.Models.Properties
         public Property PropertyDetails { get; set; }
 
         public List<PropertyImages> PropertyImages { get; set; }
+        public int PropertyFeaturesCount { get; set; }
+
+        public List<PropertyFeatures> PropertyFeatures { get; set; }
         public int PropertyImagesCount { get; set; }
         public string PropertyTypeDescription { get; set; }
         public bool PropertySaved { get; set; }
@@ -24,6 +27,10 @@ namespace EstateAgents.WebPortal.Models.Properties
             List<PropertyImages> iList  = EstateAgentsRepository.GetPropertyImagesByPropertyId(Id);
             this.PropertyImages = iList;
             this.PropertyImagesCount = iList.Count;
+
+            List<PropertyFeatures> fList = EstateAgentsRepository.GetPropertyFeaturesByPropertyId(Id);
+            this.PropertyFeatures = fList;
+            this.PropertyFeaturesCount = fList.Count;
 
             if (HttpContext.Current.User.Identity.GetUserId() == null)
             {

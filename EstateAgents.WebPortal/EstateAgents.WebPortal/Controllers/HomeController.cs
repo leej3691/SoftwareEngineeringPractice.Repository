@@ -32,7 +32,8 @@ namespace EstateAgents.WebPortal.Controllers
                 e.Mobile = model.Mobile;
                 e.EnquiryBody = model.EnquiryBody;
 
-                //TODO: Create row for Enquiry
+                EstateAgentsRepository.CreateEnquiry(e);
+
                 return RedirectToAction("Index", "Home");
             }
             else

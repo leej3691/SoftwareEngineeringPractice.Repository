@@ -19,7 +19,7 @@ namespace EstateAgents.Library.DAL
         [StringLength(11)]
         public string Mobile { get; set; }
         public string EnquiryBody { get; set; }
-        public int? StaffMember { get; set; }
+        public int? StaffMemberId { get; set; }
         public DateTime? StaffMemberProcessed { get; set; }
     }
 }
