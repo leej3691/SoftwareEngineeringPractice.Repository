@@ -46,6 +46,10 @@ namespace EstateAgents.Library.DAL
         public virtual DbSet<PropertyViewings> PropertyViewings { get; set; }
         public virtual DbSet<PropertyFeatures> PropertyFeatures { get; set; }
         public virtual DbSet<Enquiry> Enquiry { get; set; }
+        public virtual DbSet<ChatbotQuestions> ChatbotQuestions { get; set; }
+        public virtual DbSet<ChatbotQuestionsLive> ChatbotQuestionsLive { get; set; }
+        public virtual DbSet<ChatbotQuestionType> ChatbotQuestionType { get; set; }
+        public virtual DbSet<ChatbotTemplates> ChatbotTemplates { get; set; }
 
     }
 }

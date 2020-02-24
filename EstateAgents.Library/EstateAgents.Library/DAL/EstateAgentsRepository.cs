@@ -256,7 +256,7 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
-        #region PropertyFeatures
+        #region Property Features
 
         public static List<PropertyFeatures> GetPropertyFeaturesByPropertyId(int PropertyId)
         {
@@ -268,6 +268,143 @@ namespace EstateAgents.Library.DAL
             }
 
             return iList;
+        }
+
+        #endregion
+
+        #region Chatbot Questions
+
+        public static List<ChatbotQuestions> GetChatbotQuestionsList()
+        {
+            List<ChatbotQuestions> q = new List<ChatbotQuestions>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                q = db.ChatbotQuestions.ToList();
+            }
+
+            return q;
+        }
+
+        #endregion
+
+        #region Chatbot Questions Live
+
+        public static void CreateChatbotQuestionsLiveFromRange(List<ChatbotQuestionsLive> chatbotQuestionsLiveList)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.ChatbotQuestionsLive.AddRange(chatbotQuestionsLiveList);
+                db.SaveChanges();
+            }
+
+        }
+
+        public static void CreateChatbotQuestionsLive(ChatbotQuestionsLive chatbotQuestionsLive)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.ChatbotQuestionsLive.Add(chatbotQuestionsLive);
+                db.SaveChanges();
+            }
+        }
+
+        public static void UpdateChatbotQuestionsLive(ChatbotQuestionsLive qhatbotQuestionsLive)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.ChatbotQuestionsLive.Attach(qhatbotQuestionsLive);
+                db.Entry(qhatbotQuestionsLive).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static List<ChatbotQuestionsLive> GetChatbotQuestionsLiveByTemplateIdAndQuestionAsked(int TemplateId)
+        {
+            List<ChatbotQuestionsLive> qLiveList = new List<ChatbotQuestionsLive>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                qLiveList = db.ChatbotQuestionsLive.Where(c => c.ChatbotTemplateId == TemplateId && c.QuestionAskedDate != null).OrderBy(o => o.Sequence).ToList();
+            }
+
+            return qLiveList;
+        }
+
+        public static List<ChatbotQuestionsLive> GetChatbotQuestionsLiveCurrentQuestions(int TemplateId)
+        {
+            List<ChatbotQuestionsLive> qLive = new List<ChatbotQuestionsLive>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                List<ChatbotQuestionsLive> qList = db.ChatbotQuestionsLive.Where(c => c.ChatbotTemplateId == TemplateId && c.QuestionAskedDate != null && c.QuestionAnswer == null).ToList();
+
+                if (qList.Count() > 0)
+                {
+                    ChatbotQuestionsLive q = qList.First();
+                    qLive.Add(q);
+                }
+
+            }
+
+            return qLive;
+        }
+
+        public static List<ChatbotQuestionsLive> GetChatbotQuestionsLiveNextQuestions(int TemplateId)
+        {
+            List<ChatbotQuestionsLive> qLive = new List<ChatbotQuestionsLive>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                List<ChatbotQuestionsLive> qList = db.ChatbotQuestionsLive.Where(c => c.ChatbotTemplateId == TemplateId && c.QuestionAskedDate == null).OrderBy(o => o.Sequence).ToList();
+
+                if (qList.Count() > 0)
+                {
+                    ChatbotQuestionsLive q = qList.First();
+                    qLive.Add(q);
+                }
+            }
+
+            return qLive;
+        }
+
+        #endregion
+
+        #region Chatbot Templates
+
+        public static ChatbotTemplates CreateChatbotTemplate(ChatbotTemplates chatbotTemplates)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.ChatbotTemplates.Add(chatbotTemplates);
+                db.SaveChanges();
+            }
+
+            return chatbotTemplates;
+        }
+
+        public static ChatbotTemplates UpdateChatbotTemplate(ChatbotTemplates userTemplate)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.ChatbotTemplates.Attach(userTemplate);
+                db.Entry(userTemplate).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return userTemplate;
+        }
+
+        public static ChatbotTemplates GetChatbotTemplateByTemplateId(int TemplateId)
+        {
+            ChatbotTemplates t = new ChatbotTemplates();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                t = db.ChatbotTemplates.Where(c => c.Id == TemplateId).FirstOrDefault();
+            }
+
+            return t;
         }
 
         #endregion

@@ -63,6 +63,10 @@
     <Compile Include="Attributes\ValidMobileAttribute.cs" />
     <Compile Include="Attributes\ValidPostcodeAttribute.cs" />
     <Compile Include="Attributes\ValidValueAttribute.cs" />
+    <Compile Include="DAL\ChatbotQuestionsLive.cs" />
+    <Compile Include="DAL\ChatbotQuestions.cs" />
+    <Compile Include="DAL\ChatbotQuestionType.cs" />
+    <Compile Include="DAL\ChatbotTemplates.cs" />
     <Compile Include="DAL\Employee.cs" />
     <Compile Include="DAL\Client.cs" />
     <Compile Include="DAL\EmployeeJobTitle.cs" />
@@ -109,6 +113,18 @@
     <Compile Include="Migrations\202002240906506_PropertyIdAddedToPropertyFeatures.designer.cs">
       <DependentUpon>202002240906506_PropertyIdAddedToPropertyFeatures.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002241406489_ChatbotTables.cs" />
+    <Compile Include="Migrations\202002241406489_ChatbotTables.designer.cs">
+      <DependentUpon>202002241406489_ChatbotTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.cs" />
+    <Compile Include="Migrations\202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.designer.cs">
+      <DependentUpon>202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002241512508_ChatbotSequence.cs" />
+    <Compile Include="Migrations\202002241512508_ChatbotSequence.designer.cs">
+      <DependentUpon>202002241512508_ChatbotSequence.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,6 +150,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002240906506_PropertyIdAddedToPropertyFeatures.resx">
       <DependentUpon>202002240906506_PropertyIdAddedToPropertyFeatures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241406489_ChatbotTables.resx">
+      <DependentUpon>202002241406489_ChatbotTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.resx">
+      <DependentUpon>202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241512508_ChatbotSequence.resx">
+      <DependentUpon>202002241512508_ChatbotSequence.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
