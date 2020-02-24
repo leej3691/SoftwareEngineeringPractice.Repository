@@ -16,7 +16,6 @@
     white-space: normal;
 }
 
-
 .footer {
     background-color: #666666;
     color: white;
@@ -831,4 +830,30 @@ img {
     border-color: #ec1c24;
     color: white;
     margin-bottom: 10px;
+}
+
+/*Showroom Datatable*/
+// Articles Datatable ===============================================================
+
+.dtShowroom {
+    border: 0px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+}
+
+.dtShowroom a {
+    text-decoration: none;
+}
+
+.dtShowroom tbody tr {
+    background: none;
+}
+
+    .dtShowroom tbody tr td {
+        padding: 0px;
+    }
+
+.dtShowroom thead {
+    display: none;
 }

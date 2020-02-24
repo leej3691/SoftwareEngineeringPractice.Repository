@@ -16,7 +16,8 @@ namespace EstateAgents.WebPortal.Controllers
         // GET: Property
         public ActionResult PropertyShowroom()
         {
-            return View();
+            PropertyShowRoomViewModel model = new PropertyShowRoomViewModel();
+            return View(model);
         }
 
         public ActionResult PropertySearch()

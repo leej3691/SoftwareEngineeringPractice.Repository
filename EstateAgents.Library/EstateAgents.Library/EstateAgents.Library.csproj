@@ -125,6 +125,10 @@
     <Compile Include="Migrations\202002241512508_ChatbotSequence.designer.cs">
       <DependentUpon>202002241512508_ChatbotSequence.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.cs" />
+    <Compile Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.designer.cs">
+      <DependentUpon>202002241617597_AddedPostedAndClosedDatesToProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -159,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002241512508_ChatbotSequence.resx">
       <DependentUpon>202002241512508_ChatbotSequence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.resx">
+      <DependentUpon>202002241617597_AddedPostedAndClosedDatesToProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

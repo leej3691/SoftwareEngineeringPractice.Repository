@@ -113,6 +113,18 @@ namespace EstateAgents.Library.DAL
             return properties;
         }
 
+        public static List<Property> GetAllProperties()
+        {
+            List<Property> properties = new List<Property>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                properties = db.Property.ToList();
+            }
+
+            return properties;
+        }
+
         /// <summary>
         /// Property - Get property by property id
         /// </summary>

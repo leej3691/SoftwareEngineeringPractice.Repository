@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -32,6 +33,8 @@ namespace EstateAgents.Library.DAL
         public bool Garden { get; set; }
         public bool Driveway { get; set; }
         public bool CentralHeating { get; set; }
+        public DateTime PostedDate { get; set; }
+        public DateTime? ClosedDate { get; set; }
 
     }
 }
