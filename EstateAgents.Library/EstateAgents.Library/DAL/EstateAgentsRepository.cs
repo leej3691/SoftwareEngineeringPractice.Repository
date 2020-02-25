@@ -125,6 +125,38 @@ namespace EstateAgents.Library.DAL
             return properties;
         }
 
+        public static List<Property> GetPropertyListBySearchCriteria(string IncludeSoldProperties, string Location, int NumberOfBedrooms, decimal PriceFrom, decimal PriceTo, string PropertySaleType, string PropertyType)
+        {
+            int PropertyStatus = 0;
+            if(IncludeSoldProperties == "No")
+            {
+                PropertyStatus = 3;
+            }
+
+            List<Property> properties = new List<Property>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                string PropertySaleTypeDescription = db.PropertySaleType.Where(i => i.Description == PropertySaleType).FirstOrDefault().Description;
+                string PropertyTypeDescription = db.PropertyType.Where(i => i.Description == PropertyType).FirstOrDefault().Description;
+
+                properties = db.Property.Where(p =>
+                    p.PropertyStatusId != PropertyStatus &&
+                    (p.AddressLine1 == Location || p.AddressLine2 == Location || p.AddressLine3 == Location || p.AddressLine4 == Location || p.AddressLine5 == Location) &&
+                    p.NumberOfBedrooms == NumberOfBedrooms &&
+                    (p.PropertyPrice >= PriceFrom && p.PropertyPrice <= PriceTo) &&
+                    PropertySaleTypeDescription == PropertySaleType &&
+                    PropertyTypeDescription == PropertyType &&
+                    p.ClosedDate == null
+                    ).ToList();
+
+            }
+
+            return properties;
+        }
+
+        
+
         /// <summary>
         /// Property - Get property by property id
         /// </summary>

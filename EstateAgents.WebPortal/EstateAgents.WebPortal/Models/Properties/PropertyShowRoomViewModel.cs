@@ -11,5 +11,10 @@ namespace EstateAgents.WebPortal.Models.Properties
         {
             this.PropertyList = EstateAgentsRepository.GetAllProperties();
         }
+
+        public PropertyShowRoomViewModel(List<Property> pList)
+        {
+            this.PropertyList = pList;
+        }
     }
 }

@@ -31,9 +31,9 @@ namespace EstateAgents.WebPortal.Controllers
             if (ModelState.IsValid)
             {
                 //TODO: Search criteria and return property list
+                List<Property> pList = EstateAgentsRepository.GetPropertyListBySearchCriteria(model.IncludeSoldProperties.ToString(), model.Location, model.NumberOfBedrooms, model.PriceFrom, model.PriceTo, model.PropertySaleType.ToString(), model.PropertyType.ToString());
 
-
-                PropertyShowRoomViewModel vm = new PropertyShowRoomViewModel();
+                PropertyShowRoomViewModel vm = new PropertyShowRoomViewModel(pList);
 
                 return View("PropertyShowroom", vm);
             }
