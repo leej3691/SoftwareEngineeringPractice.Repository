@@ -13,9 +13,8 @@
     @Styles.Render("~/style/jquery-datatables-bootstrap")
     @Styles.Render("~/style/jquery-datatables-buttons")
     @Styles.Render("~/style/font-awesome")
-
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/scripts/bootstrap")
 
 </head>
 <body style="background:#eeeeee;">
@@ -195,7 +194,7 @@
                 </div>
             </div>
             <div class="right right_c" style="width:35px;">
-                <a href="#" class="logout" title="End chat" name="" style="display:none;"><img src="chat/logout.png"></a>
+                @*<a href="#" class="logout" title="End chat" name="" style="display:none;"><img src="chat/logout.png"></a>*@
             </div>
             <div class="clear"></div>
         </div>
@@ -218,7 +217,6 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(function () {

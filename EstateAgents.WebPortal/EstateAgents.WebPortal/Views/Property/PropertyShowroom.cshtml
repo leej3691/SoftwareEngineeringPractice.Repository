@@ -18,28 +18,34 @@
 
 <div class="list-group">
 
-    
 
 
-    <table id="dtShowroom" class="table table-striped table-bordered table-responsive">
+
+    <table id="dtShowroom" class="table table-striped table-bordered table-responsive" style="padding:0;">
         <thead>
             <tr>
-                <th></th>
+                <th class="col-md-4">Property Images</th>
+                <th class="col-md-2">Property Type</th>
+                <th class="col-md-4">Address</th>
+                <th class="col-md-2">Price</th>
             </tr>
         </thead>
         <tbody>
 
             @foreach (var item in Model.PropertyList)
             {
-                @*<tr>
+                <tr>
                     <td>
-                        <a href="/Property/PropertyDetails/@item.Id" class="list-group-item">
+                        <a href="/Property/PropertyDetails/@item.Id">
+                            <img  class="img-responsive pull-left" src="https://pbprodimages.azureedge.net/images/large/c292d1fb-2b4b-4004-9a88-fa6ff0c3d0c0.JPG" />
+                        </a>
+                        @*<a href="/Property/PropertyDetails/@item.Id" class="list-group-item">
 
                             <h3>
                                 @item.AddressLine1
                             </h3>
 
-                            <img style="max-width:130px; margin-right:10px; margin-bottom:10px;" class="img-responsive pull-left" src="https://pbprodimages.azureedge.net/images/large/c292d1fb-2b4b-4004-9a88-fa6ff0c3d0c0.JPG" />
+                            
                             <p>
                                 Test information to go here
                             </p>
@@ -49,61 +55,59 @@
 
                             <br style="clear: both;" />
 
-                        </a>
+                        </a>*@
                     </td>
-                </tr>*@
+                    <td>
+                        Detached
+                    </td>
+                    <td>
+                        <div class="PropertyDetailsMainAddress">
+                            <div class="PropertyDetailsPrimary">
+                                <p>
+                                    <span class="PropertyDetailsAddress">@item.AddressLine1, @item.AddressLine2, @item.AddressLine3, @item.AddressLine4, @item.AddressLine5, @item.Postcode</span>
+                                </p>
+                            </div>
 
-            <tr>
-                <div class="PropertyDetailsMainAddress list-group-item">
-                    <div class="PropertyDetailsPrimary">
-                        @{
-                            string PropertyType = item.NumberOfBedrooms + " bedroom Detached";
-                        }
-                        <h1 class="PropertyDetailsAddressType">@PropertyType</h1>
-                        <p>
-                            <span class="PropertyDetailsAddress">@item.AddressLine1, @item.AddressLine2, @item.AddressLine3, @item.AddressLine4, @item.AddressLine5, @item.Postcode</span>
-                        </p>
-                    </div>
-                    <div class="PropertyDetailsSecondary">
-                        <p class="PropertyDetailsPrice">
-                            @{
-                                int price = (int)Math.Round(item.PropertyPrice);
-                                string PriceFinal = String.Format("{0:C0}", price);
+                        </div>
+                    </td>
+                    <td>
+                        <div class="PropertyDetailsSecondary">
+                            <p class="PropertyDetailsPrice">
+                                @{
+                                    int price = (int)Math.Round(item.PropertyPrice);
+                                    string PriceFinal = String.Format("{0:C0}", price);
+                                }
+                                <span>@PriceFinal</span>
+                            </p>
+                            <p class="PropertyDetailsQualifier">
+                                <span>Offers in excess of</span>
+                            </p>
+                            @if (item.PropertyStatusId == 3)
+                            {
+                                <span class="PropertyDetailsSold">Sold STC</span>
                             }
-                            <span>@PriceFinal</span>
-                        </p>
-                        <p class="PropertyDetailsQualifier">
-                            <span>Offers in excess of</span>
-                        </p>
-                        @if (item.PropertyStatusId == 3)
-                        {
-                            <span class="PropertyDetailsSold">Sold STC</span>
-                        }
 
-                    </div>
-                </div>
-            </tr>
+                        </div>
+                    </td>
+                </tr>
             }
 
         </tbody>
     </table>
-
 </div>
 
-@section FooterScripts {
-    @Scripts.Render("~/scripts/jquery-datatables");
-    @Scripts.Render("~/scripts/jquery-datatables-bootstrap");
-    @Scripts.Render("~/scripts/local-datatables");
-    <script>
-        var dt = $('.dtShowroom').DataTable({
-            scrollCollapse: true,
-            deferRender: true,
-            scroller: true,
-            bLengthChange: false,
-            bInfo: false,
-            paging: false,
-            order: [],
-            searching: false
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var dt = $('#dtShowroom').DataTable({
+                pageLength: 5
+            });
+
+
         });
+
     </script>
 }

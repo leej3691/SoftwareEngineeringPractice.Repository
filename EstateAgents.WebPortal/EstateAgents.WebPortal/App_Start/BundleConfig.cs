@@ -9,9 +9,10 @@ namespace EstateAgents.WebPortal
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.UseCdn = true;
             bundles.Add(new CustomStyleBundle("~/style/bootstrap").Include("~/content/bootswatch/build.less"));
             bundles.Add(new StyleBundle("~/style/jquery-datatables-bootstrap", "https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"));
-            bundles.Add(new StyleBundle("~/style/jquery-datatables-buttons", "https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css"));
+            bundles.Add(new StyleBundle("~/style/jquery-datatables-buttons", "https://cdn.datatables.net/buttons/1.10.12/css/buttons.bootstrap.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -33,10 +34,10 @@ namespace EstateAgents.WebPortal
 
             bundles.Add(new StyleBundle("~/style/font-awesome", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css").Include("~/content/font-awesome.css"));
             bundles.Add(new ScriptBundle("~/scripts/jquery-datatables", "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"));
-            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-buttons", "https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"));
-            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-buttons-bootstrap", "https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.min.js"));
-            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-colvis", "https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"));
-            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-buttons-html5", "https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"));
+            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-buttons", "https://cdn.datatables.net/buttons/1.10.12/js/dataTables.buttons.min.js"));
+            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-buttons-bootstrap", "https://cdn.datatables.net/buttons/1.10.12/js/buttons.bootstrap.min.js"));
+            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-colvis", "https://cdn.datatables.net/buttons/1.10.12/js/buttons.colVis.min.js"));
+            bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-buttons-html5", "https://cdn.datatables.net/buttons/1.10.12/js/buttons.html5.min.js"));
             bundles.Add(new ScriptBundle("~/scripts/jquery-datatables-bootstrap", "https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"));
 
 
