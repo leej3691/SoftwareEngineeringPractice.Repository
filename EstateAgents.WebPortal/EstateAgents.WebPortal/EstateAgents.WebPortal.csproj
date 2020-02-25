@@ -228,6 +228,7 @@
     <Compile Include="Models\Properties\PropertyMakeOfferViewModel.cs" />
     <Compile Include="Models\Properties\PropertySearchViewModel.cs" />
     <Compile Include="Models\Properties\PropertyShowRoomViewModel.cs" />
+    <Compile Include="Models\Properties\PropertyViewingsViewModel.cs" />
     <Compile Include="Models\Settings\YourDetailsViewModel.cs" />
     <Compile Include="Models\SiteMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -632,6 +633,7 @@
     <Content Include="Views\Settings\PrivacyPolicy.cshtml" />
     <Content Include="Views\Settings\FAQ.cshtml" />
     <Content Include="Views\Home\Chatbot.cshtml" />
+    <Content Include="Views\Property\PropertyViewings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\EditorTemplates\" />

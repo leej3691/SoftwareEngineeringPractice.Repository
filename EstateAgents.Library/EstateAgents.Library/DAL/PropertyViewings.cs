@@ -15,5 +15,6 @@ namespace EstateAgents.Library.DAL
         [StringLength(5)]
         public string ViewingTime { get; set; }
         public int ClientId { get; set; }
+        //public int PropertyId { get; set; }
     }
 }

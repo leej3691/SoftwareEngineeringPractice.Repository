@@ -1,0 +1,53 @@
+﻿@model EstateAgents.WebPortal.Models.Properties.PropertyViewingsViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Property Viewings
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-search text-success hidden-xs"></i>
+        Property Viewings
+    </h1>
+    <p>View property viewing history and up-coming viewings.</p>
+</div>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Property Address</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Cancel</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PropertyViewings)
+        {
+        <tr>
+            @*<td>@item.AddressLine1, @item.AddressLine2, @item.AddressLine3, @item.AddressLine4, @item.AddressLine5, @item.Postcode</td>*@
+            <td>27 Stavert Close, Croxteth, Liverpool, L11 9AH</td>
+            <td>@Convert.ToDateTime(item.ViewingDate).ToShortDateString()</td>
+            <td>@item.ViewingTime</td>
+            <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/Property/CancelPropertyViewing/@item.Id">Cancel</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

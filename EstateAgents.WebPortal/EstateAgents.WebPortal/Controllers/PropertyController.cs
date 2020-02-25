@@ -145,8 +145,8 @@ namespace EstateAgents.WebPortal.Controllers
                 p.ViewingDate = model.ViewingDate;
                 p.ViewingTime = model.ViewingTime;
                 p.ClientId = model.ClientId;
-
-                //TODO: Create row for PropertyViewings
+                EstateAgentsRepository.CreatePropertyViewing(p);
+                //TODO: Add property id to viewings table
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -161,6 +161,23 @@ namespace EstateAgents.WebPortal.Controllers
         {
             PropertyMakeOfferViewModel model = new PropertyMakeOfferViewModel(PropertyId);
             return View(model);
+        }
+
+        public ActionResult PropertyViewings()
+        {
+            PropertyViewingsViewModel model = new PropertyViewingsViewModel();
+            return View(model);
+        }
+
+        [Route("CancelPropertyViewing/{Id}")]
+        public ActionResult CancelPropertyViewing(int Id)
+        {
+            PropertyViewings p = EstateAgentsRepository.GetPropertyViewingById(Id);
+            p.Cancelled = DateTime.Now;
+            EstateAgentsRepository.UpdatePropertyViewing(p);
+
+            PropertyViewingsViewModel model = new PropertyViewingsViewModel();
+            return View("PropertyViewings", model);
         }
     }
 }

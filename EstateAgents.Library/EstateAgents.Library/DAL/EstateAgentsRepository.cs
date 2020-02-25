@@ -287,6 +287,53 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
+        #region Property Viewings
+
+        public static void CreatePropertyViewing(PropertyViewings propertyViewings)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyViewings.Add(propertyViewings);
+                db.SaveChanges();
+            }
+        }
+
+        public static void UpdatePropertyViewing(PropertyViewings propertyViewings)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyViewings.Attach(propertyViewings);
+                db.Entry(propertyViewings).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static List<PropertyViewings> GetPropertyViewingsByClientId(int ClientId)
+        {
+            List<PropertyViewings> viewings = new List<PropertyViewings>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                viewings = db.PropertyViewings.Where(p => p.ClientId == ClientId && p.Cancelled == null).ToList();
+            }
+
+            return viewings;
+        }
+
+        public static PropertyViewings GetPropertyViewingById(int Id)
+        {
+            PropertyViewings p = new PropertyViewings();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                p = db.PropertyViewings.Where(pv => pv.Id == Id).FirstOrDefault();
+            }
+
+            return p;
+        }
+
+        #endregion
+
         #region Enquiry
 
         public static void CreateEnquiry(Enquiry enquiry)

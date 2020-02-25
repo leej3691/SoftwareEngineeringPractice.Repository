@@ -5,7 +5,8 @@
   <siteMapNode url="" title="Properties">
       <siteMapNode url="/Property/PropertySearch" title="Property Search" />
       <siteMapNode url="/Property/PropertyShowroom/" title="Property Showroom" />
-      <siteMapNode url="/Property/PropertySaved" title="Saved Properties" />
+    <siteMapNode url="/Property/PropertyViewings" title= "Property Viewings" />
+      <siteMapNode url="/Property/PropertySaved" title="Property Saved" />
   </siteMapNode>
   <siteMapNode url="/Messages/Messages" title="Messages" />
   <siteMapNode url="/Home/Contact" title="Contact" />

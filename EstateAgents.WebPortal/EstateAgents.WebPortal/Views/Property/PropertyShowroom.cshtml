@@ -103,7 +103,9 @@
 
         $(document).ready(function () {
             var dt = $('#dtShowroom').DataTable({
-                pageLength: 5
+                pageLength: 5,
+                bPaginate: true, 
+                pagingType: "simple_numbers"
             });
 
 
