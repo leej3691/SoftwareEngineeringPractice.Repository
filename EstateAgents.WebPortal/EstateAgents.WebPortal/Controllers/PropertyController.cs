@@ -30,7 +30,6 @@ namespace EstateAgents.WebPortal.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO: Search criteria and return property list
                 List<Property> pList = EstateAgentsRepository.GetPropertyListBySearchCriteria(model.IncludeSoldProperties.ToString(), model.Location, model.NumberOfBedrooms, model.PriceFrom, model.PriceTo, model.PropertySaleType.ToString(), model.PropertyType.ToString());
 
                 PropertyShowRoomViewModel vm = new PropertyShowRoomViewModel(pList);
@@ -145,8 +144,9 @@ namespace EstateAgents.WebPortal.Controllers
                 p.ViewingDate = model.ViewingDate;
                 p.ViewingTime = model.ViewingTime;
                 p.ClientId = model.ClientId;
+                p.PropertyId = model.PropertyDetails.Id;
                 EstateAgentsRepository.CreatePropertyViewing(p);
-                //TODO: Add property id to viewings table
+
                 return RedirectToAction("Index", "Home");
             }
             else

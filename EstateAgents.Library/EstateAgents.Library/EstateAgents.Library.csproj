@@ -129,6 +129,10 @@
     <Compile Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.designer.cs">
       <DependentUpon>202002241617597_AddedPostedAndClosedDatesToProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002261347597_AddedPropertyIdToViewingsAndMessages.cs" />
+    <Compile Include="Migrations\202002261347597_AddedPropertyIdToViewingsAndMessages.designer.cs">
+      <DependentUpon>202002261347597_AddedPropertyIdToViewingsAndMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.resx">
       <DependentUpon>202002241617597_AddedPostedAndClosedDatesToProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261347597_AddedPropertyIdToViewingsAndMessages.resx">
+      <DependentUpon>202002261347597_AddedPropertyIdToViewingsAndMessages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -17,5 +17,6 @@ namespace EstateAgents.Library.DAL
         public string MessageTime { get; set; }
         public bool StaffResponse { get; set; }
         public bool Read { get; set; }
+        public int PropertyId { get; set; }
     }
 }

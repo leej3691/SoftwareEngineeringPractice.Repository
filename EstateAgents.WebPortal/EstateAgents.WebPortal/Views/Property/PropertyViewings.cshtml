@@ -29,9 +29,9 @@
     <tbody>
         @foreach (var item in Model.PropertyViewings)
         {
+            var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
         <tr>
-            @*<td>@item.AddressLine1, @item.AddressLine2, @item.AddressLine3, @item.AddressLine4, @item.AddressLine5, @item.Postcode</td>*@
-            <td>27 Stavert Close, Croxteth, Liverpool, L11 9AH</td>
+            <td>@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</td>
             <td>@Convert.ToDateTime(item.ViewingDate).ToShortDateString()</td>
             <td>@item.ViewingTime</td>
             <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/Property/CancelPropertyViewing/@item.Id">Cancel</a></td>
