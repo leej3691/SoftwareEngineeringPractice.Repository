@@ -227,6 +227,7 @@
     <Compile Include="Models\Properties\PropertyDetailsViewModel.cs" />
     <Compile Include="Models\Properties\PropertyMakeOfferViewModel.cs" />
     <Compile Include="Models\Properties\PropertySearchViewModel.cs" />
+    <Compile Include="Models\Properties\PropertySavedViewModel.cs" />
     <Compile Include="Models\Properties\PropertyShowRoomViewModel.cs" />
     <Compile Include="Models\Properties\PropertyViewingsViewModel.cs" />
     <Compile Include="Models\Settings\YourDetailsViewModel.cs" />

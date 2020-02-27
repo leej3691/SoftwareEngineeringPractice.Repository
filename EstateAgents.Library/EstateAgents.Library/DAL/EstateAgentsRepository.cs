@@ -125,6 +125,25 @@ namespace EstateAgents.Library.DAL
             return properties;
         }
 
+        public static List<Property> GetPropertyListSavedByClientId(int ClientId)
+        {
+            List<Property> properties = new List<Property>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                List<PropertySaved> psList = db.PropertySaved.Where(p => p.ClientId == ClientId && p.Saved == true).ToList();
+                
+                foreach(var item in psList)
+                {
+                    Property p = GetPropertyByPropertyId(item.PropertyId);
+                    properties.Add(p);
+                }
+
+            }
+
+            return properties;
+        }
+
         public static List<Property> GetPropertyListBySearchCriteria(string IncludeSoldProperties, string Location, int NumberOfBedrooms, decimal PriceFrom, decimal PriceTo, string PropertySaleType, string PropertyType)
         {
             int PropertyStatus = 0;

@@ -45,7 +45,8 @@ namespace EstateAgents.WebPortal.Controllers
 
         public ActionResult PropertySaved()
         {
-            return View();
+            PropertySavedViewModel model = new PropertySavedViewModel();
+            return View(model);
         }
 
         public ActionResult PropertyDetails()
@@ -105,8 +106,8 @@ namespace EstateAgents.WebPortal.Controllers
             return View(model);
         }
 
-        [Route("TogglePropertySaved/{id}/{ClientId}/{PropertySaved}")]
-        public ActionResult TogglePropertySaved(int Id, int ClientId, bool PropertySaved)
+        [Route("TogglePropertySaved/{id}/{ClientId}/{PropertySaved}/{View}")]
+        public ActionResult TogglePropertySaved(int Id, int ClientId, bool PropertySaved, string view)
         {
             PropertySaved p = EstateAgentsRepository.GetPropertySavedByClientIdAndPropertyId(ClientId, Id);
             if(p == null)
@@ -123,9 +124,21 @@ namespace EstateAgents.WebPortal.Controllers
                 EstateAgentsRepository.UpdatePropertySaved(p);
             }
 
-            PropertyDetailsViewModel model = new PropertyDetailsViewModel(Id);
+            if(view == "PropertyDetails")
+            {
+                PropertyDetailsViewModel model = new PropertyDetailsViewModel(Id);
+                return View("PropertyDetails", model);
+            }
+            else if (view == "PropertySaved")
+            {
+                PropertySavedViewModel model = new PropertySavedViewModel();
+                return View("PropertySaved", model);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-            return View("PropertyDetails", model);
         }
 
         [Route("PropertyBookViewing/{PropertyId}")]
