@@ -81,8 +81,8 @@
                 }
 
                 <!-- Next and previous buttons -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <a class="prevSlider" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="nextSlider" onclick="plusSlides(1)">&#10095;</a>
 
             </div>
 
@@ -112,10 +112,10 @@
             <div class="links">
                 @if (Model.PropertyDetails.PropertyStatusId == 3)
                 {
-                    <a class="btn btn-info" disabled style="  white-space: nowrap;padding: 6px 12px; font-size: 16px;line-height: 1.42857; margin-top: 0;margin-bottom: 10px; width: 100%;background-color: #1fabde; text-align: center; vertical-align: middle;touch-action: manipulation;cursor: pointer;background-image: none; display: inline-block;color: #fff;  border: 0; border-radius: 0;font-weight: 400; text-transform: none;text-decoration: none;" href="#">
+                    <a class="btn btn-info" disabled style="  white-space: nowrap;padding: 6px 12px; font-size: 16px;line-height: 1.42857; margin-top: 0;margin-bottom: 10px; width: 100%;background-color: #1fabde; text-align: center; vertical-align: middle;touch-action: manipulation;cursor: pointer;background-image: none; display: inline-block;color: #fff;  border: 0; border-radius: 0;font-weight: 400; text-transform: none;text-decoration: none;cursor: not-allowed;">
                         Book Viewing <i class="fa fa-arrow-circle-o-right"></i>
                     </a>
-                    <a class="btn btn-important" disabled style="   white-space: nowrap;padding: 6px 12px;font-size: 16px;line-height: 1.42857;    text-align: center; vertical-align: middle; touch-action: manipulation; cursor: pointer;background-image: none;    display: inline-block;    border: 0;border-radius: 0; font-weight: 400; text-transform: none;text-decoration: none;   color: #fff;background-color: #fc5465;border-color: #fc5465;  margin-top: 0;margin-bottom: 10px;width: 100%;" href="#">
+                    <a class="btn btn-important" disabled style="   white-space: nowrap;padding: 6px 12px;font-size: 16px;line-height: 1.42857;    text-align: center; vertical-align: middle; touch-action: manipulation; cursor: pointer;background-image: none;    display: inline-block;    border: 0;border-radius: 0; font-weight: 400; text-transform: none;text-decoration: none;   color: #fff;background-color: #fc5465;border-color: #fc5465;  margin-top: 0;margin-bottom: 10px;width: 100%;cursor:not-allowed;">
                         Make an Offer <i class="fa fa-arrow-circle-o-right"></i>
                     </a>
                 }
@@ -214,7 +214,15 @@
 
 <h4 class="sample-header">Property Information</h4>
 <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
-    <p>This is test information. </p>
+    @if (Model.PropertyDetails.AdditionalDetails != null)
+    {
+        <p>@Model.PropertyDetails.AdditionalDetails</p>
+    }
+    else
+    {
+        <p>This is test information. </p>
+    }
+
 </div>
 
 

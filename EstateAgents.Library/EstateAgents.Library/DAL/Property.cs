@@ -28,13 +28,8 @@ namespace EstateAgents.Library.DAL
         public string Postcode { get; set; }
         public int NumberOfBedrooms { get; set; }
         public int NumberOfBathrooms { get; set; }
-        public bool Ensuite { get; set; }
-        public bool Garage { get; set; }
-        public bool Garden { get; set; }
-        public bool Driveway { get; set; }
-        public bool CentralHeating { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? ClosedDate { get; set; }
-
+        public string AdditionalDetails { get; set; }
     }
 }
