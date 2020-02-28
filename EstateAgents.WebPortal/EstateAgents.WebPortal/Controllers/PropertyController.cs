@@ -176,6 +176,36 @@ namespace EstateAgents.WebPortal.Controllers
             return View(model);
         }
 
+        public ActionResult PropertyMakeOfferRequest(PropertyMakeOfferViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                PropertyOffers p = new PropertyOffers();
+                p.ClientId = model.ClientId;
+                p.OfferAmount = model.PropertyOffer.OfferAmount;
+                p.PropertyOfferStatusId = 1;
+                p.PropertyId = model.PropertyDetails.Id;
+                EstateAgentsRepository.CreatePropertyOffer(p);
+
+                PropertyOffersViewModel m = new PropertyOffersViewModel();
+                return View("PropertyOffers", m);
+            }
+            else
+            {
+                return View("PropertyMakeOffer", model);
+            }
+        }
+
+        [Route("PropertyOfferWithdraw/{Id}")]
+        public ActionResult PropertyOfferWithdraw(int Id)
+        {
+            PropertyOffers p = EstateAgentsRepository.GetPropertyOffersById(Id);
+            p.PropertyOfferStatusId = 4;
+            EstateAgentsRepository.UpdatePropertyOffer(p);
+            PropertyOffersViewModel m = new PropertyOffersViewModel();
+            return View("PropertyOffers", m);
+        }
+
         public ActionResult PropertyViewings()
         {
             PropertyViewingsViewModel model = new PropertyViewingsViewModel();
@@ -191,6 +221,12 @@ namespace EstateAgents.WebPortal.Controllers
 
             PropertyViewingsViewModel model = new PropertyViewingsViewModel();
             return View("PropertyViewings", model);
+        }
+
+        public ActionResult PropertyOffers()
+        {
+            PropertyOffersViewModel model = new PropertyOffersViewModel();
+            return View(model);
         }
     }
 }

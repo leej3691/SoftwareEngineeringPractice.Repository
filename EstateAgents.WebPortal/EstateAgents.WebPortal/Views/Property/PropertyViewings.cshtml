@@ -30,8 +30,8 @@
         @foreach (var item in Model.PropertyViewings)
         {
             var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
-        <tr>
-            <td>@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</td>
+            <tr style="background:white;color:black;">
+            <td style="background:white;color:black;"><a style="text-decoration:none;color:black;"href="/Property/PropertyDetails/@p.Id">@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</a></td>
             <td>@Convert.ToDateTime(item.ViewingDate).ToShortDateString()</td>
             <td>@item.ViewingTime</td>
             <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/Property/CancelPropertyViewing/@item.Id">Cancel</a></td>
@@ -39,8 +39,6 @@
         }
     </tbody>
 </table>
-
-
 
 @section FooterScripts{
     <script src="~/Scripts/jquery-3.3.1.js"></script>

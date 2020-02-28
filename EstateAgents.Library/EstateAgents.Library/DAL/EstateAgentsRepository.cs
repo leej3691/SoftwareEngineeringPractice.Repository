@@ -353,6 +353,69 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
+        #region Property Offers
+
+        public static void CreatePropertyOffer(PropertyOffers propertyOffers)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyOffers.Add(propertyOffers);
+                db.SaveChanges();
+            }
+        }
+
+        public static void UpdatePropertyOffer(PropertyOffers propertyOffers)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyOffers.Attach(propertyOffers);
+                db.Entry(propertyOffers).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static List<PropertyOffers> GetPropertyOffersByClientId(int ClientId)
+        {
+            List<PropertyOffers> offers = new List<PropertyOffers>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                offers = db.PropertyOffers.Where(o => o.ClientId == ClientId).ToList();
+            }
+
+            return offers;
+        }
+
+        public static PropertyOffers GetPropertyOffersById(int Id)
+        {
+            PropertyOffers offers = new PropertyOffers();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                offers = db.PropertyOffers.Where(p => p.Id == Id).FirstOrDefault();
+            }
+
+            return offers;
+        }
+
+        #endregion
+
+        #region Property Offers Status
+
+        public static PropertyOfferStatus GetPropertyOffersStatusById(int Id)
+        {
+            PropertyOfferStatus status = new PropertyOfferStatus();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                status = db.PropertyOfferStatus.Where(p => p.Id == Id).FirstOrDefault();
+            }
+
+            return status;
+        }
+
+        #endregion
+
         #region Enquiry
 
         public static void CreateEnquiry(Enquiry enquiry)

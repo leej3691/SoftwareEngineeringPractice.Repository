@@ -1,0 +1,64 @@
+﻿@model EstateAgents.WebPortal.Models.Properties.PropertyOffersViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Property Offers
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-search text-success hidden-xs"></i>
+        Property Offers
+    </h1>
+    <p>View property offer history</p>
+</div>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Property Address</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Withdraw</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PropertyOffers)
+        {
+            var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
+            var s = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyOffersStatusById(item.PropertyOfferStatusId);
+            int offer = (int)Math.Round(item.OfferAmount);
+            string offerAmount = String.Format("{0:C0}", offer);
+        <tr style="background:white;color:black;">
+            <td style="background:white;color:black;"><a style="text-decoration:none;color:black;" href="/Property/PropertyDetails/@p.Id">@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</a></td>
+            <td>@offerAmount</td>
+            <td>@Convert.ToDateTime(item.Created).ToShortDateString()</td>
+            <td>@s.Description</td>
+            @if (s.Id == 4)
+            {
+                <td> <a class="btn btn-success btn-block"disabled style="text-decoration:none;cursor:not-allowed;">Withdraw</a></td>
+            }
+            else
+            {
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/Property/PropertyOfferWithdraw/@item.Id">Withdraw</a></td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

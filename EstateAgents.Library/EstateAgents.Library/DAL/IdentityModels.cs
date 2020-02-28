@@ -50,6 +50,8 @@ namespace EstateAgents.Library.DAL
         public virtual DbSet<ChatbotQuestionsLive> ChatbotQuestionsLive { get; set; }
         public virtual DbSet<ChatbotQuestionType> ChatbotQuestionType { get; set; }
         public virtual DbSet<ChatbotTemplates> ChatbotTemplates { get; set; }
+        public virtual DbSet<PropertyOffers> PropertyOffers { get; set; }
+        public virtual DbSet<PropertyOfferStatus> PropertyOfferStatus { get; set; }
 
     }
 }

@@ -9,7 +9,7 @@
     </li>
 </ul>
 
-<div class="jumbotron">
+<div class="jumbotron" >
     <h1>
         <i class="fa fa-wpforms text-success hidden-xs"></i>
         Property Showroom
@@ -17,83 +17,92 @@
     <p>Properties for sale</p>
 </div>
 
-<div class="list-group">
+<div class="row" style="margin-top:-20px;">
+    <hr />
+    <div class="col-md-12">
+        <h3 class="text-success" style="margin-top:0;padding-bottom:15px;"><b>Latest Offers</b></h3>
+    </div>
+    <div class="col-md-12">
+        <div class="list-group">
 
+            <table id="dtShowroom" class="table table-striped table-bordered table-responsive" style="padding:0;">
+                <thead>
+                    <tr>
+                        <th class="col-md-3">Property Images</th>
+                        <th class="col-md-5">Address</th>
+                        <th class="col-md-2">Property Type</th>
 
+                        <th class="col-md-2">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                    @foreach (var item in Model.PropertyList)
+                    {
+                        var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyImagesByPropertyId(item.Id).FirstOrDefault();
+                        var base64 = Convert.ToBase64String(p.ImageData);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 
-    <table id="dtShowroom" class="table table-striped table-bordered table-responsive" style="padding:0;">
-        <thead>
-            <tr>
-                <th class="col-md-4">Property Images</th>
-                <th class="col-md-2">Property Type</th>
-                <th class="col-md-4">Address</th>
-                <th class="col-md-2">Price</th>
-            </tr>
-        </thead>
-        <tbody>
+                        <tr>
+                            <td>
+                                <a href="/Property/PropertyDetails/@item.Id">
+                                    <img class="img-responsive" src="@imgSrc">
+                                </a>
+                            </td>
 
-            @foreach (var item in Model.PropertyList)
-            {
-                var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyImagesByPropertyId(item.Id).FirstOrDefault();
-                var base64 = Convert.ToBase64String(p.ImageData);
-                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <td>
+                                <div class="PropertyDetailsMainAddress">
+                                    <div class="PropertyDetailsPrimary">
+                                        <p>
+                                            <span class="PropertyDetailsAddress">@item.AddressLine1, @item.AddressLine2, @item.AddressLine3, @item.AddressLine4, @item.AddressLine5, @item.Postcode</span>
+                                        </p>
+                                    </div>
 
-                <tr>
-                    <td>
-                        <a href="/Property/PropertyDetails/@item.Id">
-                            <img class="img-responsive" src="@imgSrc">
-                        </a>
-                    </td>
-                    <td>
-                        Detached
-                    </td>
-                    <td>
-                        <div class="PropertyDetailsMainAddress">
-                            <div class="PropertyDetailsPrimary">
-                                <p>
-                                    <span class="PropertyDetailsAddress">@item.AddressLine1, @item.AddressLine2, @item.AddressLine3, @item.AddressLine4, @item.AddressLine5, @item.Postcode</span>
-                                </p>
-                            </div>
+                                </div>
+                            </td>
+                            <td>
+                                Detached
+                            </td>
+                            <td>
+                                <div class="PropertyDetailsSecondary">
+                                    <p class="PropertyDetailsPrice">
+                                        @{
+                                            int price = (int)Math.Round(item.PropertyPrice);
+                                            string PriceFinal = String.Format("{0:C0}", price);
+                                        }
+                                        <span>@PriceFinal</span>
+                                    </p>
+                                    <p class="PropertyDetailsQualifier">
+                                        <span>Offers in excess of</span>
+                                    </p>
+                                    @if (item.PropertyStatusId == 3)
+                                    {
+                                        <span class="PropertyDetailsSold">Sold STC</span>
+                                    }
 
-                        </div>
-                    </td>
-                    <td>
-                        <div class="PropertyDetailsSecondary">
-                            <p class="PropertyDetailsPrice">
-                                @{
-                                    int price = (int)Math.Round(item.PropertyPrice);
-                                    string PriceFinal = String.Format("{0:C0}", price);
-                                }
-                                <span>@PriceFinal</span>
-                            </p>
-                            <p class="PropertyDetailsQualifier">
-                                <span>Offers in excess of</span>
-                            </p>
-                            @if (item.PropertyStatusId == 3)
-                            {
-                                <span class="PropertyDetailsSold">Sold STC</span>
-                            }
+                                </div>
+                            </td>
+                        </tr>
+                    }
 
-                        </div>
-                    </td>
-                </tr>
-            }
-
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+
 
 @section FooterScripts{
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
-    
+
     <script type="text/javascript">
 
         $(document).ready(function () {
             var dt = $('#dtShowroom').DataTable({
                 pageLength: 5,
-                bPaginate: true, 
+                bPaginate: true,
                 pagingType: "simple_numbers",
                 bInfo: false
             });

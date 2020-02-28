@@ -44,8 +44,6 @@
     <div class="col-md-12">
         <h3 class="text-success"><b>Find your dream home</b></h3>
     </div>
-    <hr />
-
 </div>
 
 @if (User.Identity.IsAuthenticated)
@@ -73,6 +71,12 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-sm-4 text-center">
+            <a href="/Property/PropertyOffers" class="service-icon">
+                <i class="fa fa-shopping-basket" title="Offers"></i>
+                <h3>Offers</h3>
+            </a>
+        </div>
         <div class="col-sm-4 text-center">
             <a href="/Messages/Messages" class="service-icon">
                 <i class="fa fa-envelope" title="Messages"></i>

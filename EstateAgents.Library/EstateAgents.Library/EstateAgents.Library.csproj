@@ -77,6 +77,8 @@
     <Compile Include="DAL\Property.cs" />
     <Compile Include="DAL\PropertyFeatures.cs" />
     <Compile Include="DAL\PropertyImages.cs" />
+    <Compile Include="DAL\PropertyOffers.cs" />
+    <Compile Include="DAL\PropertyOfferStatus.cs" />
     <Compile Include="DAL\PropertySaleType.cs" />
     <Compile Include="DAL\PropertySaved.cs" />
     <Compile Include="DAL\PropertyStatus.cs" />
@@ -137,6 +139,10 @@
     <Compile Include="Migrations\202002271137129_AdditionalDetailsAddedToPropertyTable.designer.cs">
       <DependentUpon>202002271137129_AdditionalDetailsAddedToPropertyTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002281305599_PropertyOffersAndStatusTables.cs" />
+    <Compile Include="Migrations\202002281305599_PropertyOffersAndStatusTables.designer.cs">
+      <DependentUpon>202002281305599_PropertyOffersAndStatusTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002271137129_AdditionalDetailsAddedToPropertyTable.resx">
       <DependentUpon>202002271137129_AdditionalDetailsAddedToPropertyTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002281305599_PropertyOffersAndStatusTables.resx">
+      <DependentUpon>202002281305599_PropertyOffersAndStatusTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

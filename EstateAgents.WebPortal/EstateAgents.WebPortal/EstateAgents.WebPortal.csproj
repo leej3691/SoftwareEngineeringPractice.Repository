@@ -226,6 +226,7 @@
     <Compile Include="Models\Properties\PropertyBookViewingViewModel.cs" />
     <Compile Include="Models\Properties\PropertyDetailsViewModel.cs" />
     <Compile Include="Models\Properties\PropertyMakeOfferViewModel.cs" />
+    <Compile Include="Models\Properties\PropertyOffersViewModel.cs" />
     <Compile Include="Models\Properties\PropertySearchViewModel.cs" />
     <Compile Include="Models\Properties\PropertySavedViewModel.cs" />
     <Compile Include="Models\Properties\PropertyShowRoomViewModel.cs" />
@@ -635,6 +636,7 @@
     <Content Include="Views\Settings\FAQ.cshtml" />
     <Content Include="Views\Home\Chatbot.cshtml" />
     <Content Include="Views\Property\PropertyViewings.cshtml" />
+    <Content Include="Views\Property\PropertyOffers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\EditorTemplates\" />

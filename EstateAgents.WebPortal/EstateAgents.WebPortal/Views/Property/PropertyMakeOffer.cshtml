@@ -14,3 +14,46 @@
         Make an Offer
     </li>
 </ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-search text-success hidden-xs"></i>
+        Make an Offer
+    </h1>
+    <p>Please use the form below to make an offer on the property.</p>
+</div>
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <b style="color:#4797A8;">Property Offer:</b> @Model.PropertyDetails.AddressLine1, @Model.PropertyDetails.AddressLine2, @Model.PropertyDetails.AddressLine3, @Model.PropertyDetails.AddressLine4, @Model.PropertyDetails.AddressLine5, @Model.PropertyDetails.Postcode
+    </li>
+</ul>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("PropertyMakeOfferRequest", "Property", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="sample-header">Make an Offer</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+
+                @Html.HiddenFor(m => m.ClientId)
+                @Html.HiddenFor(m => m.PropertyDetails.Id)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PropertyOffer.OfferAmount, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.PropertyOffer.OfferAmount, new { @class = "form-control", placeholder = "Enter the offer amount" })
+                        @Html.ValidationMessageFor(m => m.PropertyOffer.OfferAmount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Submit" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
