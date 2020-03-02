@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EstateAgents.IMS.Models;
+using EstateAgents.Library.DAL;
 
 namespace EstateAgents.IMS.Controllers
 {

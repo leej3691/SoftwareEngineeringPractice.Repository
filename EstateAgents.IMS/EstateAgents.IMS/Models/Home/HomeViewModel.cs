@@ -1,0 +1,25 @@
+﻿using EstateAgents.Library.DAL;
+using Microsoft.AspNet.Identity;
+using System;
+using System.Web;
+
+namespace EstateAgents.IMS.Models.Home
+{
+    public class HomeViewModel
+    {
+        public Employee EmployeeDetails { get; set; }
+
+        public HomeViewModel()
+        {
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                Guid UserId = Guid.Parse(HttpContext.Current.User.Identity.GetUserId());
+                this.EmployeeDetails = EstateAgentsRepository.GetEmployeeByUserId(UserId);
+            }
+            else
+            {
+                this.EmployeeDetails = new Employee();
+            }
+        }
+    }
+}

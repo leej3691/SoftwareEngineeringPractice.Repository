@@ -94,6 +94,22 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
+        #region Employee
+
+        public static Employee GetEmployeeByUserId(Guid UserId)
+        {
+            Employee employee = new Employee();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                employee = db.Employee.Where(c => c.UserId == UserId).FirstOrDefault();
+            }
+
+            return employee;
+        }
+
+        #endregion
+
         #region Property
 
         /// <summary>

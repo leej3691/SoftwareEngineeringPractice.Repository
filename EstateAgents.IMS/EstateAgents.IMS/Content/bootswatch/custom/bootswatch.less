@@ -1,0 +1,1320 @@
+// Flatly 3.1.1
+// Bootswatch
+// -----------------------------------------------------
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/content/fonts/opensans-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+// Generic Html ===============================================================
+
+body {
+    padding-bottom: 20px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+// Top Banner Icons ===========================================================
+
+.twitter {
+    position: absolute;
+    top: 14px;
+    right: 152px;
+    color: @gray-darker;
+}
+
+.linkedin {
+    position: absolute;
+    top: 14px;
+    right: 110px;
+    color: @gray-darker;
+}
+
+.instagram {
+    position: absolute;
+    top: 14px;
+    right: 62px;
+    color: @gray-darker;
+}
+
+.facebook {
+    position: absolute;
+    top: 14px;
+    right: 15px;
+    color: @gray-darker;
+}
+
+// Dropdown ===================================================================
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #000 !important;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    color: @brand-success;
+}
+
+// Navbar =====================================================================
+
+.navbar {
+    border-width: 0;
+
+    .navbar-collapse {
+        padding-left: 0px;
+    }
+
+    &-default {
+
+        .badge {
+            background-color: #fff;
+            color: @navbar-default-bg;
+        }
+    }
+
+    &-inverse {
+
+        .badge {
+            background-color: #fff;
+            color: @navbar-inverse-bg;
+        }
+    }
+
+    &-brand {
+        padding: 18.5px 15px 20.5px;
+    }
+
+    &-right {
+        background-color: @gray-darker;
+    }
+
+    &-right li a:hover {
+        color: #fff !important;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .navbar .navbar-collapse {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+// Buttons ====================================================================
+
+.btn:active {
+    .box-shadow(none);
+}
+
+.btn-group.open .dropdown-toggle {
+    .box-shadow(none);
+}
+
+// Typography =================================================================
+
+.text-primary,
+.text-primary:hover {
+    color: @brand-primary;
+}
+
+.text-success,
+.text-success:hover {
+    color: @brand-success;
+}
+
+.text-danger,
+.text-danger:hover {
+    color: @brand-danger;
+}
+
+.text-warning,
+.text-warning:hover {
+    color: @brand-warning;
+}
+
+.text-info,
+.text-info:hover {
+    color: @brand-info;
+}
+
+// Tables =====================================================================
+
+table,
+.table {
+
+    a {
+        text-decoration: underline;
+    }
+
+    .success,
+    .warning,
+    .danger,
+    .info {
+        color: #fff;
+
+        a {
+            color: #fff;
+        }
+    }
+
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+        border: none;
+    }
+
+    &-bordered > thead > tr > th,
+    &-bordered > tbody > tr > th,
+    &-bordered > tfoot > tr > th,
+    &-bordered > thead > tr > td,
+    &-bordered > tbody > tr > td,
+    &-bordered > tfoot > tr > td {
+        border: 1px solid @table-border-color;
+    }
+}
+
+// Forms ======================================================================
+
+.form-control,
+input, {
+    border-width: 2px;
+    .box-shadow(none);
+
+    &:focus {
+        border-color: @brand-info;
+        .box-shadow(none);
+    }
+}
+
+.select-has-feedback {
+    .form-control-feedback {
+        padding-right: 25px !important;
+    }
+}
+
+/* Added to move the validation asterix inline with the select feedback above */
+.form-horizontal .has-feedback .form-control-feedback {
+    padding-right: 25px;
+}
+
+.has-warning {
+    .help-block,
+    .control-label,
+    .radio,
+    .checkbox,
+    .radio-inline,
+    .checkbox-inline,
+    .form-control-feedback {
+        color: @brand-warning;
+    }
+
+    .form-control,
+    .form-control:focus {
+        border: 0;
+    }
+
+    .input-group-addon {
+        border-color: @brand-warning;
+    }
+}
+
+.has-error {
+    .help-block,
+    .control-label,
+    .radio,
+    .checkbox,
+    .radio-inline,
+    .checkbox-inline,
+    .form-control-feedback {
+        color: @brand-danger;
+    }
+
+    .form-control,
+    .form-control:focus {
+        border: 0;
+    }
+
+    .input-group-addon {
+        border-color: @brand-danger;
+    }
+}
+
+.has-success {
+    .help-block,
+    .control-label,
+    .radio,
+    .checkbox,
+    .radio-inline,
+    .checkbox-inline,
+    .form-control-feedback {
+        color: @brand-success;
+    }
+
+    .input-group-addon {
+        border-color: @brand-success;
+    }
+}
+
+// Navs =======================================================================
+
+.nav {
+    .open > a,
+    .open > a:hover,
+    .open > a:focus {
+        border-color: transparent;
+    }
+}
+
+.pager {
+    a,
+    a:hover {
+        color: #fff;
+    }
+
+    .disabled {
+        & > a,
+        & > a:hover,
+        & > a:focus,
+        & > span {
+            background-color: @pagination-disabled-bg;
+        }
+    }
+}
+
+// Indicators =================================================================
+
+.alert {
+
+    a,
+    .alert-link {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    .close {
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.4;
+
+        &:hover,
+        &:focus {
+            color: #fff;
+            opacity: 1;
+        }
+    }
+
+    &.alert-danger {
+        display: none;
+
+        &.open {
+            display: block;
+        }
+    }
+}
+
+// Progress bars ==============================================================
+
+.progress {
+    height: 10px;
+    .box-shadow(none);
+
+    .progress-bar {
+        font-size: 10px;
+        line-height: 10px;
+    }
+}
+
+// Containers =================================================================
+
+.well {
+    background-color: fade(@brand-success, 30%);
+    min-height: 390px;
+    .box-shadow(none);
+}
+
+.service-icon {
+    color: @gray-darker;
+
+    &:hover {
+        color: @brand-success;
+        text-decoration: none;
+    }
+
+    i {
+        font-size: 100px !important;
+    }
+}
+
+.footer-logo {
+    float: left;
+    margin-right: 12px;
+    height: 40px;
+}
+
+hr {
+    background-color: @gray-lighter;
+    height: 3px;
+    border: 0;
+    border-bottom:3px dashed #eee;
+}
+
+article {
+    margin-bottom: 21px;
+}
+
+.navbar-toggle {
+    border: 1px solid #fff !important;
+}
+
+#home-1:hover .home-1 {
+    height: 40%;
+}
+
+#home-2:hover .home-2, #home-3:hover .home-3 {
+    height: 80%;
+}
+
+#home-4:hover .home-4, #home-5:hover .home-5 {
+    height: 60%;
+}
+
+// Responsive font sizes =================================================================
+
+@media (max-width: @screen-lg-min) {
+
+    #home-1:hover .home-1 {
+        height: 50%;
+    }
+
+    #home-4:hover .home-4, #home-5:hover .home-5 {
+        height: 75%;
+    }
+
+    #home-2:hover .home-2 {
+        height: 90%;
+    }
+
+    #home-3:hover .home-3 {
+        height: 100%;
+    }
+
+    #home-5:hover .home-5 {
+        height: 70%;
+    }
+
+    #home-2, #home-3, #home-5 {
+
+        .content-padding {
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .social-banner {
+        padding-top: 8px !important;
+        padding-bottom: 7px !important;
+    }
+}
+
+@media (max-width: @screen-md-min) {
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    h3 {
+        font-size: 19px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 17px;
+    }
+
+    .jumbotron {
+
+        h1 {
+            font-size: 32px;
+        }
+    }
+
+    #home-1:hover .home-1 {
+        height: 50%;
+    }
+
+    #home-2:hover .home-2, #home-3:hover .home-3 {
+        height: 40%;
+    }
+
+    #home-5:hover .home-5 {
+        height: 35%;
+    }
+
+    .img-responsive {
+        width: 100%;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+
+    .jumbotron {
+
+        .container &,
+        .container-fluid & {
+            padding-left: (15px);
+            padding-right: (15px);
+        }
+    }
+
+    .navbar {
+        margin-left: -15px;
+        margin-right: -15px;
+        background-color: @brand-success;
+        margin-bottom: 0;
+    }
+
+    .navbar-inverse {
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: 0;
+    }
+
+    .home-column a {
+        height: 120px !important;
+        padding-top: 4px !important;
+    }
+
+    #home-1:hover .home-1 {
+        height: 70%;
+    }
+
+    #home-2:hover .home-2 {
+        height: 60%;
+    }
+
+    #home-3:hover .home-3 {
+        height: 65%;
+    }
+
+    #home-4:hover .home-4 {
+        height: 90%;
+    }
+
+    #home-5:hover .home-5 {
+        height: 50%;
+    }
+
+    .navbar-brand {
+        padding: 10px 15px 20px;
+    }
+
+    .dropdown-header {
+        color: @gray-lighter;
+    }
+
+    .twitter {
+        right: 150px;
+    }
+
+    .facebook {
+        right: 110px;
+    }
+
+    .phone {
+        position: absolute;
+        top: 14px;
+        right: 72px;
+    }
+
+    #home-1, #home-2, #home-3, #home-4, #home-5 {
+
+        p.lead {
+            font-size: 22.5px !important;
+        }
+    }
+
+    #home-1, #home-2, #home-3, #home-4, #home-5 {
+
+        .content-padding {
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+@media (max-width: @screen-xs-min) {
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .jumbotron p {
+        font-size: 17px;
+    }
+
+    p.lead {
+        font-size: 16px;
+    }
+
+    .navbar-nav {
+        margin-top: 0;
+    }
+
+    #home-1:hover .home-1, #home-2:hover .home-2, #home-3:hover .home-3, #home-4:hover .home-4, #home-5:hover .home-5 {
+        height: 100%;
+    }
+}
+
+
+.fa-6x {
+    font-size: 6em;
+}
+
+.fa-7x {
+    font-size: 7em;
+}
+
+.fa-8x {
+    font-size: 8em;
+}
+
+.fa-9x {
+    font-size: 9em;
+}
+
+.fa-10x {
+    font-size: 10em;
+}
+
+.home-icon {
+
+    .home-icon-btn {
+        background-color: @brand-success;
+        display: inline-block;
+        width: 180px;
+        padding: 10px;
+        border-radius: 25px;
+        color: #fff;
+
+        i {
+            margin-left: 10px;
+        }
+    }
+}
+
+.home-icon:hover {
+    color: @gray-darker;
+
+    .home-icon-btn {
+        background-color: @gray-darker;
+    }
+}
+
+// Loader =================================================================
+
+#ph-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: @gray-lighter;
+    -moz-opacity: 0.30;
+    opacity: .30;
+    filter: alpha(opacity=30);
+    display: none;
+
+    .ajax-loader {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-left: -32px;
+        margin-top: -32px;
+        display: block;
+    }
+
+    &.open {
+        display: initial;
+    }
+}
+
+// Cookie Control =================================================================
+
+#ccc-icon a {
+    color: @brand-success !important;
+}
+
+.ccc-outer {
+    border: 1px solid @brand-success !important;
+}
+
+.ccc-hdr {
+    color: @brand-success !important;
+    background-color: @brand-success !important;
+    border-bottom: @brand-success !important;
+}
+
+#cccwr .ccc-gr, #cccwr .ccc-gr:hover, #cccwr .ccc-or, #cccwr .ccc-or:hover {
+    background-color: @brand-success !important;
+}
+
+// Messages
+
+#messageList {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    height: 375px;
+    overflow-y: auto;
+    border: 2px solid #dce4ec;
+}
+
+div.ccMessageIn {
+    float: left;
+    position: relative;
+    width: 85%;
+    text-align: center;
+    background-color: @brand-success;
+    padding: 10px;
+    color: #fff;
+}
+
+div.ccMessageIn:after {
+    float: right;
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 30px;
+    bottom: -20px;
+    border: 10px solid;
+    border-color: @brand-success transparent transparent @brand-success;
+}
+
+
+div.ccMessageOut {
+    float: right;
+    position: relative;
+    width: 85%;
+    text-align: center;
+    padding: 10px;
+    color: @gray-darker;
+    background-color: @gray-lighter;
+}
+
+div.ccMessageOut:after {
+    float: left;
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 30px;
+    bottom: -20px;
+    border: 10px solid;
+    border-color: @gray-lighter @gray-lighter transparent transparent;
+}
+
+.ccMessageLbl {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+div.ccMessageInLbl {
+    text-align: right;
+    margin-right: 15%;
+}
+
+div.ccMessageOutLbl {
+    text-align: left;
+    margin-left: 15%;
+}
+
+// Local Generic Styles =====================================================
+
+.logo {
+    padding-top: 10px;
+}
+
+.message-box {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.disable-anchor {
+    pointer-events: none;
+}
+
+.milestones {
+    cursor: default;
+}
+
+.content-padding {
+    padding: 15px;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 0;
+    overflow: hidden;
+    height: 61px;
+    transition: .5s ease;
+    opacity: 0.90;
+    margin-right: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #fff;
+}
+
+#home-1 .home-1, #home-2 .home-2, #home-3 .home-3 {
+    margin-right: 0;
+}
+
+.home-column {
+    opacity: 0.8;
+}
+
+.home-column a {
+    display: block;
+    height: 580px;
+    padding-top: 190px;
+}
+
+.home-column a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#banner-title, #banner-content {
+    text-align: right;
+    font-size: 28px;
+    padding-right: 10px;
+    background-color: #717271;
+}
+
+#banner-cover {
+    background-size: cover;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    position: relative;
+    min-height: 300px;
+}
+
+.banner-cover-image {
+    width: 200%;
+    display: none;
+    position: absolute;
+    margin-top: -20px;
+    z-index: -1;
+}
+
+.banner-cover-image-home {
+    width: 400%;
+}
+
+#banner-title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+#banner-buttons {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+@media (min-width: 768px) {
+
+    #banner-cover {
+        background-attachment: fixed;
+    }
+}
+
+// Everyday Legal Articles
+
+#everyday-legal-featured-articles figure {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+#everyday-legal-featured-articles figure img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+}
+
+#everyday-legal-featured-articles figure:hover img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+// Datatables ===============================================================
+
+.dt-action-row {
+    width: 1%;
+}
+
+// Angular Styled Checkboxes
+
+label .check {
+    font-size: 15px;
+}
+
+label.has-error {
+    margin-right: 60px;
+}
+
+input[type=checkbox].gw-checkbox {
+    display: none;
+}
+
+input[type=checkbox].gw-checkbox ~ label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+}
+
+input[type=checkbox].gw-checkbox ~ label:before {
+    content: "\f096";
+}
+
+input[type=checkbox].gw-checkbox ~ label:before {
+    letter-spacing: 20px;
+}
+
+input[type=checkbox].gw-checkbox:checked ~ label:before {
+    content: "\f046";
+}
+
+input[type=checkbox].gw-checkbox:checked ~ label:before {
+    letter-spacing: 17px;
+}
+
+// Background Colours
+
+.bg-gray-darker {
+    background-color: @gray-darker;
+}
+
+.bg-gray-dark {
+    background-color: @gray-dark;
+}
+
+.bg-gray {
+    background-color: @gray;
+}
+
+.bg-gray-light {
+    background-color: @gray-light;
+}
+
+.bg-gray-lighter {
+    background-color: @gray-lighter;
+}
+
+// Showroom Datatable ===============================================================
+
+.dtShowroom {
+    border: 0px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+}
+
+.dtShowroom a {
+    text-decoration: none;
+}
+
+.dtShowroom tbody tr {
+    background: none;
+}
+
+.dtShowroom tbody tr td {
+    padding: 0px;
+}
+
+.dtShowroom thead {
+    display: none;
+}
+
+// Google Maps ===============================================================
+#map {
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+// Header Panel ===============================================================
+
+.header-div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    min-height: 400px;
+    position: relative;
+}
+
+.header-panel {
+    min-height: 400px;
+    max-width: 420px;
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    position: relative;
+}
+
+.header-panel hr {
+    height: 3px;
+    width: 75%;
+}
+
+.header-panel p {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.header-panel h1 {
+    margin-bottom: 20px;
+    font-size: 3em;
+    text-shadow: 1.5px 1.5px 1.5px black;
+}
+
+.header-panel a {
+    text-decoration: none;
+}
+
+.header-button1 {
+    font-size: 22px;
+    border-radius: 8px;
+    padding: 7px 5px;
+    max-width: 250px;   
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
+    color: @brand-success;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.header-button1:hover {
+    background-color: @brand-success;
+    color: white;
+}
+
+.header-button1:hover i { 
+    color: white; 
+}
+
+.header-button1 i { 
+    transition: 0.3s; 
+    color: @brand-success; 
+}
+
+@media (max-width: @screen-md-max) {
+    
+    .header-div {
+        background-position: 55% center;
+    }
+
+}
+
+@media (max-width: @screen-sm-max) {
+    
+    .header-div {
+        background-position: 70% center;
+    }
+
+    .header-panel {
+        max-width: unset;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+}
+
+@media (max-width: @screen-xs-min) {
+
+    .header-panel h1 {
+        font-size: 2.5em;
+    }
+    
+    .header-panel p {
+        font-size: 1.1em;
+    }
+
+}
+
+// Custom Home Page / Nav / Footer ===============================================================
+.form-enquiry {
+    background-color: #4797a8;
+    padding: 0 0 10px 0;
+}
+
+.form-enquiry.basic {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+}
+
+.form-control-enquiry {
+    background-color: #4797a8;
+    color: white;
+}
+
+.footer {
+    background-color: #666666;
+    color: white;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.footer-logo-container {
+    width: 220px;
+    padding: 20px 20px 20px 40px;
+}
+
+.footer-link {
+    color: white;
+}
+
+.footer-li-header {
+    padding-bottom: 10px;
+}
+
+.footer-ul {
+    list-style-type: none;
+}
+
+.footer-col {
+    width: 200px;
+}
+
+.footer-col-bg {
+    width: 250px;
+}
+
+.footer-content-bottom-row {
+    padding-right: 20px;
+}
+
+.footer-content-bottom-col {
+    padding: 10px 10px 20px 40px;
+}
+
+.our-clients-say {
+    text-align: left;
+    font-size: 62px;
+    padding-left: 5%;
+    margin-top: -20px;
+    font-weight: 900;
+}
+
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .content-padding {
+        padding-bottom: 20px;
+    }
+}
+
+
+/* Iphone X */
+@media (min-width: 375px) and (max-width: 812px) {
+
+
+    .our-clients-say {
+        line-height: 50px;
+        padding-bottom: 20px;
+    }
+
+    .content-padding {
+        padding-bottom: 0px;
+    }
+
+    .footer-logo-container {
+        display: none;
+    }
+
+    .form-enquiry.basic {
+        //padding-bottom:30px;
+    }
+}
+
+/* Iphone 5/SE */
+@media (min-width: 320px) and (max-width: 568px) {
+
+    .solicitor-widget {
+        margin-left: 40px;
+    }
+
+    .our-clients-say {
+        line-height: 50px;
+        padding-bottom: 20px;
+    }
+
+    .content-padding {
+        padding-bottom: 0px;
+    }
+
+    .footer-logo-container {
+        display: none;
+    }
+
+    .footer-ul {
+        list-style-position: inside;
+        padding-left: 25px;
+    }
+}
+
+.form-control-enquiry::placeholder,
+.form-control-enquiry::-webkit-input-placeholder {
+    color: white;
+}
+
+form:not(:only-child) div.checkbox-container:nth-child(even) div {
+
+    background-color: @table-bg-accent;
+    padding-bottom: 20px;
+    margin-right: 15px;
+
+    .checkbox-inline{
+        margin-top: 10px
+    }
+
+    .form-control-feedback{
+        padding-top: 10px
+    }
+
+}
+
+form:only-child div.checkbox-container:nth-child(even) div {
+    margin-bottom: 10px;
+}
+
+div.checkbox-container:nth-child(odd) div {
+
+    margin-bottom: 10px;
+
+    checkbox-inline {
+        padding-top:0;
+    }
+
+}
+
+/* Timeline for content management */
+
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: @brand-info;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #4797A8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+/* Testimonial Carousel */
+
+.quote {
+    color: rgba(0,0,0,.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/*-------------------------------*/
+/*    Carousel Fade Transition   */
+/*-------------------------------*/
+
+#fade-quote-carousel.carousel {
+  padding-bottom: 60px;
+}
+#fade-quote-carousel.carousel .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-inner .active {
+  opacity: 1;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-indicators {
+  bottom: 10px;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li {
+  background-color: @brand-success;
+  border: none;
+}
+#fade-quote-carousel blockquote {
+    text-align: center;
+    border: none;
+}
+#fade-quote-carousel .profile-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 100px;
+}
+

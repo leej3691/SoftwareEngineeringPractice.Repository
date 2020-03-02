@@ -36,5 +36,6 @@ namespace EstateAgents.Library.DAL
         public int JobTitleId { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime? DateLeft { get; set; }
+        public Guid UserId { get; set; }
     }
 }
