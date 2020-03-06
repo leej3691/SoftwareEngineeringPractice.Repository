@@ -143,6 +143,10 @@
     <Compile Include="Migrations\202002281305599_PropertyOffersAndStatusTables.designer.cs">
       <DependentUpon>202002281305599_PropertyOffersAndStatusTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003061502236_MissingMigrations1.cs" />
+    <Compile Include="Migrations\202003061502236_MissingMigrations1.designer.cs">
+      <DependentUpon>202003061502236_MissingMigrations1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -189,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002281305599_PropertyOffersAndStatusTables.resx">
       <DependentUpon>202002281305599_PropertyOffersAndStatusTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003061502236_MissingMigrations1.resx">
+      <DependentUpon>202003061502236_MissingMigrations1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
