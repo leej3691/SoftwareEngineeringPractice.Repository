@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,16 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\EstateAgents.WebPortal\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\EstateAgents.WebPortal\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\EstateAgents.WebPortal\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\EstateAgents.WebPortal\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <HintPath>..\..\EstateAgents.WebPortal\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -67,6 +66,7 @@
     <Compile Include="DAL\ChatbotQuestions.cs" />
     <Compile Include="DAL\ChatbotQuestionType.cs" />
     <Compile Include="DAL\ChatbotTemplates.cs" />
+    <Compile Include="DAL\ClientType.cs" />
     <Compile Include="DAL\Employee.cs" />
     <Compile Include="DAL\Client.cs" />
     <Compile Include="DAL\EmployeeJobTitle.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="DAL\PropertySaleType.cs" />
     <Compile Include="DAL\PropertySaved.cs" />
     <Compile Include="DAL\PropertyStatus.cs" />
+    <Compile Include="DAL\PropertyViewingStatus.cs" />
     <Compile Include="DAL\PropertyType.cs" />
     <Compile Include="DAL\PropertyViewings.cs" />
     <Compile Include="Enums\YesNo.cs" />
@@ -91,61 +92,21 @@
     <Compile Include="Extensions\PropertyInfoExtension.cs" />
     <Compile Include="Helpers\RegularExpressionHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
-    <Compile Include="Migrations\202002171706230_initial.cs" />
-    <Compile Include="Migrations\202002171706230_initial.designer.cs">
-      <DependentUpon>202002171706230_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202003072309146_initial.cs" />
+    <Compile Include="Migrations\202003072309146_initial.Designer.cs">
+      <DependentUpon>202003072309146_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002171717598_RemoveTestTable.cs" />
-    <Compile Include="Migrations\202002171717598_RemoveTestTable.designer.cs">
-      <DependentUpon>202002171717598_RemoveTestTable.cs</DependentUpon>
+    <Compile Include="Migrations\202003080145138_ClientType.cs" />
+    <Compile Include="Migrations\202003080145138_ClientType.Designer.cs">
+      <DependentUpon>202003080145138_ClientType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002180906598_AllTables.cs" />
-    <Compile Include="Migrations\202002180906598_AllTables.designer.cs">
-      <DependentUpon>202002180906598_AllTables.cs</DependentUpon>
+    <Compile Include="Migrations\202003080209549_StaffProcessedMessages.cs" />
+    <Compile Include="Migrations\202003080209549_StaffProcessedMessages.Designer.cs">
+      <DependentUpon>202003080209549_StaffProcessedMessages.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002181106411_AddedUserIdToClient.cs" />
-    <Compile Include="Migrations\202002181106411_AddedUserIdToClient.designer.cs">
-      <DependentUpon>202002181106411_AddedUserIdToClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002240905015_CreateEnquiryPropertyViewingsAndPropertyFeatures.cs" />
-    <Compile Include="Migrations\202002240905015_CreateEnquiryPropertyViewingsAndPropertyFeatures.designer.cs">
-      <DependentUpon>202002240905015_CreateEnquiryPropertyViewingsAndPropertyFeatures.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002240906506_PropertyIdAddedToPropertyFeatures.cs" />
-    <Compile Include="Migrations\202002240906506_PropertyIdAddedToPropertyFeatures.designer.cs">
-      <DependentUpon>202002240906506_PropertyIdAddedToPropertyFeatures.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002241406489_ChatbotTables.cs" />
-    <Compile Include="Migrations\202002241406489_ChatbotTables.designer.cs">
-      <DependentUpon>202002241406489_ChatbotTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.cs" />
-    <Compile Include="Migrations\202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.designer.cs">
-      <DependentUpon>202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002241512508_ChatbotSequence.cs" />
-    <Compile Include="Migrations\202002241512508_ChatbotSequence.designer.cs">
-      <DependentUpon>202002241512508_ChatbotSequence.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.cs" />
-    <Compile Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.designer.cs">
-      <DependentUpon>202002241617597_AddedPostedAndClosedDatesToProperty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002261347597_AddedPropertyIdToViewingsAndMessages.cs" />
-    <Compile Include="Migrations\202002261347597_AddedPropertyIdToViewingsAndMessages.designer.cs">
-      <DependentUpon>202002261347597_AddedPropertyIdToViewingsAndMessages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002271137129_AdditionalDetailsAddedToPropertyTable.cs" />
-    <Compile Include="Migrations\202002271137129_AdditionalDetailsAddedToPropertyTable.designer.cs">
-      <DependentUpon>202002271137129_AdditionalDetailsAddedToPropertyTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002281305599_PropertyOffersAndStatusTables.cs" />
-    <Compile Include="Migrations\202002281305599_PropertyOffersAndStatusTables.designer.cs">
-      <DependentUpon>202002281305599_PropertyOffersAndStatusTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003061502236_MissingMigrations1.cs" />
-    <Compile Include="Migrations\202003061502236_MissingMigrations1.designer.cs">
-      <DependentUpon>202003061502236_MissingMigrations1.cs</DependentUpon>
+    <Compile Include="Migrations\202003080240242_ViewingStatus.cs" />
+    <Compile Include="Migrations\202003080240242_ViewingStatus.Designer.cs">
+      <DependentUpon>202003080240242_ViewingStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,59 +116,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002171706230_initial.resx">
-      <DependentUpon>202002171706230_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002171717598_RemoveTestTable.resx">
-      <DependentUpon>202002171717598_RemoveTestTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002180906598_AllTables.resx">
-      <DependentUpon>202002180906598_AllTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002181106411_AddedUserIdToClient.resx">
-      <DependentUpon>202002181106411_AddedUserIdToClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002240905015_CreateEnquiryPropertyViewingsAndPropertyFeatures.resx">
-      <DependentUpon>202002240905015_CreateEnquiryPropertyViewingsAndPropertyFeatures.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002240906506_PropertyIdAddedToPropertyFeatures.resx">
-      <DependentUpon>202002240906506_PropertyIdAddedToPropertyFeatures.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002241406489_ChatbotTables.resx">
-      <DependentUpon>202002241406489_ChatbotTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.resx">
-      <DependentUpon>202002241416175_ChatbotQuestionsLiveAddedQuestionAnswer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002241512508_ChatbotSequence.resx">
-      <DependentUpon>202002241512508_ChatbotSequence.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002241617597_AddedPostedAndClosedDatesToProperty.resx">
-      <DependentUpon>202002241617597_AddedPostedAndClosedDatesToProperty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002261347597_AddedPropertyIdToViewingsAndMessages.resx">
-      <DependentUpon>202002261347597_AddedPropertyIdToViewingsAndMessages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002271137129_AdditionalDetailsAddedToPropertyTable.resx">
-      <DependentUpon>202002271137129_AdditionalDetailsAddedToPropertyTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002281305599_PropertyOffersAndStatusTables.resx">
-      <DependentUpon>202002281305599_PropertyOffersAndStatusTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003061502236_MissingMigrations1.resx">
-      <DependentUpon>202003061502236_MissingMigrations1.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Models\" />
+    <Folder Include="Test\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <EmbeddedResource Include="Migrations\202003072309146_initial.resx">
+      <DependentUpon>202003072309146_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003080145138_ClientType.resx">
+      <DependentUpon>202003080145138_ClientType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003080209549_StaffProcessedMessages.resx">
+      <DependentUpon>202003080209549_StaffProcessedMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003080240242_ViewingStatus.resx">
+      <DependentUpon>202003080240242_ViewingStatus.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\..\EstateAgents.WebPortal\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

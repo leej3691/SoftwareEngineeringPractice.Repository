@@ -1,0 +1,101 @@
+﻿@model EstateAgents.IMS.Models.CustomerManagement.ManageCustomersViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Customer Management
+    </li>
+    <li>
+        Manage Customers
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-user text-success hidden-xs"></i>
+        Manage Customers
+    </h1>
+    <p>View a list of customers</p>
+</div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Buyers</b></h3>
+    </div>
+</div>
+
+<hr />
+<table id="buyers" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Details</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Buyers)
+        {
+            var ctype = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientTypeDescriptionById(item.ClientTypeId);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@item.Title @item.Forename @item.Surname</td>
+                <td>@ctype</td>
+                <td>@item.Email</td>
+                <td>@item.Mobile</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/CustomerDetails/@item.Id">Details</a></td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/CustomerMessages/@item.Id">Messages</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Vendors</b></h3>
+    </div>
+</div>
+
+<hr />
+
+<table id="vendors" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Details</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vendors)
+        {
+            var ctype = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientTypeDescriptionById(item.ClientTypeId);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@item.Title @item.Forename @item.Surname</td>
+                <td>@ctype</td>
+                <td>@item.Email</td>
+                <td>@item.Mobile</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/CustomerDetails/@item.Id">Details</a></td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/CustomerMessages/@item.Id">Messages</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#buyers').DataTable();
+            $('#vendors').DataTable();
+        });
+    </script>
+}

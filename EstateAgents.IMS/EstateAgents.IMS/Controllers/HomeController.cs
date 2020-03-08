@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstateAgents.IMS.Models.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace EstateAgents.IMS.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+            return View(model);
         }
     }
 }

@@ -1,0 +1,68 @@
+﻿@model EstateAgents.IMS.Models.CustomerManagement.ManageMessagesViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Customer Management
+    </li>
+    <li>
+        Manage Messages
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-envelope text-success hidden-xs"></i>
+        Manage Messages
+    </h1>
+    <p>View a list of messages</p>
+</div>
+
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Unprocessed Messages</b></h3>
+    </div>
+</div>
+
+<hr />
+
+<table id="messages" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Message</th>
+            <th>Reply</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Messages)
+        {
+            var client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var ctype = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientTypeDescriptionById(client.ClientTypeId);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@client.Title @client.Forename @client.Surname</td>
+                <td>@ctype</td>
+                <td>@Convert.ToDateTime(item.MessageDate).ToShortDateString()</td>
+                <td>@item.MessageTime</td>
+                <td>@item.MessageBody</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/MessageReply/@item.Id">Reply</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#messages').DataTable();
+        });
+    </script>
+}

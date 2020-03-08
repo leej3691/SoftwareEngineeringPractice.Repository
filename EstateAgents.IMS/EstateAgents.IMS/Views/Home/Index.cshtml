@@ -1,44 +1,64 @@
 ﻿@model EstateAgents.IMS.Models.Home.HomeViewModel
-@{
-    ViewBag.Title = "Home Page";
-}
-
 
 <div class="jumbotron" href="/articles" style="margin-bottom:10px;">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <h1><i Class="fa fa-smile-o text-success hidden-xs"></i> Hi @Model.Employee.Forename</h1>
-        <p> Welcome to your LJ Properties <b class="text-success">Dashboard</b> </p>
-    }
-    else
-    {
-        <div id="register-content">
-
-            <h1>
-                <i class="fa fa-sign-in text-success hidden-xs"></i>
-                Register today
-            </h1>
-
-            <div class="row">
-
-                <div class="col-sm-9 col-lg-10">
-                    @if (User.Identity.IsAuthenticated == false)
-                    {
-                        <p class="col-sm-12 hidden-xs">
-                            Already a member? <a href="/account/login">Click here</a>
-                        </p>
-                    }
-                </div>
-
-                <div class="col-sm-3 col-lg-2">
-                    <a class="btn btn-success btn-block" href="/account/register">Register</a>
-                </div>
-
-            </div>
-        </div>
-    }
-
+    <h1><i Class="fa fa-smile-o text-success hidden-xs"></i> Hi @Model.EmployeeDetails.Forename</h1>
+    <p> Welcome to your Employee <b class="text-success">Dashboard</b> </p>
 </div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Manage your workload below</b></h3>
+    </div>
+</div>
+
+<hr/>
+<div class="row" style="margin-bottom:20px;">
+    <div class="col-sm-3 text-center">
+        <a href="/CustomerManagement/ManageCustomers" class="service-icon">
+            <i class="fa fa-user" title="Manage Customers"></i>
+            <h3>Manage Customers</h3>
+        </a>
+    </div>
+    <div class="col-sm-3 text-center">
+        <a href="/CustomerManagement/ManageMessages" class="service-icon">
+            <i class="fa fa-envelope" title="Manage Messages"></i>
+            <h3>Manage Messages</h3>
+        </a>
+    </div>
+    <div class="col-sm-3 text-center">
+        <a href="/PropertyManagement/ManageViewings" class="service-icon">
+            <i class="fa fa-search-plus" title="Manage Viewings"></i>
+            <h3>Manage Viewings</h3>
+        </a>
+    </div>
+    <div class="col-sm-3 text-center">
+        <a href="/PropertyManagement/ManageOffers" class="service-icon">
+            <i class="fa fa-money" title="Manage Offers"></i>
+            <h3>Manage Offers</h3>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 text-center">
+        <a href="/ServiceManagement/ManageValuations" class="service-icon">
+            <i class="fa fa-percent" title="Manage Valuations"></i>
+            <h3>Manage Valuations</h3>
+        </a>
+    </div>
+    <div class="col-sm-3 text-center">
+        <a href="/ServiceManagement/ManageRemovals" class="service-icon">
+            <i class="fa fa-exchange" title="ManageRemovals"></i>
+            <h3>Manage Removals</h3>
+        </a>
+    </div>
+    <div class="col-sm-3 text-center">
+        <a href="/ServiceManagement/ManageBrokers" class="service-icon">
+            <i class="fa fa-user-plus" title="ManageBrokers"></i>
+            <h3>Manage Brokers</h3>
+        </a>
+    </div>
+</div>
+<hr />
 
 
 

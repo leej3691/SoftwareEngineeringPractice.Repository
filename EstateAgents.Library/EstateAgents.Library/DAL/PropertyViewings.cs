@@ -16,5 +16,6 @@ namespace EstateAgents.Library.DAL
         public string ViewingTime { get; set; }
         public int ClientId { get; set; }
         public int PropertyId { get; set; }
+        public int PropertyViewingStatusId { get; set; }
     }
 }

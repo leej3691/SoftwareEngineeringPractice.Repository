@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace EstateAgents.Library.DAL
     /// </summary>
     public class EstateAgentsRepository
     {
+
         #region Client
 
         /// <summary>
@@ -74,6 +76,41 @@ namespace EstateAgents.Library.DAL
             return client;
         }
 
+        public static List<Client> GetAllClients()
+        {
+            List<Client> client = new List<Client>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                client = db.Client.ToList();
+            }
+
+            return client;
+        }
+
+        public static List<Client> GetAllBuyers()
+        {
+            List<Client> client = new List<Client>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                client = db.Client.Where(c => c.ClientTypeId == 1).ToList();
+            }
+
+            return client;
+        }
+
+        public static List<Client> GetAllVendors()
+        {
+            List<Client> client = new List<Client>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                client = db.Client.Where(c => c.ClientTypeId == 2).ToList();
+            }
+
+            return client;
+        }
 
         /// <summary>
         /// Client - Get client by client id
@@ -90,6 +127,22 @@ namespace EstateAgents.Library.DAL
             }
 
             return client;
+        }
+
+        #endregion
+
+        #region Client Type
+
+        public static string GetClientTypeDescriptionById(int Id)
+        {
+            string ctype = "";
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                ctype = db.ClientType.Where(c => c.Id == Id).FirstOrDefault().Description;
+            }
+
+            return ctype;
         }
 
         #endregion
@@ -367,6 +420,46 @@ namespace EstateAgents.Library.DAL
             return p;
         }
 
+        public static List<PropertyViewings> GetUnprocessedPropertyViewings()
+        {
+            List<PropertyViewings> viewings = new List<PropertyViewings>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                viewings = db.PropertyViewings.Where(p => p.PropertyViewingStatusId == 1).ToList();
+            }
+
+            return viewings;
+        }
+
+        public static List<PropertyViewings> GetScheduledPropertyViewings()
+        {
+            List<PropertyViewings> viewings = new List<PropertyViewings>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                viewings = db.PropertyViewings.Where(p => p.PropertyViewingStatusId == 2).ToList();
+            }
+
+            return viewings;
+        }
+
+        #endregion
+
+        #region Property Viewings Status
+
+        public static string GetPropertyViewingStatusDescriptionById(int Id)
+        {
+            string ctype = "";
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                ctype = db.PropertyViewingStatus.Where(c => c.Id == Id).FirstOrDefault().Description;
+            }
+
+            return ctype;
+        }
+
         #endregion
 
         #region Property Offers
@@ -428,6 +521,23 @@ namespace EstateAgents.Library.DAL
             }
 
             return status;
+        }
+
+        #endregion
+
+        #region Messages
+
+
+        public static List<Messages> GetUnprocessedMessages()
+        {
+            List<Messages> m = new List<Messages>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                m = db.Messages.Where(p => p.StaffProcessed == null).ToList();
+            }
+
+            return m;
         }
 
         #endregion
@@ -596,36 +706,6 @@ namespace EstateAgents.Library.DAL
             return t;
         }
 
-        #endregion
-
-        #region Examples
-        //CREATE
-
-
-        //    return user;
-        //}
-        //UPDATE
-        //public static void UpdateUser(User user)
-        //{
-        //    using (ChatbotDBContext db = new ChatbotDBContext())
-        //    {
-        //        db.User.Attach(user);
-        //        db.Entry(user).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //    }
-        //}
-        //GET
-        //public static User GetUserByUserId(int UserId)
-        //{
-        //    User u = new User();
-
-        //    using (ChatbotDBContext db = new ChatbotDBContext())
-        //    {
-        //        u = db.User.Where(c => c.Id == UserId).FirstOrDefault();
-        //    }
-
-        //    return u;
-        //}
         #endregion
     }
 }

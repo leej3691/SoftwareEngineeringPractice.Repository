@@ -1,0 +1,106 @@
+﻿@model EstateAgents.IMS.Models.PropertyManagement.ManageViewingsViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Property Management
+    </li>
+    <li>
+        Manage Viewings
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-search-plus text-success hidden-xs"></i>
+        Manage Viewings
+    </h1>
+    <p>View a list of viewings</p>
+</div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Unprocessed Viewings</b></h3>
+    </div>
+</div>
+
+<hr />
+
+<table id="unprocessedviewings" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Viewing Address</th>
+            <th>Viewing Date</th>
+            <th>Viewing Time</th>
+            <th>Message</th>
+            <th>Reply</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UnprocessedViewings)
+        {
+            var client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
+            var status = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyViewingStatusDescriptionById(item.PropertyViewingStatusId);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@client.Title @client.Forename @client.Surname</td>
+                <td>@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</td>
+                <td>@Convert.ToDateTime(item.ViewingDate).ToShortDateString()</td>
+                <td>@item.ViewingTime</td>
+                <td>@status</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/ProcessPropertyViewing/@item.Id">Process</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Scheduled Viewings</b></h3>
+    </div>
+</div>
+
+<hr />
+
+<table id="viewingsscheduled" class="display" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Viewing Address</th>
+            <th>Viewing Date</th>
+            <th>Viewing Time</th>
+            <th>Message</th>
+            <th>Remind Buyer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ScheduledViewings)
+        {
+            var client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
+            var status = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyViewingStatusDescriptionById(item.PropertyViewingStatusId);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@client.Title @client.Forename @client.Surname</td>
+                <td>@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</td>
+                <td>@Convert.ToDateTime(item.ViewingDate).ToShortDateString()</td>
+                <td>@item.ViewingTime</td>
+                <td>@status</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="tel:+@client.Mobile">Call</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#unprocessedviewings').DataTable();
+            $('#viewingsscheduled').DataTable();
+        });
+    </script>
+}

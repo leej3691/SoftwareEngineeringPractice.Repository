@@ -18,5 +18,6 @@ namespace EstateAgents.Library.DAL
         public bool StaffResponse { get; set; }
         public bool Read { get; set; }
         public int PropertyId { get; set; }
+        public DateTime? StaffProcessed { get; set; }
     }
 }

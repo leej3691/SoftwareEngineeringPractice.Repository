@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="/Home/Index" title="Home" />
+  <siteMapNode url="" title="Customer Management">
+    <siteMapNode url="/CustomerManagement/ManageCustomers" title="Manage Customers" />
+    <siteMapNode url="/CustomerManagement/ManageMessages/" title="Manage Messages" />
+  </siteMapNode>
+  <siteMapNode url="" title="Property Management">
+    <siteMapNode url="/PropertyManagement/ManageViewings" title="Manage Viewings" />
+    <siteMapNode url="/PropertyManagement/ManageOffers/" title="Manage Offers" />
+  </siteMapNode>
+  <siteMapNode url="" title="Service Management">
+    <siteMapNode url="/ServiceManagement/ManageValuations" title="Manage Valuations" />
+    <siteMapNode url="/ServiceManagement/ManageRemovals/" title="Manage Removals" />
+    <siteMapNode url="/ServiceManagement/ManageBrokers/" title="Manage Brokers" />
+  </siteMapNode>
+</siteMap>
