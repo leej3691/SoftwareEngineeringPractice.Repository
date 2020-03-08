@@ -1,44 +1,186 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    var SiteMap = new EstateAgents.CMS.Models.SiteMap();
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>LJ Properties</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/style/bootstrap")
+    @Styles.Render("~/style/jquery-datatables-bootstrap")
+    @Styles.Render("~/style/jquery-datatables-buttons")
+    @Styles.Render("~/style/font-awesome")
+
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/scripts/bootstrap")
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body style="background:#eeeeee;">
+
+    @*HEADER MOBILE*@
+    <div class="container hidden-xs" style="background: white;">
+
+        <div class="row">
+
+            <!-- Logo -->
+            <div class="col-sm-4">
+                <div style="padding:13px;">
+                    <a href="/">
+                        <img class="logo" src="~/Content/logo1.png">
+                    </a>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
+
+            <!-- Quick Actions -->
+            <div class="col-sm-8">
+                <a href="https://www.facebook.com/profile.php?id=635253646" target="_blank" class="facebook" data-container="body" data-placement="left" data-toggle="tooltip" title="" data-original-title="Click to view our Facebook"><i class="fa fa-lg fa-facebook-square fa-3x" title="Facebook"></i></a>
+                <a href="https://www.instagram.com/leej3691/" target="_blank" class="instagram" data-container="body" data-placement="left" data-toggle="tooltip" title="" data-original-title="Click to view our Instagram"><i class="fa fa-lg fa-instagram fa-3x" title="Instagram"></i></a>
+                <a href="https://www.linkedin.com/in/lee-jones-9b616799/" target="_blank" class="linkedin" data-container="body" data-placement="left" data-toggle="tooltip" title="" data-original-title="Click to view our LinkedIn"><i class="fa fa-lg fa-linkedin-square fa-3x" title="LinkedIn"></i></a>
+
+                <div itemscope="" itemtype="http://schema.org/Organization" id="telephone">
+                    <p itemprop="telephone" class="text-right" style="font-size: 44px; margin-top: 54px; margin-bottom: 0px;">
+                        <i class="fa fa-phone"></i>&nbsp;07811971637
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container" style="background: white">
+
+        <div class="navbar navbar-inverse" role="navigation">
+
+            @*HEADER DESKTOP*@
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="">
+                </a>
+                <div class="quick-actions pull-right visible-xs" style="margin-right: 15px">
+                    <a href="https://www.facebook.com/Goldsmith.Williams" title="Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x fa-inverse"></i></a>
+                    <a href="https://twitter.com/gwlegal" title="Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x fa-inverse"></i></a>
+                    <a href="tel:0345 373 3737" title="Call us now"><i class="fa fa-phone-square fa-2x fa-inverse"></i></a>
+                </div>
+            </div>
+
+            <!-- Navbar -->
+            <div class="navbar-collapse collapse navbar-inverse-collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @foreach (var NavHeader in SiteMap.Nodes)
+                    {
+                        if (NavHeader.Descendants().Count() > 0)
+                        {
+                            string active = "";
+                            if (NavHeader.Descendants().Where(x => x.Attribute("url") != null).Where(x => x.Attribute("url").Value == Request.Url.AbsolutePath).Count() > 0) { active = "class=active"; };
+
+                            <li active>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@NavHeader.Attribute("title").Value <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+
+                                    @foreach (var NavItem in NavHeader.Elements())
+                                    {
+                                        if (NavItem.Name.LocalName == "siteMapGroup" && NavItem.Elements().Count() > 0)
+                                        {
+                                            if (NavItem.ElementsBeforeSelf().Count() > 0)
+                                            {
+                                                <li role="separator" class="divider"></li>
+                                            }
+
+                                            <li role="presentation" class="dropdown-header">@NavItem.Attribute("title").Value</li>
+
+                                            foreach (var SubNode in NavItem.Descendants())
+                                            {
+                                                string active2 = null;
+                                                if (SubNode.Attribute("url").Value == Request.Url.AbsolutePath) { active2 = "class=active"; };
+                                                <li active2><a href="@SubNode.Attribute("url").Value">@SubNode.Attribute("title").Value</a></li>
+                                            }
+                                        }
+                                        else if (NavItem.Elements().Count() == 0 && NavItem.Name.LocalName != "siteMapGroup")
+                                        {
+                                            string active3 = null;
+                                            if (NavItem.Attribute("url").Value == Request.Url.AbsolutePath) { active3 = "class=active"; };
+                                            <li active3><a href="@NavItem.Attribute("url").Value">@NavItem.Attribute("title").Value</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            string active4 = null;
+                            if (NavHeader.Attribute("url").Value == Request.Url.AbsolutePath) { active4 = "class=active"; };
+                            <li active4><a href="@NavHeader.Attribute("url").Value">@NavHeader.Attribute("title").Value</a></li>
+                        }
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right" style="background-color:#717271;">
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/account/logoff">
+                                <i class="glyphicon glyphicon-log-out hidden-sm"></i> LOGOUT
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/account/login">
+                                <i class="fa fa-lock"></i> LOGIN
+                            </a>
+                        }
+
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+
+    <div class="container" style="background: white">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+        <footer class="footer" style="margin-bottom:10px;">
+            <br />
+            <div class="row">
+                <div class="col-md-2 footer-logo-container"><img class="footer-logo hidden-xs hidden-sm" src="~/Content/logo3.png" /></div>
+                <div class="col-xs-6 col-sm-6 col-md-2 footer-col-bg">
+
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-2 footer-col">
+
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-2 footer-col">
+                    <ul class="footer-ul">
+                        <li class="footer-li-header"><b>Contact Us</b></li>
+                        <li><b>Call: </b>07811971637</li>
+                        <li><b>Email: </b>leejones3691@icloud.com</li>
+                        <li><b>Write: </b>LJ Properties, 123 Property Street, Liverpool, L1 1PT</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row footer-content-bottom-row">
+                <div class="col-md-12 footer-content-bottom-col">
+                    LJ Properties are registered in England &amp; Wales under company no. 123456789.
+                    <br />
+                    Registered office: 123 Property Street, Liverpool, L1 1PT.
+                    <br />
+                    © LJ Properties 2020 | Contact Number: 07811971637
+                </div>
+            </div>
+
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("FooterScripts", false)
 </body>
 </html>
+
+
