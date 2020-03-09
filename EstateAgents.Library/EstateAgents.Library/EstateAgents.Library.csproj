@@ -85,6 +85,7 @@
     <Compile Include="DAL\PropertyViewingStatus.cs" />
     <Compile Include="DAL\PropertyType.cs" />
     <Compile Include="DAL\PropertyViewings.cs" />
+    <Compile Include="Enums\PropertyViewingStatus.cs" />
     <Compile Include="Enums\YesNo.cs" />
     <Compile Include="Enums\PropertyType.cs" />
     <Compile Include="Enums\PropertySaleType.cs" />
@@ -108,6 +109,10 @@
     <Compile Include="Migrations\202003080240242_ViewingStatus.Designer.cs">
       <DependentUpon>202003080240242_ViewingStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003081534258_VendorId.cs" />
+    <Compile Include="Migrations\202003081534258_VendorId.Designer.cs">
+      <DependentUpon>202003081534258_VendorId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -128,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003080240242_ViewingStatus.resx">
       <DependentUpon>202003080240242_ViewingStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003081534258_VendorId.resx">
+      <DependentUpon>202003081534258_VendorId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

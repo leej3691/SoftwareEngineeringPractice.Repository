@@ -31,5 +31,6 @@ namespace EstateAgents.Library.DAL
         public DateTime PostedDate { get; set; }
         public DateTime? ClosedDate { get; set; }
         public string AdditionalDetails { get; set; }
+        public int VendorClientId { get; set; }
     }
 }
