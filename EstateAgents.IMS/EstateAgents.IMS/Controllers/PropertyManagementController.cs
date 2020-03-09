@@ -17,6 +17,31 @@ namespace EstateAgents.IMS.Controllers
             return View(model);
         }
 
+        [Route("ProcessPropertyOffer/{Id}")]
+        public ActionResult ProcessPropertyOffer(int Id)
+        {
+            ProcessPropertyOfferViewModel model = new ProcessPropertyOfferViewModel(Id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ProcessPropertyOfferUpdate(ProcessPropertyOfferViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                PropertyOfferStatus status = EstateAgentsRepository.GetPropertyOfferStatusByDescription(model.PropertyOfferStatus.ToString());
+                PropertyOffers offer = EstateAgentsRepository.GetPropertyOffersById(model.OffersId);
+                offer.PropertyOfferStatusId = status.Id;
+                EstateAgentsRepository.UpdatePropertyOffer(offer);
+
+                return RedirectToAction("ManageOffers", "PropertyManagement");
+            }
+            else
+            {
+                return View("ProcessPropertyOffer", model);
+            }
+        }
+
         public ActionResult ManageViewings()
         {
             ManageViewingsViewModel model = new ManageViewingsViewModel();
@@ -35,9 +60,10 @@ namespace EstateAgents.IMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-
-                EstateAgentsRepository.UpdatePropertyViewing(model.PropertyViewing);
+                PropertyViewingStatus status = EstateAgentsRepository.GetPropertyViewingStatusByDescription(model.PropertyViewingStatus.ToString());
+                PropertyViewings viewing = EstateAgentsRepository.GetPropertyViewingById(model.ViewingId);
+                viewing.PropertyViewingStatusId = status.Id;
+                EstateAgentsRepository.UpdatePropertyViewing(viewing);
 
                 return RedirectToAction("ManageViewings", "PropertyManagement");
             }

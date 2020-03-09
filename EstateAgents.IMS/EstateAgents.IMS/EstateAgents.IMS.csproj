@@ -218,6 +218,7 @@
     <Compile Include="Models\Home\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PropertyManagement\ManageOffersViewModel.cs" />
+    <Compile Include="Models\PropertyManagement\ProcessPropertyOfferViewModel.cs" />
     <Compile Include="Models\PropertyManagement\ProcessPropertyViewingViewModel.cs" />
     <Compile Include="Models\PropertyManagement\ManageViewingsViewModel.cs" />
     <Compile Include="Models\ServiceManagement\ManageBrokersViewModel.cs" />
@@ -622,6 +623,7 @@
     <Content Include="Views\CustomerManagement\CustomerDetails.cshtml" />
     <Content Include="Views\CustomerManagement\CustomerMessages.cshtml" />
     <Content Include="Views\PropertyManagement\ProcessPropertyViewing.cshtml" />
+    <Content Include="Views\PropertyManagement\ProcessPropertyOffer.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

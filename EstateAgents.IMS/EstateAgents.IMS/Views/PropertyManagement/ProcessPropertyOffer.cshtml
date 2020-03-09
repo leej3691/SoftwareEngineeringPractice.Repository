@@ -1,4 +1,4 @@
-﻿@model EstateAgents.IMS.Models.PropertyManagement.ProcessPropertyViewingViewModel
+﻿@model EstateAgents.IMS.Models.PropertyManagement.ProcessPropertyOfferViewModel
 
     <ul class="breadcrumb hidden-xs">
         <li>
@@ -8,29 +8,29 @@
             Property Management
         </li>
         <li>
-            <a href="/PropertyManagement/ManageViewings">Manage Viewings</a>
+            <a href="/PropertyManagement/ManageOffers">Manage Offers</a>
         </li>
         <li>
-            Process Property Viewing
+            Process Property Offer
         </li>
     </ul>
 
 <div class="jumbotron">
     <h1>
-        <i class="fa fa-search-plus text-success hidden-xs"></i>
-        Process Property Viewing
+        <i class="fa fa-money text-success hidden-xs"></i>
+        Process Property Offer
     </h1>
-    <p>Process property viewing</p>
+    <p>Process property Offer</p>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        @using (Html.BeginForm("ProcessPropertyViewingUpdate", "PropertyManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("ProcessPropertyOfferUpdate", "PropertyManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
 
-            <h4 class="sample-header">Process Viewing</h4>
+            <h4 class="sample-header">Process Offer</h4>
             <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
-                @Html.HiddenFor(m => m.ViewingId)
+                @Html.HiddenFor(m => m.OffersId)
 
                 <h3 class="col-sm-offset-3 col-lg-offset-2"><span class="block-arrow">Step 1</span>Call Vendor</h3>
                 <div class="form-group">
@@ -46,15 +46,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.ViewingDate, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.OfferDate, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.ViewingDate, new { @class = "form-control", @readonly = "readonly", })
+                        @Html.TextBoxFor(m => m.OfferDate, new { @class = "form-control", @readonly = "readonly", })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.ViewingTime, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.OfferAmount, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.ViewingTime, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.TextBoxFor(m => m.OfferAmount, new { @class = "form-control", @readonly = "readonly", })
                     </div>
                 </div>
                 <div class="form-group">
@@ -64,9 +64,9 @@
                 </div>
                 <h3 class="col-sm-offset-3 col-lg-offset-2"><span class="block-arrow">Step 2</span>Update Status</h3>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.PropertyViewingStatus, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.PropertyOfferStatus, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.EnumDropDownListFor(x => x.PropertyViewingStatus, "Select Title", new { @class = "form-control" })
+                        @Html.EnumDropDownListFor(x => x.PropertyOfferStatus, "Select Title", new { @class = "form-control" })
                     </div>
                 </div>
 

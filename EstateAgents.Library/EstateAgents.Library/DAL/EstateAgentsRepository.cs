@@ -460,6 +460,18 @@ namespace EstateAgents.Library.DAL
             return ctype;
         }
 
+        public static PropertyViewingStatus GetPropertyViewingStatusByDescription(string status)
+        {
+            PropertyViewingStatus p = new PropertyViewingStatus();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                p = db.PropertyViewingStatus.Where(c => c.Description == status).FirstOrDefault();
+            }
+
+            return p;
+        }
+
         #endregion
 
         #region Property Offers
@@ -507,6 +519,42 @@ namespace EstateAgents.Library.DAL
             return offers;
         }
 
+        public static List<PropertyOffers> GetUnprocessedPropertyOffers()
+        {
+            List<PropertyOffers> offers = new List<PropertyOffers>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                offers = db.PropertyOffers.Where(p => p.PropertyOfferStatusId == 1).ToList();
+            }
+
+            return offers;
+        }
+
+        public static List<PropertyOffers> GetAcceptedPropertyOffers()
+        {
+            List<PropertyOffers> offers = new List<PropertyOffers>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                offers = db.PropertyOffers.Where(p => p.PropertyOfferStatusId == 2).ToList();
+            }
+
+            return offers;
+        }
+
+        public static List<PropertyOffers> GetAllOffers()
+        {
+            List<PropertyOffers> offers = new List<PropertyOffers>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                offers = db.PropertyOffers.ToList();
+            }
+
+            return offers;
+        }
+
         #endregion
 
         #region Property Offers Status
@@ -521,6 +569,18 @@ namespace EstateAgents.Library.DAL
             }
 
             return status;
+        }
+
+        public static PropertyOfferStatus GetPropertyOfferStatusByDescription(string status)
+        {
+            PropertyOfferStatus p = new PropertyOfferStatus();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                p = db.PropertyOfferStatus.Where(c => c.Description == status).FirstOrDefault();
+            }
+
+            return p;
         }
 
         #endregion

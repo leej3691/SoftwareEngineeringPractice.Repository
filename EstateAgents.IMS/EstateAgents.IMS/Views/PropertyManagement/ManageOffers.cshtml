@@ -19,3 +19,121 @@
     </h1>
     <p>View a list of offers</p>
 </div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Unprocessed Offers</b></h3>
+    </div>
+</div>
+
+<hr />
+<table id="unprocessedoffers" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Property Address</th>
+            <th>Offer Amount</th>
+            <th>Offer Status</th>
+            <th>Process</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UnprocessedOffers)
+        {
+            var client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
+            var status = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyOffersStatusById(item.PropertyOfferStatusId).Description;
+            int price = (int)Math.Round(item.OfferAmount);
+            string PriceFinal = String.Format("{0:C0}", price);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@client.Title @client.Forename @client.Surname</td>
+                <td>@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</td>
+                <td>@PriceFinal</td>
+                <td>@status</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/PropertyManagement/ProcessPropertyOffer/@item.Id">Process</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Accepted Offers</b></h3>
+    </div>
+</div>
+
+<hr />
+
+<table id="acceptedoffers" class="display" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Property Address</th>
+            <th>Offer Amount</th>
+            <th>Offer Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AcceptedOffers)
+        {
+            var client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
+            var status = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyOffersStatusById(item.PropertyOfferStatusId).Description;
+            int price = (int)Math.Round(item.OfferAmount);
+            string PriceFinal = String.Format("{0:C0}", price);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@client.Title @client.Forename @client.Surname</td>
+                <td>@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</td>
+                <td>@PriceFinal</td>
+                <td>@status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>All Offers</b></h3>
+    </div>
+</div>
+
+<hr />
+
+<table id="offershistory" class="display" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Property Address</th>
+            <th>Offer Amount</th>
+            <th>Offer Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OffersHistory)
+        {
+            var client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var p = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyByPropertyId(item.PropertyId);
+            var status = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyOffersStatusById(item.PropertyOfferStatusId).Description;
+            int price = (int)Math.Round(item.OfferAmount);
+            string PriceFinal = String.Format("{0:C0}", price);
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@client.Title @client.Forename @client.Surname</td>
+                <td>@p.AddressLine1, @p.AddressLine2, @p.AddressLine3, @p.AddressLine4, @p.AddressLine5, @p.Postcode</td>
+                <td>@PriceFinal</td>
+                <td>@status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#unprocessedoffers').DataTable();
+            $('#acceptedoffers').DataTable();
+            $('#offershistory').DataTable();
+        });
+    </script>
+}
