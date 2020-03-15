@@ -90,7 +90,7 @@ namespace EstateAgents.WebPortal.Controllers
                 EstateAgentsRepository.UpdateChatbotQuestionsLive(q);
             }
 
-            ChatbotViewModel model = new ChatbotViewModel(t.Id);
+            ChatbotViewModel model = new ChatbotViewModel(t.Id); 
 
             return View("Chatbot", model);
         }
