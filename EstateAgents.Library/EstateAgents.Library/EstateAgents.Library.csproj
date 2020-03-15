@@ -85,6 +85,7 @@
     <Compile Include="DAL\PropertyViewingStatus.cs" />
     <Compile Include="DAL\PropertyType.cs" />
     <Compile Include="DAL\PropertyViewings.cs" />
+    <Compile Include="Enums\PropertyOfferStatus.cs" />
     <Compile Include="Enums\PropertyViewingStatus.cs" />
     <Compile Include="Enums\YesNo.cs" />
     <Compile Include="Enums\PropertyType.cs" />

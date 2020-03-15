@@ -8,9 +8,10 @@ namespace EstateAgents.IMS.Models.CustomerManagement
 {
     public class CustomerDetailsViewModel
     {
+        public Client Client { get; set; }
         public CustomerDetailsViewModel(int Id)
         {
-
+            this.Client = EstateAgentsRepository.GetClientByClientId(Id);
         }
     }
 }
