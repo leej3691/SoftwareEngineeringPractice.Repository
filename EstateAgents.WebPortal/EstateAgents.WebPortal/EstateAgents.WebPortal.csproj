@@ -222,6 +222,8 @@
     <Compile Include="Models\Home\ChatbotViewModel.cs" />
     <Compile Include="Models\Home\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Messages\MessagesReplyViewModel.cs" />
+    <Compile Include="Models\Messages\MessagesViewModel.cs" />
     <Compile Include="Models\Properties\PropertyBookViewingViewModel.cs" />
     <Compile Include="Models\Properties\PropertyDetailsViewModel.cs" />
     <Compile Include="Models\Properties\PropertyMakeOfferViewModel.cs" />
@@ -632,6 +634,7 @@
     <Content Include="Views\Home\Chatbot.cshtml" />
     <Content Include="Views\Property\PropertyViewings.cshtml" />
     <Content Include="Views\Property\PropertyOffers.cshtml" />
+    <Content Include="Views\Messages\MessagesReply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\EditorTemplates\" />

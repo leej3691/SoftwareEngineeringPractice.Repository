@@ -319,6 +319,22 @@ namespace EstateAgents.Library.DAL
             return iList;
         }
 
+        public static bool CheckPropertyUnderOffer(int PropertyId)
+        {
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                PropertyOffers o = db.PropertyOffers.Where(p => p.PropertyId == PropertyId && p.PropertyOfferStatusId == 1).FirstOrDefault();
+
+                if(o != null)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         #endregion
 
         #region Property Saved
@@ -587,6 +603,14 @@ namespace EstateAgents.Library.DAL
 
         #region Messages
 
+        public static void CreateMessages(Messages Messages)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Messages.Add(Messages);
+                db.SaveChanges();
+            }
+        }
 
         public static List<Messages> GetUnprocessedMessages()
         {
@@ -595,6 +619,18 @@ namespace EstateAgents.Library.DAL
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
                 m = db.Messages.Where(p => p.StaffProcessed == null).ToList();
+            }
+
+            return m;
+        }
+
+        public static List<Messages> GetMessagesByClientId(int ClientId)
+        {
+            List<Messages> m = new List<Messages>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                m = db.Messages.Where(p => p.ClientId == ClientId).OrderBy(d=>d.Id).ToList();
             }
 
             return m;

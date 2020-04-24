@@ -62,7 +62,11 @@
                             </td>
                             <td>
                                 <div class="PropertyDetailsPrimary">
-                                    <p style="color:#4797A8;">Detached</p>
+                                    
+                                    @{
+                                        var propertytype = EstateAgents.Library.DAL.EstateAgentsRepository.GetPropertyTypeDescriptionByPropertyTypeId(item.PropertyTypeId);
+                                    } 
+                                    <p style="color:#4797A8;">@propertytype</p>
                                 </div>
                             </td>
                             <td>
@@ -80,6 +84,13 @@
                                     @if (item.PropertyStatusId == 3)
                                     {
                                         <span class="PropertyDetailsSold">Sold STC</span>
+                                    }
+                                    else
+                                    {
+                                        if (EstateAgents.Library.DAL.EstateAgentsRepository.CheckPropertyUnderOffer(item.Id))
+                                        {
+                                            <span class="PropertyDetailsUnderOffer">Under Offer</span>
+                                        }
                                     }
 
                                 </div>

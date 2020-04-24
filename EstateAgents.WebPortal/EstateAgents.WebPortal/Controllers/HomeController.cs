@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Net;
 
 namespace EstateAgents.WebPortal.Controllers
 {
@@ -13,6 +14,7 @@ namespace EstateAgents.WebPortal.Controllers
     {
         public ActionResult Index()
         {
+    
             HomeViewModel model = new HomeViewModel();
             return View(model);
         }

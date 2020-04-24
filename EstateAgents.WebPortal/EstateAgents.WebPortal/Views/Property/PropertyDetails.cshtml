@@ -37,6 +37,13 @@
         {
             <span class="PropertyDetailsSold">Sold STC</span>
         }
+        else
+        {
+            if (EstateAgents.Library.DAL.EstateAgentsRepository.CheckPropertyUnderOffer(Model.PropertyDetails.Id))
+            {
+                <span class="PropertyDetailsUnderOffer">Under Offer</span>
+            }
+        }
 
     </div>
 </div>
@@ -100,7 +107,7 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-sm-9 col-md-12 col-lg-12 ">
-                            <img alt="Floorplan" style="width:100%;" src="https://pbproduction.blob.core.windows.net/floorplan/e9ac8b7d-f130-403b-9af1-61e94449133a.jpg">
+                            <img alt="Floorplan" style="width:100%;max-width:700px;max-height:500px;" src="https://pbproduction.blob.core.windows.net/floorplan/e9ac8b7d-f130-403b-9af1-61e94449133a.jpg">
                         </div>
                     </div>
                 </div>
@@ -196,10 +203,21 @@
 
                     </div>
                     <div class="col-sm-6 text-center" style="padding-top:10px;">
-                        <a href="/Messages/Messages" class="service-icon-small">
-                            <i class="fa fa-envelope" title="Message"></i>
-                            <h5>Message Us</h5>
-                        </a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Messages/Messages" class="service-icon-small">
+                                <i class="fa fa-envelope" title="Message"></i>
+                                <h5>Message Us</h5>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Account/Login" class="service-icon-small">
+                                <i class="fa fa-envelope" title="Message"></i>
+                                <h5>Message Us</h5>
+                            </a>
+                        }
+
                     </div>
 
                 </div>

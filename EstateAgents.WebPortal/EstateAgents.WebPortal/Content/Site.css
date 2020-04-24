@@ -178,7 +178,7 @@ hr{
     margin-bottom:10px;
 }
 
-.PropertyDetailsSold {
+.PropertyDetailsSold, .PropertyDetailsUnderOffer {
     background: #e11b22;
     color: #fff;
     cursor: default;
@@ -198,9 +198,13 @@ hr{
     line-height: 1.42857;
 }
 
-* {
-    box-sizing: border-box;
+.PropertyDetailsUnderOffer {
+    background: #ffbe4d;
 }
+
+    * {
+        box-sizing: border-box;
+    }
 
 /* Position the image container (needed to position the left and right arrows) */
 .container {

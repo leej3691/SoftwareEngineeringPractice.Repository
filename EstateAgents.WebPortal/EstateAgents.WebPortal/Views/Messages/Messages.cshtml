@@ -1,4 +1,4 @@
-﻿
+﻿@model EstateAgents.WebPortal.Models.Messages.MessagesViewModel
 
 <ul class="breadcrumb hidden-xs">
     <li>
@@ -8,3 +8,62 @@
         Messages
     </li>
 </ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-envelope text-success hidden-xs"></i>
+        Your Messages
+    </h1>
+    <p>View a list of messages</p>
+</div>
+
+<table id="messages" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Message</th>
+            <th>Reply</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Messages)
+        {
+            var client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var sender = "";
+            if(item.StaffResponse == false)
+            {
+                sender = client.Title + " " + client.Forename + " " + client.Surname;
+            }
+            else
+            {
+                sender = "LJ Properties";
+            }
+        <tr style="background:white;color:black;">
+            <td style="background:white;color:black;">@sender</td>
+            <td>@Convert.ToDateTime(item.MessageDate).ToShortDateString()</td>
+            <td>@item.MessageTime</td>
+            <td>@item.MessageBody</td>
+            @if (item.StaffResponse == true)
+            {
+                <td><a class="btn btn-success btn-block" style="text-decoration:none;" href="/Messages/MessagesReply/@item.ClientId">Reply</a></td>
+            }
+            else
+            {
+                <td></td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#messages').DataTable();
+        });
+    </script>
+}
