@@ -18,5 +18,6 @@ namespace EstateAgents.Library.DAL
         public string QuestionAnswerTime { get; set; }
         public string QuestionAnswer { get; set; }
         public int Sequence { get; set; }
+        public string ReferenceKey { get; set; }
     }
 }

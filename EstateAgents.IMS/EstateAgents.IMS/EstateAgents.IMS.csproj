@@ -211,6 +211,8 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomerManagement\CustomerDetailsViewModel.cs" />
+    <Compile Include="Models\CustomerManagement\ManageEnquiriesViewModel.cs" />
+    <Compile Include="Models\CustomerManagement\MessageCustomerViewModel.cs" />
     <Compile Include="Models\CustomerManagement\CustomerMessagesViewModel.cs" />
     <Compile Include="Models\CustomerManagement\ManageCustomersViewModel.cs" />
     <Compile Include="Models\CustomerManagement\ManageMessagesViewModel.cs" />
@@ -221,7 +223,6 @@
     <Compile Include="Models\PropertyManagement\ProcessPropertyOfferViewModel.cs" />
     <Compile Include="Models\PropertyManagement\ProcessPropertyViewingViewModel.cs" />
     <Compile Include="Models\PropertyManagement\ManageViewingsViewModel.cs" />
-    <Compile Include="Models\ServiceManagement\ManageBrokersViewModel.cs" />
     <Compile Include="Models\ServiceManagement\ManageRemovalsViewModel.cs" />
     <Compile Include="Models\ServiceManagement\ManageValuationsViewModel.cs" />
     <Compile Include="Models\SiteMap.cs" />
@@ -617,13 +618,14 @@
     <Content Include="Views\EmployeeManagement\ManageEmployees.cshtml" />
     <Content Include="Views\PropertyManagement\ManageOffers.cshtml" />
     <Content Include="Views\PropertyManagement\ManageViewings.cshtml" />
-    <Content Include="Views\ServiceManagement\ManageBrokers.cshtml" />
     <Content Include="Views\ServiceManagement\ManageRemovals.cshtml" />
     <Content Include="Views\ServiceManagement\ManageValuations.cshtml" />
     <Content Include="Views\CustomerManagement\CustomerDetails.cshtml" />
     <Content Include="Views\CustomerManagement\CustomerMessages.cshtml" />
     <Content Include="Views\PropertyManagement\ProcessPropertyViewing.cshtml" />
     <Content Include="Views\PropertyManagement\ProcessPropertyOffer.cshtml" />
+    <Content Include="Views\CustomerManagement\MessageCustomer.cshtml" />
+    <Content Include="Views\CustomerManagement\ManageEnquiries.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

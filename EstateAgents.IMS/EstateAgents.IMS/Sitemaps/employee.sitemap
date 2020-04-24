@@ -4,6 +4,7 @@
   <siteMapNode url="" title="Customer Management">
     <siteMapNode url="/CustomerManagement/ManageCustomers" title="Manage Customers" />
     <siteMapNode url="/CustomerManagement/ManageMessages/" title="Manage Messages" />
+    <siteMapNode url="/CustomerManagement/ManageEnquiries/" title="Manage Enquiries" />
   </siteMapNode>
   <siteMapNode url="" title="Property Management">
     <siteMapNode url="/PropertyManagement/ManageViewings" title="Manage Viewings" />
@@ -12,6 +13,5 @@
   <siteMapNode url="" title="Service Management">
     <siteMapNode url="/ServiceManagement/ManageValuations" title="Manage Valuations" />
     <siteMapNode url="/ServiceManagement/ManageRemovals/" title="Manage Removals" />
-    <siteMapNode url="/ServiceManagement/ManageBrokers/" title="Manage Brokers" />
   </siteMapNode>
 </siteMap>

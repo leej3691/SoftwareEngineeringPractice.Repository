@@ -1,0 +1,101 @@
+﻿@model EstateAgents.IMS.Models.CustomerManagement.ManageEnquiriesViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Customer Management
+    </li>
+    <li>
+        Manage Enquiries
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-question-circle-o text-success hidden-xs"></i>
+        Manage Enquiries
+    </h1>
+    <p>View a list of enquiries</p>
+</div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Contact Page Enquiries</b></h3>
+    </div>
+</div>
+<hr />
+<table id="enquiries" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Enquiry</th>
+            <th>Call</th>
+            <th>Process</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Enquiries)
+        {
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@item.Forename  @item.Surname</td>
+                <td>@item.Email</td>
+                <td>@item.Mobile</td>
+                <td>@item.EnquiryBody</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="tel:+@item.Mobile"><i class="fa fa-phone"></i> Call </a></td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/ProcessEnquiry/@item.Id">Process</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Chatbot Enquiries</b></h3>
+    </div>
+</div>
+<hr />
+<table id="chatbotenquiries" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Enquiry</th>
+            <th>Call</th>
+            <th>Process</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ChatbotTemplates)
+        {
+            var ClientName = EstateAgents.Library.DAL.EstateAgentsRepository.GetChatbotQuestionsLiveAnswerValueByReferenceKey(item.Id, "Client_Name");
+            var Email = EstateAgents.Library.DAL.EstateAgentsRepository.GetChatbotQuestionsLiveAnswerValueByReferenceKey(item.Id, "Email_Address");
+            var Phone = EstateAgents.Library.DAL.EstateAgentsRepository.GetChatbotQuestionsLiveAnswerValueByReferenceKey(item.Id, "Mobile_Number");
+            var Message = EstateAgents.Library.DAL.EstateAgentsRepository.GetChatbotQuestionsLiveAnswerValueByReferenceKey(item.Id, "Enquiry_Message");
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@ClientName</td>
+                <td>@Email</td>
+                <td>@Phone</td>
+                <td>@Message</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="tel:+@Phone"><i class="fa fa-phone"></i> Call </a></td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/ProcessChatbotEnquiry/@item.Id">Process</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#enquiries').DataTable();
+            $('#chatbotenquiries').DataTable();
+        });
+    </script>
+}

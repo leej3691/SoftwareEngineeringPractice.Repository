@@ -62,7 +62,8 @@ namespace EstateAgents.WebPortal.Controllers
                 ChatbotQuestionTypeId = x.ChatbotQuestionTypeId,
                 Description = x.Description,
                 ChatbotTemplateId = t.Id,
-                Sequence = x.Sequence
+                Sequence = x.Sequence,
+                ReferenceKey = x.ReferenceKey
             }).ToList();
 
             EstateAgentsRepository.CreateChatbotQuestionsLiveFromRange(qLiveList);

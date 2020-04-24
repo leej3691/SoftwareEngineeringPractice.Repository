@@ -1,11 +1,14 @@
-﻿using System;
+﻿using EstateAgents.Library.DAL;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace EstateAgents.IMS.Models.ServiceManagement
 {
     public class ManageRemovalsViewModel
     {
+        public List<PropertyRemovals> PropertyRemovals { get; set; }
+        public ManageRemovalsViewModel()
+        {
+            this.PropertyRemovals = EstateAgentsRepository.GetPropertyRemovalsUnprocessed();
+        }
     }
 }

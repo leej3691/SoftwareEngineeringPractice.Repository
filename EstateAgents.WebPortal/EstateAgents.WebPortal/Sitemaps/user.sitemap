@@ -9,6 +9,10 @@
       <siteMapNode url="/Property/PropertySaved" title="Property Saved" />
     <siteMapNode url="/Property/PropertyOffers" title="Property Offers" />
   </siteMapNode>
+  <siteMapNode url="" title="Services">
+    <siteMapNode url="/Services/PropertyValuation" title="Property Valuation" />
+    <siteMapNode url="/Services/PropertyRemovals/" title="Property Removals" />
+  </siteMapNode>
   <siteMapNode url="/Messages/Messages" title="Messages" />
   <siteMapNode url="/Home/Contact" title="Contact" />
   <siteMapNode url="" title="Account">

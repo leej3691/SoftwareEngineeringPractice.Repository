@@ -51,7 +51,12 @@
                 <td>@Convert.ToDateTime(item.MessageDate).ToShortDateString()</td>
                 <td>@item.MessageTime</td>
                 <td>@item.MessageBody</td>
-                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/MessageReply/@item.Id">Reply</a></td>
+                <td>
+                    @if (item.StaffProcessed == null)
+                    {
+                        <a class="btn btn-success btn-block" style="text-decoration:none;" href="/CustomerManagement/MessageCustomer/@item.ClientId/@item.Id">Reply</a>
+                    }
+                </td>
             </tr>
         }
     </tbody>

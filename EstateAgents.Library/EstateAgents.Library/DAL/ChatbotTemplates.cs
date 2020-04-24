@@ -11,5 +11,6 @@ namespace EstateAgents.Library.DAL
         public int Id { get; set; }
         public DateTime StartedDate { get; set; }
         public DateTime? CompletedDate { get; set; }
+        public DateTime? StaffProcessed { get; set; }
     }
 }

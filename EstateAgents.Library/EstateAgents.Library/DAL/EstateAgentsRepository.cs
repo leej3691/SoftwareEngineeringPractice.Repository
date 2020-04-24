@@ -601,6 +601,100 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
+        #region Property Valuations
+
+        public static void CreatePropertyValuation(PropertyValuations PropertyValuations)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyValuations.Add(PropertyValuations);
+                db.SaveChanges();
+            }
+        }
+
+        public static void UpdatePropertyValuation(PropertyValuations PropertyValuations)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyValuations.Attach(PropertyValuations);
+                db.Entry(PropertyValuations).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static List<PropertyValuations> GetPropertyValuationsUnprocessed()
+        {
+            List<PropertyValuations> iList = new List<PropertyValuations>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                iList = db.PropertyValuations.Where(p => p.StaffProcessed == null).ToList();
+            }
+
+            return iList;
+        }
+
+        public static PropertyValuations GetPropertyValuationsByPropertyValuationsId(int PropertyValuationsId)
+        {
+            PropertyValuations e = new PropertyValuations();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                e = db.PropertyValuations.Where(p => p.Id == PropertyValuationsId).FirstOrDefault();
+            }
+
+            return e;
+        }
+
+        #endregion
+
+        #region Property Removals
+
+        public static void CreatePropertyRemovals(PropertyRemovals PropertyRemovals)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyRemovals.Add(PropertyRemovals);
+                db.SaveChanges();
+            }
+        }
+
+        public static void UpdatePropertyRemovals(PropertyRemovals PropertyRemovals)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyRemovals.Attach(PropertyRemovals);
+                db.Entry(PropertyRemovals).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static List<PropertyRemovals> GetPropertyRemovalsUnprocessed()
+        {
+            List<PropertyRemovals> iList = new List<PropertyRemovals>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                iList = db.PropertyRemovals.Where(p => p.StaffProcessed == null).ToList();
+            }
+
+            return iList;
+        }
+
+        public static PropertyRemovals GetPropertyRemovalsByPropertyRemovalsId(int PropertyRemovalsId)
+        {
+            PropertyRemovals e = new PropertyRemovals();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                e = db.PropertyRemovals.Where(p => p.Id == PropertyRemovalsId).FirstOrDefault();
+            }
+
+            return e;
+        }
+
+        #endregion
+
         #region Messages
 
         public static void CreateMessages(Messages Messages)
@@ -612,13 +706,23 @@ namespace EstateAgents.Library.DAL
             }
         }
 
+        public static void UpdateMessages(Messages Messages)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Messages.Attach(Messages);
+                db.Entry(Messages).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
         public static List<Messages> GetUnprocessedMessages()
         {
             List<Messages> m = new List<Messages>();
 
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
-                m = db.Messages.Where(p => p.StaffProcessed == null).ToList();
+                m = db.Messages.Where(p => p.StaffProcessed == null && p.StaffResponse == false).ToList();
             }
 
             return m;
@@ -636,6 +740,18 @@ namespace EstateAgents.Library.DAL
             return m;
         }
 
+        public static Messages GetMessageByMessageId(int MessageId)
+        {
+            Messages m = new Messages();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                m = db.Messages.Where(p => p.Id == MessageId).FirstOrDefault();
+            }
+
+            return m;
+        }
+
         #endregion
 
         #region Enquiry
@@ -647,6 +763,42 @@ namespace EstateAgents.Library.DAL
                 db.Enquiry.Add(enquiry);
                 db.SaveChanges();
             }
+        }
+
+        public static Enquiry UpdateEnquiry(Enquiry Enquiry)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Enquiry.Attach(Enquiry);
+                db.Entry(Enquiry).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return Enquiry;
+        }
+
+        public static Enquiry GetEnquiryByEnquiryId(int EnquiryId)
+        {
+            Enquiry e = new Enquiry();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                e = db.Enquiry.Where(p => p.Id == EnquiryId).FirstOrDefault();
+            }
+
+            return e;
+        }
+
+        public static List<Enquiry> GetEnquiriesUnprocessed()
+        {
+            List<Enquiry> iList = new List<Enquiry>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                iList = db.Enquiry.Where(p => p.StaffMemberProcessed == null).ToList();
+            }
+
+            return iList;
         }
 
         #endregion
@@ -763,6 +915,18 @@ namespace EstateAgents.Library.DAL
             return qLive;
         }
 
+        public static string GetChatbotQuestionsLiveAnswerValueByReferenceKey(int TemplateId, string ReferenceKey)
+        {
+            string returnValue = "";
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                returnValue = db.ChatbotQuestionsLive.Where(c => c.ChatbotTemplateId == TemplateId && c.ReferenceKey == ReferenceKey).OrderByDescending(d => d.Id).FirstOrDefault().QuestionAnswer;
+            }
+
+            return returnValue;
+        }
+
         #endregion
 
         #region Chatbot Templates
@@ -797,6 +961,18 @@ namespace EstateAgents.Library.DAL
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
                 t = db.ChatbotTemplates.Where(c => c.Id == TemplateId).FirstOrDefault();
+            }
+
+            return t;
+        }
+
+        public static List<ChatbotTemplates> GetChatbotTemplatesCompletedUnprocessed()
+        {
+            List<ChatbotTemplates> t = new List<ChatbotTemplates>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                t = db.ChatbotTemplates.Where(c => c.CompletedDate != null && c.StaffProcessed == null).ToList();
             }
 
             return t;

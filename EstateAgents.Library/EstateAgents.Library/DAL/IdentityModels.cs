@@ -54,6 +54,7 @@ namespace EstateAgents.Library.DAL
         public virtual DbSet<PropertyOfferStatus> PropertyOfferStatus { get; set; }
         public virtual DbSet<ClientType> ClientType { get; set; }
         public virtual DbSet<PropertyViewingStatus> PropertyViewingStatus { get; set; }
-
+        public virtual DbSet<PropertyValuations> PropertyValuations { get; set; }
+        public virtual DbSet<PropertyRemovals> PropertyRemovals { get; set; }
     }
 }

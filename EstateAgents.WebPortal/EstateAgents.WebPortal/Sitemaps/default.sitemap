@@ -8,9 +8,6 @@
   <!-- Showroom Tab -->
   <siteMapNode url="/Property/PropertyShowroom" title="Showroom" />
 
-  <!-- Articles Tab -->
-  <siteMapNode url="/articles" title="News" />
-
   <!-- Contact Tab -->
   <siteMapNode url="/Home/Contact" title="Contact" />
   

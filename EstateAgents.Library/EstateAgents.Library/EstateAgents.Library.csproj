@@ -82,6 +82,8 @@
     <Compile Include="DAL\PropertySaleType.cs" />
     <Compile Include="DAL\PropertySaved.cs" />
     <Compile Include="DAL\PropertyStatus.cs" />
+    <Compile Include="DAL\PropertyRemovals.cs" />
+    <Compile Include="DAL\PropertyValuations.cs" />
     <Compile Include="DAL\PropertyViewingStatus.cs" />
     <Compile Include="DAL\PropertyType.cs" />
     <Compile Include="DAL\PropertyViewings.cs" />
@@ -114,6 +116,26 @@
     <Compile Include="Migrations\202003081534258_VendorId.Designer.cs">
       <DependentUpon>202003081534258_VendorId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004241101486_ReferenceKeyChatbot.cs" />
+    <Compile Include="Migrations\202004241101486_ReferenceKeyChatbot.Designer.cs">
+      <DependentUpon>202004241101486_ReferenceKeyChatbot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004241122148_StaffProcessedChatbot.cs" />
+    <Compile Include="Migrations\202004241122148_StaffProcessedChatbot.Designer.cs">
+      <DependentUpon>202004241122148_StaffProcessedChatbot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004241312316_PropertyValuations.cs" />
+    <Compile Include="Migrations\202004241312316_PropertyValuations.Designer.cs">
+      <DependentUpon>202004241312316_PropertyValuations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004241314068_StaffProcessPropertyValuations.cs" />
+    <Compile Include="Migrations\202004241314068_StaffProcessPropertyValuations.Designer.cs">
+      <DependentUpon>202004241314068_StaffProcessPropertyValuations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004241344438_PropertyRemovals.cs" />
+    <Compile Include="Migrations\202004241344438_PropertyRemovals.Designer.cs">
+      <DependentUpon>202004241344438_PropertyRemovals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +159,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003081534258_VendorId.resx">
       <DependentUpon>202003081534258_VendorId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241101486_ReferenceKeyChatbot.resx">
+      <DependentUpon>202004241101486_ReferenceKeyChatbot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241122148_StaffProcessedChatbot.resx">
+      <DependentUpon>202004241122148_StaffProcessedChatbot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241312316_PropertyValuations.resx">
+      <DependentUpon>202004241312316_PropertyValuations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241314068_StaffProcessPropertyValuations.resx">
+      <DependentUpon>202004241314068_StaffProcessPropertyValuations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241344438_PropertyRemovals.resx">
+      <DependentUpon>202004241344438_PropertyRemovals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

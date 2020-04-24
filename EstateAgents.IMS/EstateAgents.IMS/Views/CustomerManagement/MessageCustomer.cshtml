@@ -1,0 +1,54 @@
+﻿@model EstateAgents.IMS.Models.CustomerManagement.MessageCustomerViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Customer Management
+    </li>
+    <li>
+        Message Customer
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-envelope text-success hidden-xs"></i>
+        Message Customer
+    </h1>
+    <p>Send Message</p>
+</div>
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <b style="color:#4797A8;">Client:</b> @Model.Client.Title @Model.Client.Forename @Model.Client.Surname
+    </li>
+</ul>
+
+<div class="row" style="margin-top:-20px;">
+    <div class="col-md-12">
+        @using (Html.BeginForm("SendMessageReply", "CustomerManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <h4 class="sample-header">Message</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+
+                @Html.HiddenFor(m => m.ClientId)
+                @Html.HiddenFor(m => m.MessageId)
+                <div class="form-group" style="margin-bottom:10px;">
+                    @Html.LabelFor(m => m.MessageBody, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.MessageBody, new { @class = "form-control", placeholder = "Enter your reply here" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Send" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

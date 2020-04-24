@@ -19,3 +19,43 @@
     </h1>
     <p>View a list of valuations</p>
 </div>
+
+<hr />
+<table id="valuations" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Call</th>
+            <th>Process</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PropertyValuations)
+        {
+            var Client = EstateAgents.Library.DAL.EstateAgentsRepository.GetClientByClientId(item.ClientId);
+            var Name = Client.Title + " " + Client.Forename + " " + Client.Surname;
+            var Address = item.PropertyAddressLine1 + "," + item.PropertyAddressLine2 + "," + item.PropertyAddressLine3 + "," + item.PropertyAddressLine4 + "," + item.PropertyAddressPostcode;
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@Name</td>
+                <td>@Client.Email</td>
+                <td>@Client.Mobile</td>
+                <td>@Address</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="tel:+@Client.Mobile"><i class="fa fa-phone"></i> Call </a></td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/ServiceManagement/ProcessValuation/@item.Id">Process</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#valuations').DataTable();
+        });
+    </script>
+}
