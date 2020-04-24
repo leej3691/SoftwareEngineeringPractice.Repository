@@ -8,6 +8,7 @@ namespace EstateAgents.IMS.Models.Home
     public class HomeViewModel
     {
         public Employee EmployeeDetails { get; set; }
+        public string UserRole { get; set; }
 
         public HomeViewModel()
         {
@@ -15,10 +16,14 @@ namespace EstateAgents.IMS.Models.Home
             {
                 Guid UserId = Guid.Parse(HttpContext.Current.User.Identity.GetUserId());
                 this.EmployeeDetails = EstateAgentsRepository.GetEmployeeByUserId(UserId);
+
+                string username = HttpContext.Current.User.Identity.GetUserName();
+                this.UserRole = EstateAgentsRepository.GetUserRole(username);
             }
             else
             {
                 this.EmployeeDetails = new Employee();
+                this.UserRole = "";
             }
         }
     }

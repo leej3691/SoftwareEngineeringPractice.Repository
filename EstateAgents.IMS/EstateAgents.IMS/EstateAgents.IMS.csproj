@@ -216,6 +216,8 @@
     <Compile Include="Models\CustomerManagement\CustomerMessagesViewModel.cs" />
     <Compile Include="Models\CustomerManagement\ManageCustomersViewModel.cs" />
     <Compile Include="Models\CustomerManagement\ManageMessagesViewModel.cs" />
+    <Compile Include="Models\EmployeeManagement\NewEmployeeViewModel.cs" />
+    <Compile Include="Models\EmployeeManagement\UpdateEmployeeViewModel.cs" />
     <Compile Include="Models\EmployeeManagement\ManageEmployeesViewModel.cs" />
     <Compile Include="Models\Home\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -626,6 +628,8 @@
     <Content Include="Views\PropertyManagement\ProcessPropertyOffer.cshtml" />
     <Content Include="Views\CustomerManagement\MessageCustomer.cshtml" />
     <Content Include="Views\CustomerManagement\ManageEnquiries.cshtml" />
+    <Content Include="Views\EmployeeManagement\UpdateEmployee.cshtml" />
+    <Content Include="Views\EmployeeManagement\NewEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

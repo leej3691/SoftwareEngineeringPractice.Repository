@@ -13,6 +13,22 @@ namespace EstateAgents.Library.DAL
     /// </summary>
     public class EstateAgentsRepository
     {
+        #region Users
+
+        public static string GetUserRole(string name)
+        {
+            string returnValue = "";
+
+            using (IdentityDbContext db = new IdentityDbContext())
+            {
+                string roleid = db.Users.Where(c=>c.UserName == name).FirstOrDefault().Roles.FirstOrDefault().RoleId;
+                returnValue = db.Roles.Where(d => d.Id == roleid).FirstOrDefault().Name;
+            }
+
+            return returnValue;
+        }
+
+        #endregion
 
         #region Client
 
@@ -149,6 +165,37 @@ namespace EstateAgents.Library.DAL
 
         #region Employee
 
+        public static void CreateEmployee(Employee Employee)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Employee.Add(Employee);
+                db.SaveChanges();
+            }
+        }
+
+        public static void UpdateEmployee(Employee Employee)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Employee.Attach(Employee);
+                db.Entry(Employee).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static Employee GetEmployeeById(int Id)
+        {
+            Employee employee = new Employee();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                employee = db.Employee.Where(c => c.Id == Id).FirstOrDefault();
+            }
+
+            return employee;
+        }
+
         public static Employee GetEmployeeByUserId(Guid UserId)
         {
             Employee employee = new Employee();
@@ -156,6 +203,18 @@ namespace EstateAgents.Library.DAL
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
                 employee = db.Employee.Where(c => c.UserId == UserId).FirstOrDefault();
+            }
+
+            return employee;
+        }
+
+        public static List<Employee> GetEmployeeList()
+        {
+            List<Employee> employee = new List<Employee>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                employee = db.Employee.ToList();
             }
 
             return employee;

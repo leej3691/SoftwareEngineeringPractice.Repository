@@ -1,0 +1,140 @@
+﻿@model EstateAgents.IMS.Models.EmployeeManagement.UpdateEmployeeViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        <a href="/EmployeeManagement/ManageEmployees">Employee Management</a>
+    </li>
+    <li>
+        Update Employee
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-user text-success hidden-xs"></i>
+        Update Employee
+    </h1>
+    <p>Please update the employees details below</p>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("UpdateEmployeeRequest", "EmployeeManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="sample-header">Employee Details</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+
+                @Html.HiddenFor(m => m.EmployeeId)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(x => x.Title, "Select Title", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Forename, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Forename, new { @class = "form-control", placeholder = "Enter employee forename" })
+                        @Html.ValidationMessageFor(m => m.Forename, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Enter employee surname" })
+                        @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter employee email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Mobile, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Enter employee mobile" })
+                        @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", type = "date", @Value = Model.DateOfBirth.ToString("yyyy-MM-dd")  })
+                        @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine1, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control", placeholder = "Enter employee address line 1" })
+                        @Html.ValidationMessageFor(m => m.AddressLine1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine2, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control", placeholder = "Enter employee address line 2" })
+                        @Html.ValidationMessageFor(m => m.AddressLine2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine3, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine3, new { @class = "form-control", placeholder = "Enter employee address line 3" })
+                        @Html.ValidationMessageFor(m => m.AddressLine3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine4, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine4, new { @class = "form-control", placeholder = "Enter employee address line 4" })
+                        @Html.ValidationMessageFor(m => m.AddressLine4, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine5, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine5, new { @class = "form-control", placeholder = "Enter employee address line 5" })
+                        @Html.ValidationMessageFor(m => m.AddressLine5, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Postcode, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control", placeholder = "Enter employee postcode" })
+                        @Html.ValidationMessageFor(m => m.Postcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DateOfStart, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.DateOfStart, new { @class = "form-control datepicker", type = "date", @Value = Model.DateOfStart.ToString("yyyy-MM-dd")  })
+                        @Html.ValidationMessageFor(m => m.DateOfStart, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DateLeft, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.DateLeft, new { @class = "form-control datepicker", type = "date"  })
+                        @Html.ValidationMessageFor(m => m.DateLeft, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Submit" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

@@ -1,4 +1,70 @@
 ﻿@model EstateAgents.IMS.Models.EmployeeManagement.ManageEmployeesViewModel
 
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Employee Management
+    </li>
+    <li>
+        Manage Employees
+    </li>
+</ul>
 
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-users text-success hidden-xs"></i>
+        Manage Employees
+    </h1>
+    <p>Manage employees below</p>
+</div>
 
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-10">
+        <h3 class="text-success"><b>Employees</b></h3>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-success btn-block" href="/EmployeeManagement/NewEmployee">New Employee</a>
+    </div>
+</div>
+<hr />
+<table id="employees" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>DOB</th>
+            <th>Started</th>
+            <th>Left</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Employees)
+        {
+            var Name = item.Title + " " + item.Forename + " " + item.Surname;
+
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@Name</td>
+                <td>@item.Email</td>
+                <td>@item.Mobile</td>
+                <td>@item.DateOfBirth.ToShortDateString()</td>
+                <td>@item.Created.ToShortDateString()</td>
+                <td>@item.DateLeft</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/EmployeeManagement/UpdateEmployee/@item.Id">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#employees').DataTable();
+        });
+    </script>
+}

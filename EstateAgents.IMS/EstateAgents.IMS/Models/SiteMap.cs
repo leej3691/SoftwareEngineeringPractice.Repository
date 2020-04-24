@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using EstateAgents.Library.DAL;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,20 +17,21 @@ namespace EstateAgents.IMS.Models
         {
       
             string siteMap = "~/Sitemaps/default.sitemap";
-            string username = HttpContext.Current.User.Identity.GetUserName();
+            
             
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                //if (HttpContext.Current.User.("Admin"))
-                //{
-                //    siteMap = "~/Sitemaps/admin.sitemap";
-                //}
-                //else if (HttpContext.Current.User.IsInRole("Employee"))
-                //{
-                //    siteMap = "~/Sitemaps/employee.sitemap";
-                //}
+                string username = HttpContext.Current.User.Identity.GetUserName();
+                string role = EstateAgentsRepository.GetUserRole(username);
 
-                siteMap = "~/Sitemaps/employee.sitemap";
+                if (role == "Admin")
+                {
+                    siteMap = "~/Sitemaps/admin.sitemap";
+                }
+                else if (role == "Employee")
+                {
+                    siteMap = "~/Sitemaps/employee.sitemap";
+                }
 
             }
 
