@@ -28,8 +28,8 @@ namespace EstateAgents.Library.Enums
         /// <summary>
         /// Enum for Bugalow
         /// </summary>
-        [Description("Bugalow")]
-        Bugalow,
+        [Description("Bungalow")]
+        Bungalow,
 
         /// <summary>
         /// Enum for Flat

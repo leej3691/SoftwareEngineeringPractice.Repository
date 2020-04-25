@@ -3,7 +3,6 @@
   <siteMapNode url="/Home/Index" title="Home" />
     
   <siteMapNode url="/PropertyMaintenance/PropertyMaintenance/" title="Property Maintenance" />
-  <siteMapNode url="/OptionMaintenance/OptionMaintenance/" title="Option Maintenance" />
   <siteMapNode url="/NewsMaintenance/NewsMaintenance/" title="News Maintenance" />
  
 </siteMap>

@@ -224,6 +224,27 @@ namespace EstateAgents.Library.DAL
 
         #region Property
 
+        public static void CreateProperty(Property Property)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Property.Add(Property);
+                db.SaveChanges();
+            }
+        }
+
+        public static Property UpdateProperty(Property Property)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.Property.Attach(Property);
+                db.Entry(Property).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return Property;
+        }
+
         /// <summary>
         /// Property - Get 3 properties
         /// </summary>
@@ -235,7 +256,7 @@ namespace EstateAgents.Library.DAL
 
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
-                properties = db.Property.Take(3).ToList();
+                properties = db.Property.Where(p=>p.ClosedDate == null).Take(3).ToList();
             }
 
             return properties;
@@ -325,8 +346,6 @@ namespace EstateAgents.Library.DAL
 
         #region PropertyType
 
-        
-
         /// <summary>
         /// Property Type - 
         /// </summary>
@@ -339,6 +358,46 @@ namespace EstateAgents.Library.DAL
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
                 returnValue = db.PropertyType.Where(p => p.Id == Id).FirstOrDefault().Description;
+            }
+
+            return returnValue;
+        }
+
+        public static int GetPropertyTypeIdByDescription(string Description)
+        {
+            int returnValue = 0;
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                returnValue = db.PropertyType.Where(p => p.Description == Description).FirstOrDefault().Id;
+            }
+
+            return returnValue;
+        }
+
+        #endregion
+
+        #region Property Sale Type
+
+        public static int GetPropertySaleTypeIdByDescription(string Description)
+        {
+            int returnValue = 0;
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                returnValue = db.PropertySaleType.Where(p => p.Description == Description).FirstOrDefault().Id;
+            }
+
+            return returnValue;
+        }
+
+        public static string GetPropertySaleTypeDescriptionById(int Id)
+        {
+            string returnValue = "";
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                returnValue = db.PropertySaleType.Where(p => p.Id == Id).FirstOrDefault().Description;
             }
 
             return returnValue;
@@ -361,6 +420,18 @@ namespace EstateAgents.Library.DAL
             }
         }
 
+        public static PropertyImages UpdatePropertyImages(PropertyImages PropertyImages)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyImages.Attach(PropertyImages);
+                db.Entry(PropertyImages).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return PropertyImages;
+        }
+
         /// <summary>
         /// Property Images - Get property images list by property id
         /// </summary>
@@ -372,10 +443,22 @@ namespace EstateAgents.Library.DAL
 
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
-                iList = db.PropertyImages.Where(p => p.PropertyId == PropertyId).ToList();
+                iList = db.PropertyImages.Where(p => p.PropertyId == PropertyId && p.Deleted == null).ToList();
             }
 
             return iList;
+        }
+
+        public static PropertyImages GetPropertyImageById(int Id)
+        {
+            PropertyImages i = new PropertyImages();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                i = db.PropertyImages.Where(p => p.Id == Id).FirstOrDefault();
+            }
+
+            return i;
         }
 
         public static bool CheckPropertyUnderOffer(int PropertyId)
@@ -545,6 +628,18 @@ namespace EstateAgents.Library.DAL
             }
 
             return p;
+        }
+
+        public static int GetPropertyViewingStatusIdByDescription(string Description)
+        {
+            int returnValue = 0;
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                returnValue = db.PropertyViewingStatus.Where(p => p.Description == Description).FirstOrDefault().Id;
+            }
+
+            return returnValue;
         }
 
         #endregion
@@ -862,7 +957,89 @@ namespace EstateAgents.Library.DAL
 
         #endregion
 
+        #region News
+
+        public static void CreateNews(News News)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.News.Add(News);
+                db.SaveChanges();
+            }
+        }
+
+        public static News UpdateNews(News News)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.News.Attach(News);
+                db.Entry(News).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return News;
+        }
+
+        public static List<News> GetLatestNews()
+        {
+            List<News> n = new List<News>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                n = db.News.Where(p=>p.Deleted == null).Take(5).OrderByDescending(d => d.Id).ToList();
+            }
+
+            return n;
+        }
+
+        public static List<News> GetAllNews()
+        {
+            List<News> n = new List<News>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                n = db.News.Where(d=> d.Deleted == null).ToList();
+            }
+
+            return n;
+        }
+
+        public static News GetNewsByNewsId(int NewsId)
+        {
+            News e = new News();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                e = db.News.Where(p => p.Id == NewsId).FirstOrDefault();
+            }
+
+            return e;
+        }
+
+        #endregion
+
         #region Property Features
+
+        public static void CreatePropertyFeatures(PropertyFeatures PropertyFeatures)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyFeatures.Add(PropertyFeatures);
+                db.SaveChanges();
+            }
+        }
+
+        public static PropertyFeatures UpdatePropertyFeatures(PropertyFeatures PropertyFeatures)
+        {
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                db.PropertyFeatures.Attach(PropertyFeatures);
+                db.Entry(PropertyFeatures).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return PropertyFeatures;
+        }
 
         public static List<PropertyFeatures> GetPropertyFeaturesByPropertyId(int PropertyId)
         {
@@ -871,6 +1048,30 @@ namespace EstateAgents.Library.DAL
             using (EstateAgencyContext db = new EstateAgencyContext())
             {
                 iList = db.PropertyFeatures.Where(p => p.PropertyId == PropertyId).ToList();
+            }
+
+            return iList;
+        }
+
+        public static PropertyFeatures GetPropertyFeaturesById(int Id)
+        {
+            PropertyFeatures pf = new PropertyFeatures();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                pf = db.PropertyFeatures.Where(p => p.Id == Id).FirstOrDefault();
+            }
+
+            return pf;
+        }
+
+        public static List<PropertyFeatures> GetAllPropertyFeaturesByPropertyId(int PropertyId)
+        {
+            List<PropertyFeatures> iList = new List<PropertyFeatures>();
+
+            using (EstateAgencyContext db = new EstateAgencyContext())
+            {
+                iList = db.PropertyFeatures.Where(p => p.Deleted == null && p.PropertyId == PropertyId).ToList();
             }
 
             return iList;

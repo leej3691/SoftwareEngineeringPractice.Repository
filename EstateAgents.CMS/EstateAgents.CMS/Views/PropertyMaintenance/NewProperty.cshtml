@@ -1,0 +1,128 @@
+﻿@model EstateAgents.CMS.Models.PropertyMaintenance.NewPropertyViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        <a href="/PropertyMaintenance/PropertyMaintenance">Property Maintenance</a>
+    </li>
+    <li>
+        New Property
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-home text-success hidden-xs"></i>
+        New Property
+    </h1>
+    <p>Add new property below</p>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("NewPropertyRequest", "PropertyMaintenance", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="sample-header">New Property</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PropertySaleType, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(x => x.PropertySaleType, "Please Select", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PropertySaleType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PropertyType, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(x => x.PropertyType, "Please Select", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PropertyType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PropertyPrice, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.PropertyPrice, new { @class = "form-control", placeholder = "Enter the property price" })
+                        @Html.ValidationMessageFor(m => m.PropertyPrice, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine1, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control", placeholder = "Enter the property address line 1" })
+                        @Html.ValidationMessageFor(m => m.AddressLine1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine2, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control", placeholder = "Enter the property address line 2" })
+                        @Html.ValidationMessageFor(m => m.AddressLine2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine3, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine3, new { @class = "form-control", placeholder = "Enter the property address line 3" })
+                        @Html.ValidationMessageFor(m => m.AddressLine3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine4, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine4, new { @class = "form-control", placeholder = "Enter the property address line 4" })
+                        @Html.ValidationMessageFor(m => m.AddressLine4, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AddressLine5, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.AddressLine5, new { @class = "form-control", placeholder = "Enter the property address line 5" })
+                        @Html.ValidationMessageFor(m => m.AddressLine5, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Postcode, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control", placeholder = "Enter the property address Postcode" })
+                        @Html.ValidationMessageFor(m => m.Postcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NumberOfBedrooms, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.NumberOfBedrooms, new { @class = "form-control", placeholder = "Enter the number of bedrooms" })
+                        @Html.ValidationMessageFor(m => m.NumberOfBedrooms, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Details, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.Details, new { @class = "form-control", placeholder = "Enter the property details" })
+                        @Html.ValidationMessageFor(m => m.Details, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Submit" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

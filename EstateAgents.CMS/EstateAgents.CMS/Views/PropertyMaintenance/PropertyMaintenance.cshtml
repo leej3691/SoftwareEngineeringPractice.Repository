@@ -1,0 +1,76 @@
+﻿@model EstateAgents.CMS.Models.PropertyMaintenance.PropertyMaintenanceViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        Property Maintenance
+    </li>
+    <li>
+        Property Maintenance
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-home text-success hidden-xs"></i>
+        Property Maintenance
+    </h1>
+    <p>Maintain properties below</p>
+</div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-10">
+        <h3 class="text-success"><b>Properties</b></h3>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-success btn-block" href="/PropertyMaintenance/NewProperty">New Property</a>
+    </div>
+</div>
+<hr />
+
+<table id="properties" class="display" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Posted</th>
+            <th>Closed</th>
+            <th>Address</th>
+            <th>Update</th>
+            <th>Images</th>
+            <th>Features</th>
+            <th>Listing</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Properties)
+        {
+        <tr style="background:white;color:black;">
+            <td style="background:white;color:black;">@item.PostedDate.ToShortDateString()</td>
+            <td style="background:white;color:black;">@item.ClosedDate</td>
+            <td>@item.AddressLine1, @item.AddressLine2, @item.AddressLine3, @item.AddressLine4, @item.AddressLine5, @item.Postcode</td>
+            <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/PropertyMaintenance/UpdateProperty/@item.Id">Update</a></td>
+            <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/PropertyMaintenance/PropertyImages/@item.Id">Images</a></td>
+            <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/PropertyMaintenance/PropertyFeatures/@item.Id">Features</a></td>
+            @if (item.ClosedDate == null)
+            {
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/PropertyMaintenance/MarkPropertyAsClosed/@item.Id">Close</a></td>
+            }
+            else
+            {
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/PropertyMaintenance/RelistProperty/@item.Id">Relist</a></td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#properties').DataTable();
+        });
+    </script>
+}

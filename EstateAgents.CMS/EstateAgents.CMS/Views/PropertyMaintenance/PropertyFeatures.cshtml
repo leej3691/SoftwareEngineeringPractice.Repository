@@ -1,0 +1,61 @@
+﻿@model EstateAgents.CMS.Models.PropertyMaintenance.PropertyFeaturesViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        <a href="/PropertyMaintenance/PropertyMaintenance">Property Maintenance</a>
+    </li>
+    <li>
+        Property Features
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-home text-success hidden-xs"></i>
+        Property Features
+    </h1>
+    <p>Maintain property features below</p>
+</div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-10">
+        <h3 class="text-success"><b>Features</b></h3>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-success btn-block" href="/PropertyMaintenance/NewPropertyFeature/@Model.PropertyId">New Feature</a>
+    </div>
+</div>
+<hr />
+
+<table id="features" class="display" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Created</th>
+            <th>Description</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PropertyFeatures)
+        {
+        <tr style="background:white;color:black;">
+            <td style="background:white;color:black;">@item.Created.ToShortDateString()</td>
+            <td>@item.Description</td>
+            <td> <a class="btn btn-danger btn-block" style="text-decoration:none;" href="/PropertyMaintenance/MarkPropertyFeatureAsDeleted/@item.Id">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#features').DataTable();
+        });
+    </script>
+}

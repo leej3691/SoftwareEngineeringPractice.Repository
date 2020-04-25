@@ -42,6 +42,27 @@
 
 <div class="row">
     <div class="col-md-12">
+        <h3 class="text-success"><b>Latest News</b></h3>
+    </div>
+</div>
+<hr />
+
+<div class="list-group">
+
+    @foreach (var item in Model.News)
+    {
+        <a class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h4>@item.Description</h4>
+                <small style="color:#4797A8;"><b>Posted:</b> @item.Created</small>
+            </div>
+        </a>
+    }
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
         <h3 class="text-success"><b>Find your dream home</b></h3>
     </div>
 </div>

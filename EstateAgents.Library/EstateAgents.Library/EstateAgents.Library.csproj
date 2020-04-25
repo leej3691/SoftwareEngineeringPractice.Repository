@@ -70,6 +70,7 @@
     <Compile Include="DAL\Employee.cs" />
     <Compile Include="DAL\Client.cs" />
     <Compile Include="DAL\EmployeeJobTitle.cs" />
+    <Compile Include="DAL\News.cs" />
     <Compile Include="DAL\Enquiry.cs" />
     <Compile Include="DAL\EstateAgentsRepository.cs" />
     <Compile Include="DAL\IdentityModels.cs" />
@@ -136,6 +137,10 @@
     <Compile Include="Migrations\202004241344438_PropertyRemovals.Designer.cs">
       <DependentUpon>202004241344438_PropertyRemovals.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004242131525_News.cs" />
+    <Compile Include="Migrations\202004242131525_News.Designer.cs">
+      <DependentUpon>202004242131525_News.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004241344438_PropertyRemovals.resx">
       <DependentUpon>202004241344438_PropertyRemovals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004242131525_News.resx">
+      <DependentUpon>202004242131525_News.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

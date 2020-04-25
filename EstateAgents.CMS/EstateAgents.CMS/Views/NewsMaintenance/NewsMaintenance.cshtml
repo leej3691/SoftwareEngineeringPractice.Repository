@@ -1,0 +1,93 @@
+﻿@model EstateAgents.CMS.Models.NewsMaintenance.NewsMaintenanceViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        News Maintenance
+    </li>
+    <li>
+        News Maintenance
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-newspaper-o text-success hidden-xs"></i>
+        News Maintenance
+    </h1>
+    <p>Maintain news below</p>
+</div>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Live News</b></h3>
+    </div>
+</div>
+<hr />
+
+<table id="news" class="display" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Date Posted</th>
+            <th>News Description</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.News)
+        {
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;">@item.Created.ToShortDateString()</td>
+                <td>@item.Description</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/NewsMaintenance/MarkNewsAsDeleted/@item.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Add News</b></h3>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("AddNewsRequest", "NewsMaintenance", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="sample-header">Add News</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NewsDescription, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.NewsDescription, new { @class = "form-control", placeholder = "Enter news description" })
+                        @Html.ValidationMessageFor(m => m.NewsDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Submit" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+<br />
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#news').DataTable();
+        });
+    </script>
+}

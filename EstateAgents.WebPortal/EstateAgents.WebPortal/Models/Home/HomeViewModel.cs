@@ -12,11 +12,12 @@ namespace EstateAgents.WebPortal.Models.Home
         public string RegisterEmail { get; set; }
         public Client ClientDetails { get; set; }
         public List<Property> Properties { get; set; }
-
+        public List<News> News { get; set; }
 
         public HomeViewModel()
         {
             this.Properties = EstateAgentsRepository.GetTop3Properties();
+            this.News = EstateAgentsRepository.GetLatestNews();
 
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {

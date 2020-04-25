@@ -1,0 +1,112 @@
+﻿@model EstateAgents.CMS.Models.PropertyMaintenance.PropertyImagesViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        <a href="/PropertyMaintenance/PropertyMaintenance">Property Maintenance</a>
+    </li>
+    <li>
+        Property Images
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-image text-success hidden-xs"></i>
+        Property Images
+    </h1>
+    <p>Manage property images below</p>
+</div>
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <b style="color:#4797A8;">Property Address:</b> @Model.PropertyAddress
+    </li>
+</ul>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Propert Images</b></h3>
+    </div>
+</div>
+<hr />
+<table id="images" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PropertyImages)
+        {
+            var base64 = Convert.ToBase64String(item.ImageData);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+            <tr style="background:white;color:black;">
+                <td style="background:white;color:black;height:25%;width:25%;"><img class="img-responsive" src="@imgSrc"></td>
+                <td>@item.Description</td>
+                <td>@item.Created.ToShortDateString()</td>
+                <td> <a class="btn btn-success btn-block" style="text-decoration:none;" href="/PropertyMaintenance/MarkPropertyImageAsDeleted/@item.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row" style="margin-bottom:-15px;">
+    <div class="col-md-12">
+        <h3 class="text-success"><b>Upload Image</b></h3>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("NewPropertyImage", "PropertyMaintenance", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <h4 class="sample-header">Upload Image</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+
+                @Html.HiddenFor(m => m.PropertyId)
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="padding-bottom:10px;">
+                        <input id="ImagePath" title="Upload a property image" type="file" name="file" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ImageDescription, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.ImageDescription, new { @class = "form-control", placeholder = "Enter the image description" })
+                        @Html.ValidationMessageFor(m => m.ImageDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="padding-top:10px;">
+                        <input type="submit" class="btn btn-block btn-success" value="Upload" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section FooterScripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#images').DataTable();
+        });
+    </script>
+}

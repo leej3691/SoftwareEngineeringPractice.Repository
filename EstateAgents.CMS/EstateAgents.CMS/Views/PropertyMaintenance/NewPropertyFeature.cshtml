@@ -1,0 +1,48 @@
+﻿@model EstateAgents.CMS.Models.PropertyMaintenance.NewPropertyFeatureViewModel
+
+<ul class="breadcrumb hidden-xs">
+    <li>
+        <a href="/Home/Index">Home</a>
+    </li>
+    <li>
+        <a href="/PropertyMaintenance/PropertyMaintenance">Property Maintenance</a>
+    </li>
+    <li>
+        New Property Feature
+    </li>
+</ul>
+
+<div class="jumbotron">
+    <h1>
+        <i class="fa fa-home text-success hidden-xs"></i>
+        New Property Feature
+    </h1>
+    <p>Add new property feature below</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("NewPropertyFeatureRequest", "PropertyMaintenance", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+            <h4 class="sample-header">New Property Feature</h4>
+            <div class="row sample-content" style="margin-left:0;margin-right:0;margin-bottom:20px;">
+                @Html.HiddenFor(m => m.PropertyId)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Enter the property feature description" })
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-block btn-success" value="Submit" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

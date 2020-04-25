@@ -204,6 +204,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\NewsMaintenanceController.cs" />
+    <Compile Include="Controllers\PropertyMaintenanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -212,6 +214,13 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewsMaintenance\NewsMaintenanceViewModel.cs" />
+    <Compile Include="Models\PropertyMaintenance\NewPropertyFeatureViewModel.cs" />
+    <Compile Include="Models\PropertyMaintenance\PropertyImagesViewModel.cs" />
+    <Compile Include="Models\PropertyMaintenance\PropertyFeaturesViewModel.cs" />
+    <Compile Include="Models\PropertyMaintenance\UpdatePropertyViewModel.cs" />
+    <Compile Include="Models\PropertyMaintenance\NewPropertyViewModel.cs" />
+    <Compile Include="Models\PropertyMaintenance\PropertyMaintenanceViewModel.cs" />
     <Compile Include="Models\SiteMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -633,6 +642,13 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Sitemaps\default.sitemap" />
     <Content Include="Sitemaps\employee.sitemap" />
+    <Content Include="Views\PropertyMaintenance\PropertyMaintenance.cshtml" />
+    <Content Include="Views\NewsMaintenance\NewsMaintenance.cshtml" />
+    <Content Include="Views\PropertyMaintenance\NewProperty.cshtml" />
+    <Content Include="Views\PropertyMaintenance\UpdateProperty.cshtml" />
+    <Content Include="Views\PropertyMaintenance\PropertyImages.cshtml" />
+    <Content Include="Views\PropertyMaintenance\PropertyFeatures.cshtml" />
+    <Content Include="Views\PropertyMaintenance\NewPropertyFeature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
