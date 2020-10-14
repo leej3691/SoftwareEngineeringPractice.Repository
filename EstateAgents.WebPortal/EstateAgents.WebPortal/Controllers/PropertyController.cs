@@ -158,6 +158,7 @@ namespace EstateAgents.WebPortal.Controllers
                 p.ViewingTime = model.ViewingTime;
                 p.ClientId = model.ClientId;
                 p.PropertyId = model.PropertyDetails.Id;
+                p.PropertyViewingStatusId = 1;
                 EstateAgentsRepository.CreatePropertyViewing(p);
 
                 return RedirectToAction("Index", "Home");

@@ -128,7 +128,7 @@ namespace EstateAgents.CMS.Models.PropertyMaintenance
             string SaleTypeDesc = EstateAgentsRepository.GetPropertySaleTypeDescriptionById(e.PropertySaleTypeId);
             System.Enum.TryParse(SaleTypeDesc, out Library.Enums.PropertySaleType PropertySaleType);
             this.PropertySaleType = PropertySaleType;
-            string TypeDesc = EstateAgentsRepository.GetPropertyTypeDescriptionByPropertyTypeId(e.PropertyTypeId);
+            string TypeDesc = EstateAgentsRepository.GetPropertyTypeDescriptionByPropertyTypeId(e.PropertyTypeId); 
             System.Enum.TryParse(TypeDesc, out Library.Enums.PropertyType PropertyType);
             this.PropertyType = PropertyType;
             string status = EstateAgentsRepository.GetPropertyViewingStatusDescriptionById(e.PropertyStatusId);

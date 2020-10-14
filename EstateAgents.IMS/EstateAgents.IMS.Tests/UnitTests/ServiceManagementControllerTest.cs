@@ -13,22 +13,6 @@ namespace EstateAgents.IMS.Tests.Controllers
     [TestClass]
     public class ServiceManagementControllerTest
     {
-        [TestMethod]
-        [TestCategory("Views")]
-        [Description("View Test - Manage Brokers return view test")]
-        [Priority(0)]
-        [Owner("Lee Jones")]
-        public void TestManageBrokersView()
-        {
-            // Arrange - Initialise variables
-            var controller = new ServiceManagementController();
-
-            // Act - Invoke method to test
-            var result = controller.ManageBrokers() as ViewResult;
-   
-            // Assert - Verify the act
-            Assert.IsNotNull(result);
-        }
 
         [TestMethod]
         [TestCategory("Views")]

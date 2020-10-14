@@ -14,7 +14,7 @@ namespace EstateAgents.IMS.Tests.Controllers
         {
             using(IWebDriver driver = new ChromeDriver())
             {
-                driver.Navigate().GoToUrl("https://localhost:44365/");
+                /*driver.Navigate().GoToUrl("https://localhost:44365/")*/;
             }
         }
     }
